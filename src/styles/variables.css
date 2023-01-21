@@ -1,0 +1,35 @@
+:root {
+   --logo: url('/src/assets/images/logo-dark.svg');
+   --sidebar-width: 240px;
+   --header-height: 70px;
+   --player-height: 90px;
+   --section-padding: 59px;
+
+   --black: #32323d;
+
+   --text-primary: white;
+   --text-secondary: #ffffff80;
+   --text-search: #eee;
+   --text-placeholder: #dadada;
+   --text-hover: #fe63da;
+
+   --bg-primary: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/zma.svg');
+   --bg-secondary: #4b1178;
+   --bg-alpha: rgba(255, 255, 255, 0.1);
+   --bg-layout: #37075d;
+   --bg-sidebar: #ffffff0d;
+
+   --dark-10: rgba(0, 0, 0, 0.1);
+   --dark-50: rgba(0, 0, 0, 0.5);
+   --dark-70: rgba(0, 0, 0, 0.7);
+   --dark-80: rgba(0, 0, 0, 0.8);
+   --purple-primary: #ed2b91;
+
+   --line: #ffffff1a;
+
+   --header-shadow: #0000001a;
+
+   --thumb-color: rgba(255, 255, 255, 0.3);
+
+   --linear-gradient: linear-gradient(117deg, #5a4be7, #c86dd7 102%);
+}

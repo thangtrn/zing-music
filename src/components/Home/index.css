@@ -1,0 +1,29 @@
+.gallery-transition {
+   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+      z-index 0s linear 0.25s;
+}
+
+.skeleton-animation {
+   animation: skeleton 1s linear infinite;
+}
+
+@keyframes skeleton {
+   0% {
+      transform: translate(-50px);
+      opacity: 0;
+   }
+
+   20% {
+      opacity: 0;
+   }
+
+   50% {
+      transform: translate(20px);
+      opacity: 0.3;
+   }
+
+   100% {
+      transform: translate(300px);
+      opacity: 1;
+   }
+}
