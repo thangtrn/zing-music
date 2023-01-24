@@ -48,9 +48,8 @@ export const { setValue, clearResult } = searchSlice.actions;
 export const fetchSearchSuggest = createAsyncThunk(
    'search/fetchSearchSuggest',
    async (payload) => {
-      console.log(payload);
       const res = await zingServices.searchSuggest(payload);
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
    },
 );

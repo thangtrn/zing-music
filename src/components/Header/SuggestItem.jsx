@@ -4,8 +4,8 @@ import { formatFollowers, convertListArtists } from '../../helpers';
 
 const styleClass = {
    wrapper:
-      'w-full rounded cursor-pointer transition-all ease-[ease] duration-200 group',
-   link: 'flex items-center px-[10px] py-2 hover:bg-alpha',
+      'w-full rounded cursor-pointer transition-all ease-[ease] duration-200 hover:bg-alpha group',
+   link: 'flex items-center px-[10px] py-2',
    imgWrapper:
       'w-[52px] h-[52px] overflow-hidden mr-[10px] flex-grow-0 flex-shrink-0',
    img: 'w-full h-full object-cover',

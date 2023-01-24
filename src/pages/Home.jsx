@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { Gallery } from '../components';
+import { Gallery, NewRelease, PlaylistSection, Loading } from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchHome, clearHomeData } from '../redux/features/appSlice';
 import { appSelector } from '../redux/selector';
-import { PlaylistSection, Loading } from '../components';
 
 const Home = () => {
    const { home: homeData, loading, error } = useSelector(appSelector);
@@ -34,6 +33,15 @@ const Home = () => {
                      title={sectionData.title}
                      link={sectionData.link}
                      playlistData={sectionData.items}
+                     key={index}
+                  />
+               );
+            } else if (sectionData.sectionType === 'new-release') {
+               return (
+                  <NewRelease
+                     title={sectionData.title}
+                     link={sectionData.link}
+                     releaseData={sectionData.items}
                      key={index}
                   />
                );

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import CardImage from './CardImage';
 
 const Card = ({ cardData }) => {
-   console.log(cardData);
    const { encodeId, thumbnailM, title, sortDescription, artistsNames } =
       cardData;
    return (

@@ -104,7 +104,7 @@ const Sidebar = () => {
                   </p>
                   <Link
                      to="/"
-                     className="inline-block text-center uppercase leading-[normal] font-bold py-[7px] px-[36px] rounded-full bg-[#ffdb00] text-black transition-all duration-200 ease-[ease] hover:brightness-[0.8]"
+                     className="inline-block text-center uppercase leading-normal font-bold py-[7px] px-[36px] rounded-full bg-[#ffdb00] text-black transition-all duration-200 ease-[ease] hover:brightness-[0.8]"
                   >
                      Nâng cấp VIP
                   </Link>

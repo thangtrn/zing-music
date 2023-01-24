@@ -38,7 +38,7 @@ const appSlice = createSlice({
 
 export const fetchHome = createAsyncThunk('app/fetchHomeData', async () => {
    const res = await zingServices.getHome();
-   console.log('Home data: ', res.data.items);
+   // console.log('Home data: ', res.data.items);
    return res.data;
 });
 

@@ -5,6 +5,7 @@ import {
    BsPlayCircle,
    BsMusicNoteList,
    BsChevronLeft,
+   BsFillPlayFill,
 } from 'react-icons/bs';
 import {
    IoSearchOutline,
@@ -93,4 +94,5 @@ export {
    AiOutlineHeart,
    AiFillHeart,
    BiDotsHorizontalRounded,
+   BsFillPlayFill,
 };

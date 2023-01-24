@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
 import { playBtn } from '../../assets/images';
+import { ButtonTippy } from '../Commonts';
 
 import {
    // AiFillHeart,
@@ -29,53 +27,23 @@ const CardImage = ({ src }) => {
                   className="w-full h-[50px] flex justify-evenly items-center"
                   onClick={(e) => e.preventDefault()}
                >
-                  <Button tippyContent="Thêm vào thư viện">
+                  <ButtonTippy tippyContent="Thêm vào thư viện">
                      <AiOutlineHeart size={20} />
-                  </Button>
-                  <Button size="45px" hoverTooltip={false}>
+                  </ButtonTippy>
+                  <ButtonTippy size="45px">
                      <img
                         src={playBtn}
                         alt="play-btn"
                         className="w-full h-full object-cover"
                      />
-                  </Button>
-                  <Button tippyContent="Khác">
+                  </ButtonTippy>
+                  <ButtonTippy tippyContent="Khác">
                      <BiDotsHorizontalRounded size={20} />
-                  </Button>
+                  </ButtonTippy>
                </div>
             </div>
          )}
       </div>
-   );
-};
-
-const Button = ({ children, size = '30px', tippyContent = null, ...props }) => {
-   let TippyComp = React.Fragment;
-   const settings = {};
-   if (tippyContent) {
-      TippyComp = Tippy;
-      settings.content = (
-         <span className="leading-[0] text-[11px]">{tippyContent}</span>
-      );
-      settings.placement = 'top';
-      settings.arrow = true;
-      settings.duration = 300;
-      settings.delay = [75, 0];
-   }
-
-   return (
-      <TippyComp {...settings}>
-         <button
-            {...props}
-            className={`f-center w-[${size}] h-[${size}] rounded-full ${
-               tippyContent
-                  ? 'hover:bg-tooltip'
-                  : 'hover:brightness-90 border border-[white]'
-            }`}
-         >
-            {children}
-         </button>
-      </TippyComp>
    );
 };
 

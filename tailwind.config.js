@@ -40,6 +40,7 @@ module.exports = {
             full: '100%',
          },
          borderColor: {
+            primary: 'var(--line)',
             'purple-primary': 'var(--purple-primary)',
          },
          height: {
@@ -69,6 +70,9 @@ module.exports = {
          zIndex: {
             1: '1',
             100: '100',
+         },
+         lineHeight: {
+            normal: 'normal',
          },
       },
    },

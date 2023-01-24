@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsChevronRight } from '../../ultis/icons';
 import Card from './Card';
-import Slider from './Slider';
 
 const PlaylistSection = ({ title, link, playlistData = [] }) => {
    const formatLink = (text) => {
@@ -23,13 +22,11 @@ const PlaylistSection = ({ title, link, playlistData = [] }) => {
             )}
          </h3>
          <div>
-            <Slider>
-               {playlistData
-                  .filter((item, index) => index < 5)
-                  .map((item) => (
-                     <Card cardData={item} key={item.encodeId} />
-                  ))}
-            </Slider>
+            <div className="flex -mx-[14px] overflow-hidden flex-nowrap">
+               {playlistData.slice(0, 5).map((item) => (
+                  <Card cardData={item} key={item.encodeId} />
+               ))}
+            </div>
          </div>
       </div>
    );
