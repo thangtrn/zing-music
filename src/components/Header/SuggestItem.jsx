@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { formatFollowers, convertListArtists } from '../../heplers';
+import { formatFollowers, convertListArtists } from '../../helpers';
 
 const styleClass = {
    wrapper:
@@ -10,15 +10,15 @@ const styleClass = {
       'w-[52px] h-[52px] overflow-hidden mr-[10px] flex-grow-0 flex-shrink-0',
    img: 'w-full h-full object-cover',
    media: 'flex flex-col justify-center flex-1 text-sm text-primary',
-   title: 'group-hover:text-hover font-medium text-truncate',
-   subtitle: 'text-xs text-secondary text-truncate',
+   title: 'group-hover:text-hover font-medium text-truncate-1',
+   subtitle: 'text-xs text-secondary text-truncate-1',
 };
 
 const SuggestItem = ({ data, type }) => {
    if (type === 4) return <SuggestArtist data={data} />;
    if (type === 3) return <SuggestPlaylist data={data} />;
    if (type === 1) return <SuggestSong data={data} />;
-   return <></>;
+   return null;
 };
 
 const SuggestArtist = ({ data }) => {

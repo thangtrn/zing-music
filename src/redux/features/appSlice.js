@@ -5,21 +5,17 @@ import zingServices from '../../axios/zingServices';
 const initialState = {
    loading: false,
    error: '',
-   home: {
-      banner: [],
-      playlist: {},
-      newRelease: {},
-   },
-   chart: {
-      weekChart: {},
-      RTChart: {},
-   },
+   home: [],
 };
 
 const appSlice = createSlice({
    name: 'app',
    initialState,
-   reducers: {},
+   reducers: {
+      clearHomeData: (state) => {
+         state.home = [];
+      },
+   },
    extraReducers: (builder) => {
       builder
          .addCase(fetchHome.pending, (state) => {
@@ -33,8 +29,7 @@ const appSlice = createSlice({
          .addCase(fetchHome.fulfilled, (state, action) => {
             state.loading = false;
             state.error = '';
-            state.home.banner = action.payload?.items[0]?.items || [];
-            state.home.playlist = action.payload?.items[2] || {};
+            state.home = action.payload?.items || [];
          });
    },
 });
@@ -43,7 +38,10 @@ const appSlice = createSlice({
 
 export const fetchHome = createAsyncThunk('app/fetchHomeData', async () => {
    const res = await zingServices.getHome();
+   console.log('Home data: ', res.data.items);
    return res.data;
 });
+
+export const { clearHomeData } = appSlice.actions;
 
 export default appSlice;

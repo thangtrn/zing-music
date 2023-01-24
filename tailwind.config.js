@@ -23,6 +23,8 @@ module.exports = {
             alpha: 'var(--bg-alpha)',
             line: 'var(--line)',
             sidebar: 'var(--bg-sidebar)',
+            loading: 'var(--bg-loading)',
+            tooltip: 'var(--bg-tooltip)',
             'dark-10': 'var(--dark-10)',
             'dark-50': 'var(--dark-50)',
             'dark-70': 'var(--dark-70)',

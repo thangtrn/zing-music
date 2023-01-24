@@ -12,7 +12,11 @@ import {
    IoTrendingUpSharp,
    IoPlayCircleOutline,
 } from 'react-icons/io5';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import {
+   AiOutlineLoading3Quarters,
+   AiOutlineHeart,
+   AiFillHeart,
+} from 'react-icons/ai';
 import {
    RiVipCrown2Line,
    RiVipLine,
@@ -26,7 +30,11 @@ import {
    FiCheck,
    FiFileText,
 } from 'react-icons/fi';
-import { BiBlock } from 'react-icons/bi';
+import {
+   BiBlock,
+   BiDotsHorizontalRounded,
+   BiCategoryAlt,
+} from 'react-icons/bi';
 import { MdOutlineHighQuality } from 'react-icons/md';
 import { CgClose } from 'react-icons/cg';
 
@@ -42,7 +50,6 @@ import {
    BsTelephone,
 } from 'react-icons/bs';
 import { VscPieChart } from 'react-icons/vsc';
-import { BiCategoryAlt } from 'react-icons/bi';
 import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
 import { HiOutlineStar, HiOutlinePencil } from 'react-icons/hi';
 
@@ -83,4 +90,7 @@ export {
    BsMusicNoteBeamed,
    BsTabletLandscape,
    BsChevronLeft,
+   AiOutlineHeart,
+   AiFillHeart,
+   BiDotsHorizontalRounded,
 };

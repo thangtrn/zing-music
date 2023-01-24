@@ -18,6 +18,9 @@
    --bg-alpha: rgba(255, 255, 255, 0.1);
    --bg-layout: #37075d;
    --bg-sidebar: #ffffff0d;
+   --bg-loading: #ffffff1a;
+
+   --bg-tooltip: #ffffff4d;
 
    --dark-10: rgba(0, 0, 0, 0.1);
    --dark-50: rgba(0, 0, 0, 0.5);
