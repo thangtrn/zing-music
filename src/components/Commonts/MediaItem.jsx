@@ -1,9 +1,8 @@
 import React, { memo, useState } from 'react';
-import moment from 'moment/moment';
-import 'moment/locale/vi';
 
 import { BsFillPlayFill, BiDotsHorizontalRounded } from '../../ultis/icons';
 import { ButtonTippy } from '../Commonts';
+import { timeSince } from '../../helpers';
 
 const MediaItem = ({ mediaData }) => {
    const [hover, setHover] = useState(false);
@@ -41,9 +40,11 @@ const MediaItem = ({ mediaData }) => {
                <h4 className="w-full text-truncate-1 mt-[3px] text-secondary">
                   {artistsNames}
                </h4>
-               <h4 className="w-full text-truncate-1 mt-[3px] text-secondary">
-                  {moment(releaseDate * 1000).fromNow()}
-               </h4>
+               {releaseDate && (
+                  <h4 className="w-full text-truncate-1 mt-[3px] text-secondary">
+                     {timeSince(releaseDate)}
+                  </h4>
+               )}
             </div>
          </div>
          {hover && (
