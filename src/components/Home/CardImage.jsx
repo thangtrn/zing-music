@@ -16,11 +16,13 @@ const CardImage = ({ src }) => {
          onMouseOver={() => setHover(true)}
          onMouseOut={() => setHover(false)}
       >
-         <img
-            className="w-full absolute inset-0 object-cover group-hover:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
-            src={src}
-            alt="thumb"
-         />
+         {src && (
+            <img
+               className="w-full absolute inset-0 object-cover group-hover:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
+               src={src}
+               alt="thumb"
+            />
+         )}
          {hover && (
             <div className="flex items-center absolute inset-0 bg-dark-50 z-10">
                <div
