@@ -9,7 +9,7 @@ const Card = ({ cardData }) => {
       <div className="px-[14px] w-1/5 flex-shrink-0">
          <Link
             to={`/playlist/${encodeId}`}
-            className="block rounded overflow-hidden"
+            className="block rounded overflow-hidden cursor-pointer"
          >
             <CardImage src={thumbnailM} />
          </Link>

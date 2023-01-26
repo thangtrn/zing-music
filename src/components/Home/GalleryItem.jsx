@@ -11,12 +11,14 @@ const GalleryItem = ({ className = '', src, setHeight }) => {
       <div
          className={`${className} absolute top-0 w-[33.33%] py-0 px-[15px] select-none gallery-transition z-0 opacity-0`}
       >
-         <img
-            src={src}
-            alt="banner"
-            onLoad={autoHeight}
-            className="block rounded-lg w-full h-full object-cover"
-         />
+         <div className="w-full h-0 pb-[56.25%] relative bg-loading rounded-lg overflow-hidden">
+            <img
+               src={src}
+               alt="banner"
+               onLoad={autoHeight}
+               className="block w-full h-full object-cover absolute inset-0"
+            />
+         </div>
       </div>
    );
 };
