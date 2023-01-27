@@ -2,8 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { BsChevronLeft, BsChevronRight } from '../../ultis/icons';
 import GalleryItem from './GalleryItem';
-// import GallerySkeleton from './GallerySkeleton';
-import './index.css';
+import '../../styles/index.css';
 
 const Button = ({ children, className = '', ...props }) => {
    return (

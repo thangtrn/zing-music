@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BsChevronRight } from '../../ultis/icons';
+import { BsChevronRight } from '../ultis/icons';
 
-import { MediaItem } from '../Commonts';
+import { MediaItem } from './Commonts';
 
 const TAGS = [
    { tagId: 'all', tagName: 'Tất cả' },

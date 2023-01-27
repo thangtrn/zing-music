@@ -3,9 +3,8 @@ import React, { useRef, useState } from 'react';
 import { useOutSide } from '../../hooks';
 import { Modal, Line } from '../Commonts';
 
-import Theme from './Theme';
-import Menu from './Menu';
-import MenuItem from './MenuItem';
+import Theme from '../Theme';
+import { Menu, MenuItem } from '../Menu';
 import SettingItem from './SettingItem';
 
 import { ThemeIcon } from '../../assets/icons';

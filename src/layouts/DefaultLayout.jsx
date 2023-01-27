@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Header, Sidebar, PlayerControl } from './components';
-import CustomScrollBar from './components/CustomScrollBar';
+import { CustomScrollBar } from '../components';
 
 const DefaultLayout = ({ children }) => {
    const [isShowBg, setIsShowBg] = useState(false);

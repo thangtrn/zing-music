@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 
-import { Gallery, NewRelease, PlaylistSection, Loading } from '../components';
+import {
+   Gallery,
+   NewRelease,
+   PlaylistSection,
+   Loading,
+   WeekChartSection,
+} from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchHome, clearHomeData } from '../redux/features/appSlice';
@@ -42,6 +48,13 @@ const Home = () => {
                      title={sectionData.title}
                      link={sectionData.link}
                      releaseData={sectionData.items}
+                     key={index}
+                  />
+               );
+            } else if (sectionData.sectionType === 'weekChart') {
+               return (
+                  <WeekChartSection
+                     weekChartData={sectionData.items}
                      key={index}
                   />
                );

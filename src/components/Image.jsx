@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { playBtn } from '../../assets/images';
-import { ButtonTippy } from '../Commonts';
+import { playBtn } from '../assets/images';
+import { ButtonTippy } from './Commonts';
 
 import {
    // AiFillHeart,
    AiOutlineHeart,
    BiDotsHorizontalRounded,
-} from '../../ultis/icons';
+} from '../ultis/icons';
 
 const CardImage = ({ src }) => {
    const [hover, setHover] = useState(false);
    return (
       <div
-         className="w-full h-0 py-[50%] bg-loading overflow-hidden group relative"
+         className="w-full h-0 pb-[100%] bg-loading overflow-hidden group relative"
          onMouseOver={() => setHover(true)}
          onMouseOut={() => setHover(false)}
       >

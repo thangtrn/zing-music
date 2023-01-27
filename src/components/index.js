@@ -1,4 +1,9 @@
-export * from './Header';
-export * from './Sidebar';
 export * from './Commonts';
-export * from './Home';
+
+export * from './Setting';
+export * from './Navbar';
+export * from './Gallery';
+export { default as PlaylistSection } from './PlaylistSection';
+export { default as NewRelease } from './NewRelease';
+export { default as SearchBox } from './SearchBox';
+export { default as WeekChartSection } from './WeekChartSection';
