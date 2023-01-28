@@ -6,6 +6,7 @@ import {
    PlaylistSection,
    Loading,
    WeekChartSection,
+   ZingChartSection,
 } from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,6 +58,10 @@ const Home = () => {
                      weekChartData={sectionData.items}
                      key={index}
                   />
+               );
+            } else if (sectionData.sectionType === 'RTChart') {
+               return (
+                  <ZingChartSection zingChartData={sectionData} key={index} />
                );
             }
             return null;

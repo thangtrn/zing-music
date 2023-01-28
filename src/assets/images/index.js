@@ -6,3 +6,4 @@ export { default as myHistory } from './my-history.svg';
 export { default as myPlaylist } from './my-playlist.svg';
 export { default as mySong } from './my-song.svg';
 export { default as playBtn } from './play-btn.svg';
+export { default as bgChart } from './bg-chart.jpg';

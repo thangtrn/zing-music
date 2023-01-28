@@ -1,20 +1,26 @@
 import React, { memo, useState } from 'react';
 
-import { BsFillPlayFill, BiDotsHorizontalRounded } from '../../ultis/icons';
-import { ButtonTippy } from '../Commonts';
-import { timeSince } from '../../helpers';
+import { BsFillPlayFill } from '../../ultis/icons';
 
-const MediaItem = ({ mediaData }) => {
+const ZingMedia = ({ mediaData, percent, number }) => {
    const [hover, setHover] = useState(false);
-   const { encodeId, title, artistsNames, thumbnailM, releaseDate } = mediaData;
-
+   const { encodeId, title, artistsNames, thumbnailM } = mediaData;
    return (
       <div
-         className="flex items-center p-[10px] rounded-[5px] hover:bg-alpha"
+         className="flex items-center py-[10px] px-[15px] rounded-[5px] hover:bg-[#ffffff33] bg-[#ffffff12]"
          onMouseOver={() => setHover(true)}
          onMouseOut={() => setHover(false)}
       >
          <div className="flex flex-grow">
+            <div className="mr-[15px] f-center">
+               <span
+                  className={`w-[22px] text-center text-[32px] font-black leading-[1] text-transparent ${
+                     number <= 3 ? 'text-stroke-' + number : 'text-stroke'
+                  }`}
+               >
+                  {number}
+               </span>
+            </div>
             <div className="w-[60px] h-[60px] rounded overflow-hidden mr-[10px] flex-shrink-0">
                <div className="w-full h-0 py-[50%] bg-loading overflow-hidden relative">
                   <img
@@ -33,29 +39,22 @@ const MediaItem = ({ mediaData }) => {
                   )}
                </div>
             </div>
-            <div className="text-xs cursor-default">
+            <div className="text-xs cursor-default flex flex-col justify-center">
                <h3 className="w-full text-truncate-1 text-sm text-primary leading-[1.3] font-medium hover:text-hover">
                   {title}
                </h3>
                <h4 className="w-full text-truncate-1 mt-[3px] text-secondary">
                   {artistsNames}
                </h4>
-               {releaseDate && (
-                  <h4 className="w-full text-truncate-1 mt-[3px] text-secondary">
-                     {timeSince(releaseDate)}
-                  </h4>
-               )}
             </div>
          </div>
-         {hover && (
-            <div className="flex-shrink-0 ml-[10px]">
-               <ButtonTippy tippyContent="Khác" size="38px">
-                  <BiDotsHorizontalRounded />
-               </ButtonTippy>
-            </div>
-         )}
+         <div className="flex-shrink-0 ml-[10px]">
+            <span className="text-base leading-[1.56] font-bold">
+               {percent}%
+            </span>
+         </div>
       </div>
    );
 };
 
-export default memo(MediaItem);
+export default memo(ZingMedia);

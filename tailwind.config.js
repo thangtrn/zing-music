@@ -13,6 +13,7 @@ module.exports = {
             hover: 'var(--text-hover)',
             secondary: 'var(--text-secondary)',
             black: 'var(--black)',
+            'purple-primary': 'var(--purple-primary)',
          },
          backgroundColor: {
             header: 'rgba(55, 7, 93, 0.8)',
