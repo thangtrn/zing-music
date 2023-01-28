@@ -8,13 +8,17 @@ import ChartLine from './ChartLine';
 
 const ZingChartSection = ({ zingChartData }) => {
    const { chart, items } = zingChartData;
-
    return (
       <div
-         className="mt-12 rounded-lg overflow-hidden relative p-5"
-         style={{ background: `url(${bgChart})` }}
+         className="mt-12  relative p-5"
+         // style={{ background: `url(${bgChart})` }}
       >
-         <div className="absolute inset-0 bg-gradient-to-b from-[#740091] to-[#2d1a4c] opacity-95"></div>
+         <img
+            src={bgChart}
+            className="w-full h-full rounded-lg object-cover object-right-top absolute inset-0"
+            alt="zing chart"
+         />
+         <div className="absolute rounded-lg inset-0 bg-gradient-to-b from-[#740091] to-[#2d1a4c] opacity-95"></div>
          <div className="relative flex items-center mb-5 w-full">
             <Link
                to="/"
@@ -51,7 +55,7 @@ const ZingChartSection = ({ zingChartData }) => {
             </div>
 
             <div className="basis-7/12 px-[14px] mb-5">
-               <ChartLine chartData={chart} />
+               <ChartLine chartData={chart} rankItems={items} />
             </div>
          </div>
       </div>

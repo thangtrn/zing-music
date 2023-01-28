@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
+import _ from 'lodash';
+import Tooltip from './Tooltip';
 
 ChartJS.register({
    id: 'uniqueid5',
@@ -24,6 +26,7 @@ ChartJS.register({
    },
 });
 
+// default option Chartjs
 const options = {
    responsive: true,
    maintainAspectRatio: false,
@@ -65,11 +68,17 @@ const options = {
    },
 };
 
-const ChartLine = ({ chartData }) => {
+const ChartLine = ({ chartData, rankItems }) => {
    const [data, setData] = useState(null);
+   const chartRef = useRef(null); //create reference hook
+   const [tooltipState, setTooltipState] = useState({
+      opacity: 0,
+      top: 0,
+      left: 0,
+      data: {},
+   }); //initial tooltip state
 
    const labelTime = () => chartData.times.map((item) => item.hour + ':00');
-
    const labelItem = (index = 0) =>
       chartData.items[Object.keys(chartData.items)[index]].map(
          (item) => (item.counter / chartData.maxScore) * 100,
@@ -80,7 +89,20 @@ const ChartLine = ({ chartData }) => {
       const datasets = [];
       if (chartData?.items) {
          for (let i = 0; i < 3; i++) {
+            console.log('score: ', rankItems[i].score);
+            console.log('total: ', chartData.totalScore);
             datasets.push({
+               // Du lieu mang theo
+               mediaValue: {
+                  title: rankItems[i].title,
+                  artistsNames: rankItems[i].artistsNames,
+                  thumbnail: rankItems[i].thumbnail,
+                  percent: Math.round(
+                     (+rankItems[i].score * 100) / +chartData.totalScore,
+                  ),
+                  backgroundColor:
+                     i === 0 ? '#4a90e2' : i === 1 ? '#50e3c2' : '#e35050',
+               },
                data: labelItem(i),
                borderColor:
                   i === 0 ? '#4a90e2' : i === 1 ? '#50e3c2' : '#e35050',
@@ -100,12 +122,50 @@ const ChartLine = ({ chartData }) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [chartData]);
 
+   // custom option tooltip chartjs
+   const optionsChart = useMemo(
+      () => ({
+         ...options,
+         plugins: {
+            legend: false,
+            tooltip: {
+               enabled: false,
+               external: (context) => {
+                  const tooltipModel = context.tooltip;
+                  // console.log(context);
+                  // console.log(tooltipModel.dataPoints[0].dataset.mediaValue);
+                  if (!chartRef || !chartRef.current) return;
+
+                  if (tooltipModel.opacity === 0) {
+                     if (tooltipState.opacity !== 0)
+                        setTooltipState((prev) => ({
+                           ...prev,
+                           opacity: 0,
+                           top: 0,
+                           left: 0,
+                        }));
+                     return;
+                  }
+                  const newTooltipData = {
+                     opacity: 1,
+                     left: tooltipModel.caretX,
+                     top: tooltipModel.caretY,
+                     data: { ...tooltipModel.dataPoints[0].dataset.mediaValue },
+                  };
+                  if (!_.isEqual(tooltipState, newTooltipData))
+                     setTooltipState(newTooltipData);
+               },
+            },
+         },
+      }),
+      [tooltipState],
+   );
+
    return (
-      <>
-         {/* <div className="w-full h-full"> */}
-         {data && <Line data={data} options={options} />}
-         {/* </div> */}
-      </>
+      <div className="w-full h-full relative">
+         {data && <Line ref={chartRef} data={data} options={optionsChart} />}
+         <Tooltip tooltipData={tooltipState} />
+      </div>
    );
 };
 
