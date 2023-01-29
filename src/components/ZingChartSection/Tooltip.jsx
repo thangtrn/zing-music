@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Tooltip = ({ tooltipData }) => {
-   const { top, left, opacity, data } = tooltipData;
+   const { top, left, opacity, arrowLeft, data } = tooltipData;
    const { title, artistsNames, thumbnail, percent, backgroundColor } = data;
+
    return (
       <div
-         className="absolute select-none -translate-x-1/2 w-[180px] h-[50px]"
+         className="absolute select-none w-[180px] h-[50px]"
          style={{
             top,
             left,
             opacity,
-            transform: 'translate(-50%,calc(-100% - 25px))',
+            transform: 'translateY(calc(-100% - 20px))',
          }}
       >
          <div
@@ -43,8 +44,17 @@ const Tooltip = ({ tooltipData }) => {
                </span>
             </div>
          </div>
+         <div
+            className="absolute top-[98%] -translate-x-1/2"
+            style={{
+               left: arrowLeft,
+               borderLeft: '10px solid transparent',
+               borderRight: '10px solid transparent',
+               borderTop: `10px solid ${backgroundColor}`,
+            }}
+         ></div>
       </div>
    );
 };
 
-export default Tooltip;
+export default memo(Tooltip);

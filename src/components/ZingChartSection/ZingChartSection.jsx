@@ -4,15 +4,12 @@ import { Link } from 'react-router-dom';
 import { BsFillPlayFill } from '../../ultis/icons';
 import { bgChart } from '../../assets/images';
 import ZingMedia from './ZingMedia';
-import ChartLine from './ChartLine';
+import LineChart from './LineChart';
 
 const ZingChartSection = ({ zingChartData }) => {
    const { chart, items } = zingChartData;
    return (
-      <div
-         className="mt-12  relative p-5"
-         // style={{ background: `url(${bgChart})` }}
-      >
+      <div className="mt-12 relative p-5">
          <img
             src={bgChart}
             className="w-full h-full rounded-lg object-cover object-right-top absolute inset-0"
@@ -55,7 +52,7 @@ const ZingChartSection = ({ zingChartData }) => {
             </div>
 
             <div className="basis-7/12 px-[14px] mb-5">
-               <ChartLine chartData={chart} rankItems={items} />
+               <LineChart chartData={chart} rankItems={items} />
             </div>
          </div>
       </div>

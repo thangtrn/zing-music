@@ -68,13 +68,14 @@ const options = {
    },
 };
 
-const ChartLine = ({ chartData, rankItems }) => {
+const LineChart = ({ chartData, rankItems }) => {
    const [data, setData] = useState(null);
    const chartRef = useRef(null); //create reference hook
    const [tooltipState, setTooltipState] = useState({
       opacity: 0,
       top: 0,
       left: 0,
+      arrowLeft: 0,
       data: {},
    }); //initial tooltip state
 
@@ -89,8 +90,6 @@ const ChartLine = ({ chartData, rankItems }) => {
       const datasets = [];
       if (chartData?.items) {
          for (let i = 0; i < 3; i++) {
-            console.log('score: ', rankItems[i].score);
-            console.log('total: ', chartData.totalScore);
             datasets.push({
                // Du lieu mang theo
                mediaValue: {
@@ -132,8 +131,6 @@ const ChartLine = ({ chartData, rankItems }) => {
                enabled: false,
                external: (context) => {
                   const tooltipModel = context.tooltip;
-                  // console.log(context);
-                  // console.log(tooltipModel.dataPoints[0].dataset.mediaValue);
                   if (!chartRef || !chartRef.current) return;
 
                   if (tooltipModel.opacity === 0) {
@@ -143,12 +140,26 @@ const ChartLine = ({ chartData, rankItems }) => {
                            opacity: 0,
                            top: 0,
                            left: 0,
+                           arrowLeft: 0,
                         }));
                      return;
                   }
+
+                  // tính toán vị trí tooltip và arrow của tooltip
+                  const canvasPosition =
+                     context.chart.canvas.getBoundingClientRect();
+                  let leftPos = tooltipModel.caretX - 180 / 2;
+
+                  if (leftPos <= 0) leftPos = 0;
+                  else if (
+                     canvasPosition.width - tooltipModel.caretX + 20 <=
+                     180 / 2
+                  )
+                     leftPos = canvasPosition.width - 180;
                   const newTooltipData = {
                      opacity: 1,
-                     left: tooltipModel.caretX,
+                     left: leftPos,
+                     arrowLeft: tooltipModel.caretX - leftPos,
                      top: tooltipModel.caretY,
                      data: { ...tooltipModel.dataPoints[0].dataset.mediaValue },
                   };
@@ -169,4 +180,4 @@ const ChartLine = ({ chartData, rankItems }) => {
    );
 };
 
-export default ChartLine;
+export default LineChart;
