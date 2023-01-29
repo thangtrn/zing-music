@@ -26,6 +26,7 @@ module.exports = {
             sidebar: 'var(--bg-sidebar)',
             loading: 'var(--bg-loading)',
             tooltip: 'var(--bg-tooltip)',
+            controls: 'var(--bg-controls)',
             'dark-10': 'var(--dark-10)',
             'dark-50': 'var(--dark-50)',
             'dark-70': 'var(--dark-70)',
@@ -34,6 +35,7 @@ module.exports = {
          },
          backgroundImage: {
             primary: 'var(--bg-primary)',
+            controls: 'var(--bg-controls)',
             logo: 'var(--logo)',
             linear: 'var(--linear-gradient)',
          },

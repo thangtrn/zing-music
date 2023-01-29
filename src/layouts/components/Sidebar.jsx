@@ -177,9 +177,8 @@ const Sidebar = () => {
          </div>
 
          <div className="w-full">
-            <Line className="mx-0 my-0" />
-            <button className="w-full h-[53px] flex items-center py-0 px-7 text-sm font-bold bg-transparent text-primary hover:text-placeholder">
-               <AiOutlinePlus size={18} />
+            <button className="w-full h-[54px] flex items-center py-0 px-7 text-sm font-bold bg-transparent text-primary hover:text-placeholder border-t border-primary">
+               <AiOutlinePlus size={22} />
                <span className="ml-[10px]">Tạo playlist mới</span>
             </button>
          </div>
