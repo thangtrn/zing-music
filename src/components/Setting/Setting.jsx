@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 
 import { useOutSide } from '../../hooks';
-import { Modal, Line } from '../Commonts';
-
+import { Line } from '../Commonts';
+import { Modal } from '../Modal';
 import Theme from '../Theme';
 import { Menu, MenuItem } from '../Menu';
 import SettingItem from './SettingItem';

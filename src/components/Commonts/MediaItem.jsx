@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
 
-import { BsFillPlayFill, BiDotsHorizontalRounded } from '../../ultis/icons';
+import { BsFillPlayFill, RxDotsHorizontal } from '../../ultis/icons';
 import { ButtonTippy } from '../Commonts';
 import { timeSince } from '../../helpers';
 
@@ -16,7 +16,7 @@ const MediaItem = ({ mediaData }) => {
       >
          <div className="flex flex-grow">
             <div className="w-[60px] h-[60px] rounded overflow-hidden mr-[10px] flex-shrink-0">
-               <div className="w-full h-0 py-[50%] bg-loading overflow-hidden relative">
+               <div className="w-full h-0 pb-[100%] bg-loading overflow-hidden relative">
                   <img
                      className="w-full h-full absolute inset-0 object-cover"
                      src={thumbnailM}
@@ -48,9 +48,9 @@ const MediaItem = ({ mediaData }) => {
             </div>
          </div>
          {hover && (
-            <div className="flex-shrink-0 ml-[10px]">
+            <div className="flex-shrink-0 flex-grow-0 ml-[10px]">
                <ButtonTippy tippyContent="Khác" size="38px">
-                  <BiDotsHorizontalRounded />
+                  <RxDotsHorizontal />
                </ButtonTippy>
             </div>
          )}

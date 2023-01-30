@@ -32,12 +32,13 @@ module.exports = {
             'dark-70': 'var(--dark-70)',
             'dark-80': 'var(--dark-80)',
             'purple-primary': 'var(--purple-primary)',
+            player: 'var(--bg-player)',
          },
          backgroundImage: {
             primary: 'var(--bg-primary)',
-            controls: 'var(--bg-controls)',
             logo: 'var(--logo)',
             linear: 'var(--linear-gradient)',
+            'player-img': 'var(--bg-player-img)',
          },
          backgroundSize: {
             full: '100%',

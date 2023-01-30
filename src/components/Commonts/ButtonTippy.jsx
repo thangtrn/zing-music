@@ -7,6 +7,7 @@ const ButtonTippy = ({
    children,
    size = '30px',
    tippyContent = null,
+   className = '',
    ...props
 }) => {
    let TippyComp = React.Fragment;
@@ -27,11 +28,9 @@ const ButtonTippy = ({
          <button
             {...props}
             style={{ width: size, height: size }}
-            className={`f-center rounded-full ${
-               tippyContent
-                  ? 'hover:bg-tooltip'
-                  : 'hover:brightness-90 border border-[white]'
-            }`}
+            className={`f-center rounded-full hover:brightness-90 ${
+               tippyContent ? 'hover:bg-tooltip' : 'border border-[white]'
+            } ${className}`}
          >
             {children}
          </button>

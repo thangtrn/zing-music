@@ -20,7 +20,8 @@
    --bg-sidebar: #ffffff0d;
    --bg-loading: #ffffff1a;
 
-   --bg-controls: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-player/zma.png');
+   --bg-player: #111f3b;
+   --bg-player-img: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-player/zma.png');
 
    --bg-tooltip: #ffffff4d;
 

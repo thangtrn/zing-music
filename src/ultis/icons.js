@@ -6,13 +6,20 @@ import {
    BsMusicNoteList,
    BsChevronLeft,
    BsFillPlayFill,
+   BsThreeDots,
 } from 'react-icons/bs';
 import {
    IoSearchOutline,
    IoCloseOutline,
    IoTrendingUpSharp,
    IoPlayCircleOutline,
+   IoDiscOutline,
+   IoRadioOutline,
+   IoNewspaperOutline,
+   IoShieldCheckmarkOutline,
+   IoHeartOutline,
 } from 'react-icons/io5';
+import { IoIosHeartEmpty } from 'react-icons/io';
 import {
    AiOutlineLoading3Quarters,
    AiOutlineHeart,
@@ -23,6 +30,7 @@ import {
    RiVipLine,
    RiVipCrownLine,
    RiAdvertisementLine,
+   RiHeart3Line,
 } from 'react-icons/ri';
 import {
    FiUpload,
@@ -40,19 +48,20 @@ import { MdOutlineHighQuality } from 'react-icons/md';
 import { CgClose } from 'react-icons/cg';
 
 import {
-   IoDiscOutline,
-   IoRadioOutline,
-   IoNewspaperOutline,
-   IoShieldCheckmarkOutline,
-} from 'react-icons/io5';
-import {
    BsMusicNoteBeamed,
    BsTabletLandscape,
    BsTelephone,
 } from 'react-icons/bs';
 import { VscPieChart } from 'react-icons/vsc';
 import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
-import { HiOutlineStar, HiOutlinePencil } from 'react-icons/hi';
+import {
+   HiOutlineStar,
+   HiOutlinePencil,
+   HiOutlineDotsHorizontal,
+   HiDotsHorizontal,
+} from 'react-icons/hi';
+
+import { RxDotsHorizontal } from 'react-icons/rx';
 
 export {
    IoShieldCheckmarkOutline,
@@ -95,4 +104,11 @@ export {
    AiFillHeart,
    BiDotsHorizontalRounded,
    BsFillPlayFill,
+   HiOutlineDotsHorizontal,
+   RxDotsHorizontal,
+   HiDotsHorizontal,
+   BsThreeDots,
+   IoHeartOutline,
+   RiHeart3Line,
+   IoIosHeartEmpty,
 };
