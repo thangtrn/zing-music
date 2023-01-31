@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-   baseURL: 'https://zing-api-vercel.vercel.app/api',
-   // baseURL: 'http://localhost:5000/api',
+   // baseURL: 'https://zing-api-vercel.vercel.app/api',
+   baseURL: 'http://localhost:5000/api',
    headers: {
       'content-type': 'application/json',
    },

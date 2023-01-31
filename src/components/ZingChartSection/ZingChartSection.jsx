@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { BsFillPlayFill } from '../../ultis/icons';
-import { bgChart } from '../../assets/images';
+import { BsFillPlayFill } from '~/ultis/icons';
+import { bgChart } from '~/assets/images';
 import ZingMedia from './ZingMedia';
 import LineChart from './LineChart';
 

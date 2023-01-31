@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { formatFollowers, convertListArtists } from '../../../helpers';
+import { formatFollowers, convertListArtists } from '~/helpers';
 
 const styleClass = {
    wrapper:

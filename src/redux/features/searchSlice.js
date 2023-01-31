@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import zingServices from '../../axios/zingServices';
+import zingServices from '~/axios/zingServices';
 
 const initialState = {
    loading: false,

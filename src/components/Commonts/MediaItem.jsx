@@ -1,8 +1,8 @@
 import React, { memo, useState } from 'react';
 
-import { BsFillPlayFill, RxDotsHorizontal } from '../../ultis/icons';
-import { ButtonTippy } from '../Commonts';
-import { timeSince } from '../../helpers';
+import { BsFillPlayFill, RxDotsHorizontal } from '~/ultis/icons';
+import { ButtonTippy } from '~/components/Commonts';
+import { timeSince } from '~/helpers';
 
 const MediaItem = ({ mediaData }) => {
    const [hover, setHover] = useState(false);

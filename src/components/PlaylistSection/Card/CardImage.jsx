@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { playBtn } from '../../../assets/images';
-import { ButtonTippy } from '../../Commonts';
+import { playBtn } from '~/assets/images';
+import { ButtonTippy } from '~/components/Commonts';
 
 import {
    // AiFillHeart,
    AiOutlineHeart,
    BiDotsHorizontalRounded,
-} from '../../../ultis/icons';
+} from '~/ultis/icons';
 
 const CardImage = ({ src }) => {
    const [hover, setHover] = useState(false);

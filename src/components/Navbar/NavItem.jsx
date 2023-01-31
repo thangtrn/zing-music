@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
-import { IoPlayCircleOutline } from '../../ultis/icons';
+import { IoPlayCircleOutline } from '~/ultis/icons';
 
 const Icon = ({ children, className = '' }) => {
    return (

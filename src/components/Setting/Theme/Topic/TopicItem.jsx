@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FiCheck } from '../../../../ultis/icons';
+import { FiCheck } from '~/ultis/icons';
 
 const Button = ({ primary = false, children }) => {
    return (

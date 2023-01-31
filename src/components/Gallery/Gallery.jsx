@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import { BsChevronLeft, BsChevronRight } from '../../ultis/icons';
+import { BsChevronLeft, BsChevronRight } from '~/ultis/icons';
 import GalleryItem from './GalleryItem';
-import '../../styles/index.css';
+import '~/styles/index.css';
 
 const Button = ({ children, className = '', ...props }) => {
    return (

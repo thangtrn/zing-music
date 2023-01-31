@@ -1,9 +1,9 @@
 import React from 'react';
 import Tippy from '@tippyjs/react';
 
-import { CgClose } from '../../../ultis/icons';
+import { CgClose } from '~/ultis/icons';
 import { Topic, TopicItem } from './Topic';
-import { THEME_DATA } from '../../../ultis';
+import { THEME_DATA } from '~/ultis';
 
 const Theme = ({ onClose }) => {
    return (

@@ -7,11 +7,11 @@ import {
    Loading,
    WeekChartSection,
    ZingChartSection,
-} from '../components';
+} from '~/components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchHome, clearHomeData } from '../redux/features/appSlice';
-import { appSelector } from '../redux/selector';
+import { fetchHome, clearHomeData } from '~/redux/features/appSlice';
+import { appSelector } from '~/redux/selector';
 
 const Home = () => {
    const { home: homeData, loading, error } = useSelector(appSelector);

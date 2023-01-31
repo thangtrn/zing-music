@@ -6,8 +6,8 @@ import {
    NavItemV2,
    Line,
    CustomScrollBar,
-} from '../../components';
-import path from '../../routes/path';
+} from '~/components';
+import path from '~/routes/path';
 import {
    BsMusicNoteList,
    IoDiscOutline,
@@ -20,7 +20,7 @@ import {
    BsTabletLandscape,
    HiOutlinePencil,
    AiOutlinePlus,
-} from '../../ultis';
+} from '~/ultis';
 
 import {
    liveTag,
@@ -28,7 +28,7 @@ import {
    myHistory,
    myPlaylist,
    mySong,
-} from '../../assets/images';
+} from '~/assets/images';
 import Tippy from '@tippyjs/react';
 
 const Sidebar = () => {

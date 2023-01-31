@@ -1,6 +1,6 @@
 import React from 'react';
 import { ButtonTippy } from '../Commonts';
-import { AiOutlineHeart, RxDotsHorizontal } from '../../ultis/icons';
+import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 const PlayerMedia = () => {
    return (

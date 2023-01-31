@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { SearchBox, Setting } from '../../components';
-import { useHistoryStack } from '../../hooks';
-import { BsArrowLeft, BsArrowRight } from '../../ultis';
+import { SearchBox, Setting } from '~/components';
+import { useHistoryStack } from '~/hooks';
+import { BsArrowLeft, BsArrowRight } from '~/ultis';
 
 const Header = ({ showBg }) => {
    const navigate = useNavigate();

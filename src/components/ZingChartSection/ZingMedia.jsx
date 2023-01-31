@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
 
-import { BsFillPlayFill } from '../../ultis/icons';
+import { BsFillPlayFill } from '~/ultis/icons';
 
 const ZingMedia = ({ mediaData, percent, number }) => {
    const [hover, setHover] = useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayerMedia } from '../../components';
+import { PlayerMedia } from '~/components';
 
 const PlayerControl = () => {
    return (

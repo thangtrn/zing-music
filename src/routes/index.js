@@ -1,4 +1,4 @@
-import { Home, ZingChart, MyMusic } from '../pages';
+import { Home, ZingChart, MyMusic } from '~/pages';
 import { Navigate } from 'react-router-dom';
 import path from './path';
 

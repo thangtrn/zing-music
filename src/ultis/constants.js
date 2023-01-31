@@ -4,7 +4,7 @@ import {
    RiAdvertisementLine,
    FiFileText,
    IoShieldCheckmarkOutline,
-} from '../ultis/icons';
+} from '~/ultis/icons';
 
 export const SUGGEST_DATA = [
    {
