@@ -29,17 +29,23 @@ const CardImage = ({ src }) => {
                   className="w-full h-[50px] flex justify-evenly items-center"
                   onClick={(e) => e.preventDefault()}
                >
-                  <ButtonTippy tippyContent="Thêm vào thư viện">
+                  <ButtonTippy
+                     className="hover:bg-tooltip"
+                     tippyContent="Thêm vào thư viện"
+                  >
                      <AiOutlineHeart size={20} />
                   </ButtonTippy>
-                  <ButtonTippy size="45px">
+                  <ButtonTippy
+                     className="hover:brightness-90 border border-[white]"
+                     size="45px"
+                  >
                      <img
                         src={playBtn}
                         alt="play-btn"
                         className="w-full h-full object-cover"
                      />
                   </ButtonTippy>
-                  <ButtonTippy tippyContent="Khác">
+                  <ButtonTippy className="hover:bg-tooltip" tippyContent="Khác">
                      <BiDotsHorizontalRounded size={20} />
                   </ButtonTippy>
                </div>

@@ -6,7 +6,7 @@ const PlayerMedia = () => {
    return (
       <div className="w-[30%] flex items-center">
          <div className="w-16 h-16 rounded overflow-hidden mr-[10px] flex-shrink-0 flex-grow-0">
-            <div className="relative w-full h-0 pb-[100%]">
+            <div className="relative w-full h-0 pb-[100%] bg-loading">
                <img
                   className="w-full h-full object-cover absolute inset-0"
                   src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/covers/e/b/eb2ac526a66a6318a83e12e5d9e51ae7_1390454815.jpg"
@@ -25,24 +25,20 @@ const PlayerMedia = () => {
          </div>
 
          <div className="flex ml-[10px]">
-            <div className="px-[2px]">
-               <ButtonTippy
-                  tippyContent="Khác"
-                  size="32px"
-                  className="hover:bg-[#ffffff1a]"
-               >
-                  <AiOutlineHeart size={18} />
-               </ButtonTippy>
-            </div>
-            <div className="px-[2px]">
-               <ButtonTippy
-                  tippyContent="Khác"
-                  size="32px"
-                  className="hover:bg-[#ffffff1a]"
-               >
-                  <RxDotsHorizontal size={18} />
-               </ButtonTippy>
-            </div>
+            <ButtonTippy
+               tippyContent="Khác"
+               size="32px"
+               className="hover:bg-[#ffffff1a] mx-[2px]"
+            >
+               <AiOutlineHeart size={18} />
+            </ButtonTippy>
+            <ButtonTippy
+               tippyContent="Khác"
+               size="32px"
+               className="hover:bg-[#ffffff1a] mx-[2px]"
+            >
+               <RxDotsHorizontal size={18} />
+            </ButtonTippy>
          </div>
       </div>
    );

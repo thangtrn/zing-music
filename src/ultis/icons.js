@@ -7,7 +7,13 @@ import {
    BsChevronLeft,
    BsFillPlayFill,
    BsThreeDots,
+   BsFillSkipStartFill,
+   BsSkipEndFill,
+   BsMusicNoteBeamed,
+   BsTabletLandscape,
+   BsTelephone,
 } from 'react-icons/bs';
+
 import {
    IoSearchOutline,
    IoCloseOutline,
@@ -18,42 +24,55 @@ import {
    IoNewspaperOutline,
    IoShieldCheckmarkOutline,
    IoHeartOutline,
+   IoShuffleOutline,
+   IoPlay,
+   IoPlaySharp,
+   IoRepeat,
 } from 'react-icons/io5';
-import { IoIosHeartEmpty } from 'react-icons/io';
+
+import { IoIosHeartEmpty, IoIosPlay, IoIosPause } from 'react-icons/io';
+
 import {
    AiOutlineLoading3Quarters,
    AiOutlineHeart,
    AiFillHeart,
 } from 'react-icons/ai';
+
 import {
    RiVipCrown2Line,
    RiVipLine,
    RiVipCrownLine,
    RiAdvertisementLine,
    RiHeart3Line,
+   RiPlayMiniFill,
+   RiSkipBackFill,
+   RiSkipForwardFill,
 } from 'react-icons/ri';
+
 import {
    FiUpload,
    FiSettings,
    FiLogOut,
    FiCheck,
    FiFileText,
+   FiRepeat,
 } from 'react-icons/fi';
+
 import {
    BiBlock,
    BiDotsHorizontalRounded,
    BiCategoryAlt,
 } from 'react-icons/bi';
-import { MdOutlineHighQuality } from 'react-icons/md';
+import { MdOutlineHighQuality, MdOutlinePause } from 'react-icons/md';
+
 import { CgClose } from 'react-icons/cg';
 
-import {
-   BsMusicNoteBeamed,
-   BsTabletLandscape,
-   BsTelephone,
-} from 'react-icons/bs';
 import { VscPieChart } from 'react-icons/vsc';
+
 import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
+
+import { TbRepeat } from 'react-icons/tb';
+
 import {
    HiOutlineStar,
    HiOutlinePencil,
@@ -111,4 +130,18 @@ export {
    IoHeartOutline,
    RiHeart3Line,
    IoIosHeartEmpty,
+   IoShuffleOutline,
+   BsFillSkipStartFill,
+   BsSkipEndFill,
+   IoPlay,
+   RiPlayMiniFill,
+   IoPlaySharp,
+   IoIosPlay,
+   RiSkipBackFill,
+   RiSkipForwardFill,
+   IoRepeat,
+   FiRepeat,
+   TbRepeat,
+   IoIosPause,
+   MdOutlinePause,
 };

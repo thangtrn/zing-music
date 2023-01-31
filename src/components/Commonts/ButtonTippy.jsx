@@ -28,9 +28,7 @@ const ButtonTippy = ({
          <button
             {...props}
             style={{ width: size, height: size }}
-            className={`f-center rounded-full hover:brightness-90 ${
-               tippyContent ? 'hover:bg-tooltip' : 'border border-[white]'
-            } ${className}`}
+            className={`f-center rounded-full ${className}`}
          >
             {children}
          </button>
