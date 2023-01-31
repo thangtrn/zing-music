@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
-import { searchSelector } from '../../redux/selector';
+import { searchSelector } from '../../../redux/selector';
 
 import SuggestKeyword from './SuggestKeyword';
-import { Line } from '../Commonts';
-import { SUGGEST_DATA } from '../../ultis';
-import { IoTrendingUpSharp } from '../../ultis/icons';
+import { Line } from '../../Commonts';
+import { SUGGEST_DATA } from '../../../ultis';
+import { IoTrendingUpSharp } from '../../../ultis/icons';
 import SuggestItem from './SuggestItem';
 
 const SuggestList = ({ onClose }) => {

@@ -2,21 +2,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { searchSelector } from '../redux/selector';
+import { searchSelector } from '../../redux/selector';
 import {
    setValue,
    clearResult,
    fetchSearchSuggest,
-} from '../redux/features/searchSlice';
+} from '../../redux/features/searchSlice';
 
 import { SuggestList } from './Suggest';
-import { useDebounce, useOutSide } from '../hooks';
+import { useDebounce, useOutSide } from '../../hooks';
 
 import {
    IoSearchOutline,
    IoCloseOutline,
    AiOutlineLoading3Quarters,
-} from '../ultis/icons';
+} from '../../ultis/icons';
 
 const SearchBox = () => {
    const { value: searchValue, loading } = useSelector(searchSelector);

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { Navbar, NavItem, Line, NavItemV2 } from '../../components';
-import { Navbar, NavItem, NavItemV2, Line } from '../../components';
-import { CustomScrollBar } from '../../components';
+import {
+   Navbar,
+   NavItem,
+   NavItemV2,
+   Line,
+   CustomScrollBar,
+} from '../../components';
 import path from '../../routes/path';
 import {
    BsMusicNoteList,

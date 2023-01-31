@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Image from './Image';
+import CardImage from './CardImage';
 
 const Card = ({ cardData }) => {
    const { encodeId, thumbnailM, title, sortDescription, artistsNames } =
@@ -11,7 +11,7 @@ const Card = ({ cardData }) => {
             to={`/playlist/${encodeId}`}
             className="block rounded overflow-hidden cursor-pointer"
          >
-            <Image src={thumbnailM} />
+            <CardImage src={thumbnailM} />
          </Link>
          <div className="mt-3 text-sm">
             <h4 className="text-truncate-1 leading-[1.36] text-primary font-bold mb-1 hover:text-hover">

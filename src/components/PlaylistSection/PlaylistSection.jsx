@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BsChevronRight } from '../ultis/icons';
-import Card from './Card';
+import { BsChevronRight } from '../../ultis/icons';
+import { Card } from './Card';
 
 const PlaylistSection = ({ title, link, playlistData = [] }) => {
    const formatLink = (text) => {

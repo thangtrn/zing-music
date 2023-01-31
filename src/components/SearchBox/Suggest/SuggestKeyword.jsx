@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { IoSearchOutline } from '../../ultis/icons';
+import { IoSearchOutline } from '../../../ultis/icons';
 
 const SuggestKeyword = ({
    text,
