@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -36,4 +36,4 @@ const ButtonTippy = ({
    );
 };
 
-export default ButtonTippy;
+export default memo(ButtonTippy);

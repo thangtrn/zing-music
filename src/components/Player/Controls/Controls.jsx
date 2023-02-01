@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { ButtonTippy } from '~/components/Commonts';
+import ProgressBar from '../ProgressBar';
 import {
    IoShuffleOutline,
    RiPlayMiniFill,
@@ -12,6 +13,8 @@ import {
 
 const Controls = () => {
    const [play, setPlay] = useState(false);
+   const [value, setValue] = useState([10]);
+
    return (
       <div className="flex-grow max-w-[40vw]">
          <div className="f-center">
@@ -53,7 +56,20 @@ const Controls = () => {
                <TbRepeat size={20} />
             </ButtonTippy>
          </div>
-         <div className="f-center">2</div>
+
+         {/* progress bar */}
+         <div className="flex items-center mb-[5px] select-none">
+            <span className="min-w-[45px] text-[12px] text-primary font-medium mr-[10px] opacity-50 text-right">
+               02:48
+            </span>
+            <ProgressBar
+               value={value}
+               onChange={(values) => setValue(values)}
+            />
+            <span className="min-w-[45px] text-[12px] text-primary font-medium ml-[10px]">
+               02:48
+            </span>
+         </div>
       </div>
    );
 };

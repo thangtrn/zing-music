@@ -6,6 +6,7 @@
    --section-padding: 59px;
 
    --black: #32323d;
+   --white: #fff;
 
    --text-primary: white;
    --text-secondary: #ffffff80;
@@ -19,11 +20,12 @@
    --bg-layout: #37075d;
    --bg-sidebar: #ffffff0d;
    --bg-loading: #ffffff1a;
-
    --bg-player: #111f3b;
    --bg-player-img: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-player/zma.png');
-
    --bg-tooltip: #ffffff4d;
+
+   --bg-progressbar-active: #fff;
+   --bg-progressbar-player: var(--bg-tooltip);
 
    --dark-10: rgba(0, 0, 0, 0.1);
    --dark-50: rgba(0, 0, 0, 0.5);
