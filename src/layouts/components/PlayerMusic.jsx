@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayerMedia, Controls } from '~/components';
+import { PlayerMedia, Controls, PlayerAction } from '~/components';
 
 const PlayerControl = () => {
    return (
@@ -9,7 +9,7 @@ const PlayerControl = () => {
 
             <Controls />
 
-            <div className="w-[30%]">3</div>
+            <PlayerAction />
          </div>
       </div>
    );

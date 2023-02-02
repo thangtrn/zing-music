@@ -10,6 +10,9 @@ const TAGS = [
    { tagId: 'others', tagName: 'Quốc tế' },
 ];
 
+// streamingStatus = 1 = Free
+// streamingStatus = 2 = Vip
+
 const NewRelease = ({ title, link, releaseData }) => {
    const [tags] = useState(TAGS);
    const [tagActive, setTagActive] = useState('all');

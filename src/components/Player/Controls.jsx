@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { ButtonTippy } from '~/components/Commonts';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from './ProgressBar';
 import {
    IoShuffleOutline,
    RiPlayMiniFill,

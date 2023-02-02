@@ -12,6 +12,7 @@ import {
    BsMusicNoteBeamed,
    BsTabletLandscape,
    BsTelephone,
+   BsTextareaResize,
 } from 'react-icons/bs';
 
 import {
@@ -28,6 +29,7 @@ import {
    IoPlay,
    IoPlaySharp,
    IoRepeat,
+   IoVolumeMediumOutline,
 } from 'react-icons/io5';
 
 import { IoIosHeartEmpty, IoIosPlay, IoIosPause } from 'react-icons/io';
@@ -63,7 +65,11 @@ import {
    BiDotsHorizontalRounded,
    BiCategoryAlt,
 } from 'react-icons/bi';
-import { MdOutlineHighQuality, MdOutlinePause } from 'react-icons/md';
+import {
+   MdOutlineHighQuality,
+   MdOutlinePause,
+   MdOutlineQueueMusic,
+} from 'react-icons/md';
 
 import { CgClose } from 'react-icons/cg';
 
@@ -71,7 +77,7 @@ import { VscPieChart } from 'react-icons/vsc';
 
 import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
 
-import { TbRepeat } from 'react-icons/tb';
+import { TbRepeat, TbMicrophone2 } from 'react-icons/tb';
 
 import {
    HiOutlineStar,
@@ -144,4 +150,8 @@ export {
    TbRepeat,
    IoIosPause,
    MdOutlinePause,
+   IoVolumeMediumOutline,
+   TbMicrophone2,
+   MdOutlineQueueMusic,
+   BsTextareaResize,
 };

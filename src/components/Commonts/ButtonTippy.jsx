@@ -6,6 +6,8 @@ import 'tippy.js/dist/tippy.css';
 const ButtonTippy = ({
    children,
    size = '30px',
+   width = null,
+   height = null,
    tippyContent = null,
    className = '',
    ...props
@@ -27,7 +29,10 @@ const ButtonTippy = ({
       <TippyComp {...settings}>
          <button
             {...props}
-            style={{ width: size, height: size }}
+            style={{
+               width: width ? width : size,
+               height: height ? height : size,
+            }}
             className={`f-center rounded-full ${className}`}
          >
             {children}

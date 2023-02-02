@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { CustomScrollBar } from '~/components';
-import { Header, Sidebar, PlayerControl } from '~/layouts/components';
+import { Header, Sidebar, PlayerMusic } from '~/layouts/components';
 
 const DefaultLayout = ({ children }) => {
    const [isShowBg, setIsShowBg] = useState(false);
@@ -24,7 +24,7 @@ const DefaultLayout = ({ children }) => {
             </CustomScrollBar>
          </div>
          <div className="fixed inset-x-0 bottom-0">
-            <PlayerControl />
+            <PlayerMusic />
          </div>
       </div>
    );
