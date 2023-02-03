@@ -6,7 +6,7 @@ import { IoPlayCircleOutline } from '~/ultis/icons';
 const Icon = ({ children, className = '' }) => {
    return (
       <span
-         className={`${className} w-[22px] h-[22px] f-center mr-[10px] shrink-0`}
+         className={`${className} w-[20px] h-[20px] f-center mr-[10px] shrink-0`}
       >
          {children}
       </span>
@@ -28,7 +28,7 @@ const NavItem = ({ icon, children, to }) => {
          <Comp
             {...props}
             tabIndex={-1}
-            className={`w-full flex items-center relative py-[7px] px-[25px] text-[13px] font-bold leading-[1.5] border-l-[3px] border-solid border-transparent cursor-pointer ${
+            className={`w-full flex items-center relative py-[8px] px-[25px] text-[13px] font-bold leading-[1.5] border-l-[3px] border-solid border-transparent cursor-pointer ${
                pathname === to
                   ? 'border-l-purple-primary text-primary bg-alpha'
                   : ''
@@ -61,7 +61,7 @@ const NavItemV2 = ({ icon, children, to }) => {
          <Comp
             {...props}
             tabIndex={-1}
-            className="w-full flex items-center relative py-[7px] px-[25px] text-[13px] font-normal leading-[1.5] border-l-[3px] border-solid border-transparent cursor-pointer group-hover:text-primary"
+            className="w-full flex items-center relative py-[8px] px-[25px] text-[13px] font-normal leading-[1.5] border-l-[3px] border-solid border-transparent cursor-pointer group-hover:text-primary"
          >
             <Icon>{icon}</Icon>
             <span className="flex items-center leading-normal">{children}</span>

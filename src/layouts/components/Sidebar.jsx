@@ -77,9 +77,7 @@ const Sidebar = () => {
          <div className="flex-1">
             <CustomScrollBar
                onScroll={handleScrollMark}
-               viewClass={`mx-[0!important] mb-[0!important] mt-[10px] ${
-                  isMark ? 'mark' : ''
-               }`}
+               viewClass={`mb-[0!important] mt-[10px] ${isMark ? 'mark' : ''}`}
             >
                <Navbar className="pt-[5px] mb-0">
                   <NavItem
