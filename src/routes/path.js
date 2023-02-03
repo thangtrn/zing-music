@@ -1,5 +1,6 @@
 const routes = {
    home: '/',
+   playlist: '/playlist/:id',
    myMusic: '/mymusic',
    zingChart: '/zing-chart',
    radio: '/radio',

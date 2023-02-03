@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsChevronRight } from '~/ultis/icons';
 
-import { MediaItem } from './Commonts';
+// import { MediaItem } from '~/components/Commonts';
+import MediaItem from './MediaItem';
 
 const TAGS = [
    { tagId: 'all', tagName: 'Tất cả' },
@@ -81,4 +82,4 @@ const Button = ({ children, active = false, ...props }) => {
    );
 };
 
-export default NewRelease;
+export default memo(NewRelease);

@@ -1,30 +1,30 @@
-import React from 'react';
-import { ButtonTippy } from '../Commonts';
+import React, { memo } from 'react';
+import { ButtonTippy, Media } from '~/components/Commonts';
 import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 const PlayerMedia = () => {
    return (
-      <div className="w-[30%] flex items-center">
-         <div className="w-16 h-16 rounded overflow-hidden mr-[10px] flex-shrink-0 flex-grow-0">
-            <div className="relative w-full h-0 pb-[100%] bg-loading">
-               <img
-                  className="w-full h-full object-cover absolute inset-0"
-                  src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/covers/e/b/eb2ac526a66a6318a83e12e5d9e51ae7_1390454815.jpg"
-                  alt="media"
-               />
+      <Media className="hover:bg-transparent w-[30%] p-0">
+         <Media.Left>
+            <div className="w-16 h-16 rounded overflow-hidden mr-[10px] flex-shrink-0 flex-grow-0">
+               <div className="relative w-full h-0 pb-[100%] bg-loading">
+                  <img
+                     className="w-full h-full object-cover absolute inset-0"
+                     src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/0/1/8/1/0181fd0a3b9bc53bfb48f7e5e3d9b080.jpg"
+                     alt="media"
+                  />
+               </div>
             </div>
-         </div>
-
-         <div className="text-xs cursor-default">
-            <h3 className="w-full pr-[10px] text-truncate-1 text-sm text-primary leading-[1.36] font-medium hover:text-hover capitalize">
-               Ngày Xuân Long Phụng Sum Vầy (Version Giáp Ngọ )
-            </h3>
-            <h4 className="w-full text-truncate-1 mt-[1px] text-secondary leading-normal">
-               Phạm Quỳnh Anh, BigDaddy
-            </h4>
-         </div>
-
-         <div className="flex ml-[10px]">
+            <Media.Content className="justify-center">
+               <Media.Title className="pr-[10px] leading-[1.36] capitalize">
+                  Đi Đu Đưa Đi
+               </Media.Title>
+               <Media.SubTitle className="mt-[1px] leading-normal">
+                  Bích Phương
+               </Media.SubTitle>
+            </Media.Content>
+         </Media.Left>
+         <Media.Right hover={false}>
             <ButtonTippy
                tippyContent="Khác"
                size="32px"
@@ -39,9 +39,9 @@ const PlayerMedia = () => {
             >
                <RxDotsHorizontal size={18} />
             </ButtonTippy>
-         </div>
-      </div>
+         </Media.Right>
+      </Media>
    );
 };
 
-export default PlayerMedia;
+export default memo(PlayerMedia);
