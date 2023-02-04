@@ -7,4 +7,5 @@ export * from './Player';
 export * from './SearchBox';
 export * from './PlaylistSection';
 export * from './NewRelease';
+export * from './Partner';
 export { default as WeekChartSection } from './WeekChartSection';

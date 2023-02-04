@@ -1,7 +1,7 @@
 import React from 'react';
 import Portal from './Portal';
 
-const Modal = ({ children, isOpen, close }) => {
+const Modal = ({ children, isOpen, close = () => {} }) => {
    if (!isOpen) return null;
    return (
       <Portal isOpen={isOpen}>

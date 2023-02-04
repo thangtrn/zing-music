@@ -1,9 +1,9 @@
 import React from 'react';
-import Tippy from '@tippyjs/react';
 
 import { CgClose } from '~/ultis/icons';
 import { Topic, TopicItem } from './Topic';
 import { THEME_DATA } from '~/ultis';
+import { ButtonTippy } from '~/components/Commonts';
 
 const Theme = ({ onClose }) => {
    return (
@@ -11,22 +11,16 @@ const Theme = ({ onClose }) => {
          onClick={(e) => e.stopPropagation()}
          className="w-[70vw] max-w-[900px] flex flex-col pb-[20px]"
       >
-         <div className="px-[30px] py-[20px] relative text-primary leading-[1.5]">
+         <div className="px-[30px] py-[22px] relative text-primary leading-[1.5]">
             <h3 className="text-2xl font-bold capitalize">Giao diện</h3>
-            <Tippy
-               content={<span className="leading-[0] text-[11px]">Đóng</span>}
-               placement="top"
-               arrow={true}
-               duration={300}
-               delay={[75, 0]}
+            <ButtonTippy
+               size="34px"
+               tippyContent="Đóng"
+               onClick={onClose}
+               className="bg-transparent absolute top-[15px] right-[15px] hover:brightness-90"
             >
-               <button
-                  onClick={onClose}
-                  className="w-[34px] h-[34px] f-center bg-transparent absolute top-[15px] right-[15px]"
-               >
-                  <CgClose size={26} className="text-primary" />
-               </button>
-            </Tippy>
+               <CgClose size={26} className="text-primary" />
+            </ButtonTippy>
          </div>
          <div className="max-h-[50vh] min-h-[500px] px-[30px] overflow-y-scroll">
             {THEME_DATA.map((theme, idx) => (

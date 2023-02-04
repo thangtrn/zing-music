@@ -7,6 +7,7 @@ import {
    Loading,
    WeekChartSection,
    ZingChartSection,
+   Partner,
 } from '~/components';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -66,6 +67,8 @@ const Home = () => {
             }
             return null;
          })}
+
+         <Partner />
       </div>
    );
 };
