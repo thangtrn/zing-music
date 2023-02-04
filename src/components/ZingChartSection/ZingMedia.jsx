@@ -20,8 +20,10 @@ const ZingMedia = ({ mediaData, percent, number }) => {
             </div>
             <Media.Image src={thumbnailM} />
             <Media.Card className="justify-center">
-               <Media.Title>{title}</Media.Title>
-               <Media.SubTitle>{artistsNames}</Media.SubTitle>
+               <Media.Title className="leading-[1.3]">{title}</Media.Title>
+               <Media.SubTitle className="leading-[1.33]">
+                  {artistsNames}
+               </Media.SubTitle>
             </Media.Card>
          </Media.Left>
          <Media.Right hover={false}>

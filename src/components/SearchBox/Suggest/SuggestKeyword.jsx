@@ -6,7 +6,7 @@ import { IoSearchOutline } from '~/ultis/icons';
 const SuggestKeyword = ({
    text,
    link = '',
-   icon = <IoSearchOutline size={18} />,
+   icon = <IoSearchOutline size={16} />,
 }) => {
    return (
       <div className="rounded overflow-hidden text-ellipsis whitespace-nowrap cursor-pointer transition-all ease-[ease] duration-200">
@@ -17,7 +17,7 @@ const SuggestKeyword = ({
             <span className="flex items-center mr-[10px] text-secondary">
                {icon}
             </span>
-            <div className="text-sm font-normal whitespace-nowrap overflow-hidden text-ellipsis">
+            <div className="text-sm font-normal whitespace-nowrap overflow-hidden text-ellipsis leading-[1.5]">
                {text}
             </div>
          </Link>

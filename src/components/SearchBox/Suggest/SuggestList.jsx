@@ -5,12 +5,12 @@ import { searchSelector } from '~/redux/selector';
 
 import SuggestKeyword from './SuggestKeyword';
 import { Line } from '~/components/Commonts';
-import { SUGGEST_DATA } from '~/ultis';
 import { IoTrendingUpSharp } from '~/ultis/icons';
-import SuggestItem from './SuggestItem';
+import { SuggestArtist, SuggestPlaylist, SuggestSong } from './SuggestItem';
 
 const SuggestList = ({ onClose }) => {
    const {
+      recommendKeywords,
       value: searchValue,
       result: { keywords, suggestions },
    } = useSelector(searchSelector);
@@ -23,10 +23,10 @@ const SuggestList = ({ onClose }) => {
                   Đề xuất cho bạn
                </div>
                <div onClick={() => onClose((prev) => !prev)}>
-                  {SUGGEST_DATA.map(({ title, link }, idx) => (
+                  {recommendKeywords.map(({ keyword, link }, idx) => (
                      <SuggestKeyword
                         key={idx}
-                        text={title}
+                        text={keyword}
                         link={link}
                         icon={<IoTrendingUpSharp size={16} />}
                      />
@@ -58,7 +58,7 @@ const SuggestList = ({ onClose }) => {
                   text={
                      <>
                         Tìm kiếm
-                        <span className="font-medium"> "{searchValue}"</span>
+                        <span className="font-bold"> "{searchValue}"</span>
                      </>
                   }
                   link={searchValue}
@@ -73,9 +73,15 @@ const SuggestList = ({ onClose }) => {
                      Gợi ý kết quả
                   </div>
                   <div onClick={() => onClose((prev) => !prev)}>
-                     {suggestions.map((item, index) => (
-                        <SuggestItem type={item.type} data={item} key={index} />
-                     ))}
+                     {suggestions.map((item, index) => {
+                        if (item.type === 4)
+                           return <SuggestArtist data={item} key={index} />;
+                        if (item.type === 3)
+                           return <SuggestPlaylist data={item} key={index} />;
+                        if (item.type === 1)
+                           return <SuggestSong data={item} key={index} />;
+                        return null;
+                     })}
                   </div>
                </>
             )}

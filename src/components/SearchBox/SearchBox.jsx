@@ -7,7 +7,7 @@ import {
    setValue,
    clearResult,
    fetchSearchSuggest,
-} from '~/redux/features/searchSlice';
+} from '~/redux/slices/searchSlice';
 
 import { SuggestList } from './Suggest';
 import { useDebounce, useOutSide } from '~/hooks';

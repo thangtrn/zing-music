@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import zingServices from '~/axios/zingServices';
+import zingApis from '~/axios/zingApis';
 
 const initialState = {
    loading: false,
@@ -37,7 +37,7 @@ const appSlice = createSlice({
 // -------------- ACTIONS --------------
 
 export const fetchHome = createAsyncThunk('app/fetchHomeData', async () => {
-   const res = await zingServices.getHome();
+   const res = await zingApis.getHome();
    // console.log('Home data: ', res.data.items);
    return res.data;
 });

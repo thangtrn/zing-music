@@ -10,7 +10,7 @@ import {
 } from '~/components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchHome, clearHomeData } from '~/redux/features/appSlice';
+import { fetchHome, clearHomeData } from '~/redux/slices/appSlice';
 import { appSelector } from '~/redux/selector';
 
 const Home = () => {

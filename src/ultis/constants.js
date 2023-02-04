@@ -6,33 +6,6 @@ import {
    IoShieldCheckmarkOutline,
 } from '~/ultis/icons';
 
-export const SUGGEST_DATA = [
-   {
-      title: 'có chơi',
-      link: 'có chơi',
-   },
-   {
-      title: 'kỳ vọng',
-      link: 'kỳ vọng',
-   },
-   {
-      title: 'shut down',
-      link: 'shut down',
-   },
-   {
-      title: 'karaoke',
-      link: 'karaoke',
-   },
-   {
-      title: 'ngủ ngon',
-      link: 'ngủ ngon',
-   },
-   {
-      title: 'XONE radio',
-      link: 'XONE radio',
-   },
-];
-
 export const MENU_FOOTER = [
    {
       icon: <AiOutlineInfoCircle size={20} />,
