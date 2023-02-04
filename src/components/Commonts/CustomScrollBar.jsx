@@ -23,7 +23,7 @@ const CustomScrollBar = ({ onScroll, viewClass = '', children }) => {
          renderTrackVertical={({ style, ...props }) => (
             <div
                {...props}
-               className="absolute w-1 inset-y-[2px] right-[2px] z-[100] transition-opacity ease-[ease]"
+               className="absolute w-1 inset-y-[2px] right-[2px] z-[100] transition-opacity ease-[ease] opacity-0"
             ></div>
          )}
          renderThumbVertical={({ style, ...props }) => (
