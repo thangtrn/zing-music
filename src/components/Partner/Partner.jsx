@@ -17,7 +17,7 @@ const Partner = () => {
          </h3>
          <div className="flex flex-wrap -mx-[10px]">
             {PARTNER_DATA.map((item, index) => (
-               <PartnerImage src={item} key={index} />
+               <PartnerImage src={item} key={index} className="w-[12.5%]" />
             ))}
          </div>
 

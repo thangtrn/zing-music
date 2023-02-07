@@ -4,17 +4,13 @@ import { BsChevronRight } from '~/ultis/icons';
 import { Card } from './Card';
 
 const PlaylistSection = ({ title, link, playlistData = [] }) => {
-   const formatLink = (text) => {
-      return text.split('.html')[0];
-   };
-
    return (
       <div className="w-full mt-12">
          <h3 className="mb-5 flex justify-between items-center text-xl font-bold capitalize text-primary leading-[30px]">
             {title}
             {link && (
                <Link
-                  to={formatLink(link)} // format link
+                  to={link} // format link
                   className="flex items-center text-xs font-medium uppercase text-secondary hover:text-hover"
                >
                   Tất cả <BsChevronRight size={18} className="ml-1" />

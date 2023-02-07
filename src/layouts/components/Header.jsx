@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { SearchBox, Setting } from '~/components';
@@ -56,4 +56,4 @@ const Header = ({ showBg }) => {
    );
 };
 
-export default Header;
+export default memo(Header);

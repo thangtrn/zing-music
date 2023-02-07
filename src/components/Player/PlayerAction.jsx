@@ -32,7 +32,7 @@ const Action = () => {
          <ButtonTippy
             size={32}
             className="mx-[2px] hover:bg-[#ffffff1a]"
-            tippyContent="Xem lời bài hát"
+            tippyContent="Chế độ cửa sổ"
          >
             <BsTextareaResize size={16} />
          </ButtonTippy>

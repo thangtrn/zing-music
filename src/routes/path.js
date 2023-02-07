@@ -1,6 +1,6 @@
-const routes = {
+const path = {
    home: '/',
-   playlist: '/playlist/:id',
+   album: '/album/:slug/:id',
    myMusic: '/mymusic',
    zingChart: '/zing-chart',
    radio: '/radio',
@@ -11,4 +11,4 @@ const routes = {
    // mv: '/the-loai-video',
 };
 
-export default routes;
+export default path;

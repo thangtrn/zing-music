@@ -6,6 +6,7 @@ const initialState = {
    loading: false,
    error: '',
    home: [],
+   album: {},
 };
 
 const appSlice = createSlice({

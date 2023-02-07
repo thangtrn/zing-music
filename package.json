@@ -8,24 +8,6 @@
       "test": "react-app-rewired test",
       "eject": "react-app-rewired eject"
    },
-   "eslintConfig": {
-      "extends": [
-         "react-app",
-         "react-app/jest"
-      ]
-   },
-   "browserslist": {
-      "production": [
-         ">0.2%",
-         "not dead",
-         "not op_mini all"
-      ],
-      "development": [
-         "last 1 chrome version",
-         "last 1 firefox version",
-         "last 1 safari version"
-      ]
-   },
    "dependencies": {
       "@reduxjs/toolkit": "^1.9.1",
       "@testing-library/jest-dom": "^5.16.5",
@@ -51,5 +33,23 @@
       "customize-cra": "^1.0.0",
       "react-app-rewired": "^2.2.1",
       "tailwindcss": "^3.2.4"
+   },
+   "eslintConfig": {
+      "extends": [
+         "react-app",
+         "react-app/jest"
+      ]
+   },
+   "browserslist": {
+      "production": [
+         ">0.2%",
+         "not dead",
+         "not op_mini all"
+      ],
+      "development": [
+         "last 1 chrome version",
+         "last 1 firefox version",
+         "last 1 safari version"
+      ]
    }
 }

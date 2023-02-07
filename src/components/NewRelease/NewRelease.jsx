@@ -2,7 +2,6 @@ import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsChevronRight } from '~/ultis/icons';
 
-// import { MediaItem } from '~/components/Commonts';
 import MediaItem from './MediaItem';
 
 const TAGS = [

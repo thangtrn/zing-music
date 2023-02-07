@@ -1,14 +1,6 @@
-import React, { useState } from 'react';
-import { playBtn } from '~/assets/images';
-import { ButtonTippy } from '~/components/Commonts';
+import React, { memo, useState } from 'react';
 
-import {
-   // AiFillHeart,
-   AiOutlineHeart,
-   BiDotsHorizontalRounded,
-} from '~/ultis/icons';
-
-const CardImage = ({ src }) => {
+const CardImage = ({ src, children }) => {
    const [hover, setHover] = useState(false);
    return (
       <div
@@ -29,25 +21,7 @@ const CardImage = ({ src }) => {
                   className="w-full h-[50px] flex justify-evenly items-center"
                   onClick={(e) => e.preventDefault()}
                >
-                  <ButtonTippy
-                     className="hover:bg-tooltip"
-                     tippyContent="Thêm vào thư viện"
-                  >
-                     <AiOutlineHeart size={20} />
-                  </ButtonTippy>
-                  <ButtonTippy
-                     className="hover:brightness-90 border border-[white]"
-                     size="45px"
-                  >
-                     <img
-                        src={playBtn}
-                        alt="play-btn"
-                        className="w-full h-full object-cover"
-                     />
-                  </ButtonTippy>
-                  <ButtonTippy className="hover:bg-tooltip" tippyContent="Khác">
-                     <BiDotsHorizontalRounded size={20} />
-                  </ButtonTippy>
+                  {children}
                </div>
             </div>
          )}
@@ -55,4 +29,4 @@ const CardImage = ({ src }) => {
    );
 };
 
-export default CardImage;
+export default memo(CardImage);

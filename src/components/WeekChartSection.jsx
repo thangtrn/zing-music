@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const WeekChartSection = ({ weekChartData }) => {
    return (
-      <div className="mt-7 mb-[30px] pt-[30px]">
+      <div className="mt-7 mb-[30px]">
          <div className="-mx-[14px] flex">
             {weekChartData.map((item, index) => (
                <WeekChartImage src={item.cover} link={item.link} key={index} />
