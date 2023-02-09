@@ -10,6 +10,9 @@ const zingServices = {
    getHome: () => {
       return axiosClient.get('/home');
    },
+   getAlbum: (encodeId) => {
+      return axiosClient.get(`/playlist/${encodeId}`);
+   },
 };
 
 export default zingServices;

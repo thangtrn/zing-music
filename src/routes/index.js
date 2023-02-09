@@ -2,7 +2,7 @@ import { Home, ZingChart, MyMusic, Album } from '~/pages';
 import { Navigate } from 'react-router-dom';
 import path from './path';
 
-const { home, myMusic, zingChart, album } = path;
+const { home, myMusic, zingChart, album, playlist } = path;
 
 const routes = [
    {
@@ -11,6 +11,10 @@ const routes = [
    },
    {
       path: album,
+      element: <Album />,
+   },
+   {
+      path: playlist,
       element: <Album />,
    },
    {

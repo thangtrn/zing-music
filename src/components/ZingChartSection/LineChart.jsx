@@ -66,6 +66,10 @@ const options = {
       mode: 'dataset',
       intersect: false,
    },
+   // chế độ tương tác
+   interaction: {
+      intersect: false,
+   },
 };
 
 const LineChart = ({ chartData, rankItems }) => {

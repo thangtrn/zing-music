@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, isAnyOf } from '@reduxjs/toolkit';
 
 import zingApis from '~/axios/zingApis';
 
@@ -16,21 +16,35 @@ const appSlice = createSlice({
       clearHomeData: (state) => {
          state.home = [];
       },
+      clearAlbumData: (state) => {
+         state.album = {};
+      },
    },
    extraReducers: (builder) => {
       builder
-         .addCase(fetchHome.pending, (state) => {
-            state.loading = true;
-            state.error = '';
-         })
-         .addCase(fetchHome.rejected, (state) => {
-            state.loading = false;
-            state.error = 'error';
-         })
-         .addCase(fetchHome.fulfilled, (state, action) => {
+         .addMatcher(
+            isAnyOf(fetchHome.pending, fetchAlbum.pending),
+            (state) => {
+               state.loading = true;
+               state.error = '';
+            },
+         )
+         .addMatcher(
+            isAnyOf(fetchHome.rejected, fetchAlbum.rejected),
+            (state) => {
+               state.loading = false;
+               state.error = 'error';
+            },
+         )
+         .addMatcher(isAnyOf(fetchHome.fulfilled), (state, action) => {
             state.loading = false;
             state.error = '';
             state.home = action.payload?.items || [];
+         })
+         .addMatcher(isAnyOf(fetchAlbum.fulfilled), (state, action) => {
+            state.loading = false;
+            state.error = '';
+            state.album = action.payload || {};
          });
    },
 });
@@ -43,6 +57,16 @@ export const fetchHome = createAsyncThunk('app/fetchHomeData', async () => {
    return res.data;
 });
 
-export const { clearHomeData } = appSlice.actions;
+export const fetchAlbum = createAsyncThunk(
+   'app/fetchAlbumData',
+   async (payload) => {
+      const res = await zingApis.getAlbum(payload);
+      console.log(res.data);
+
+      return res.data;
+   },
+);
+
+export const { clearHomeData, clearAlbumData } = appSlice.actions;
 
 export default appSlice;

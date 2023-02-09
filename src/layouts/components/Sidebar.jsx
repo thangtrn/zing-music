@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
+import path from '~/routes/path';
+
 import {
    Navbar,
    NavItem,
@@ -7,7 +11,6 @@ import {
    Line,
    CustomScrollBar,
 } from '~/components';
-import path from '~/routes/path';
 import {
    BsMusicNoteList,
    IoDiscOutline,
@@ -28,8 +31,17 @@ import {
    myHistory,
    myPlaylist,
    mySong,
-} from '~/assets/images';
-import Tippy from '@tippyjs/react';
+   // icons
+   MusicBox,
+   Circle,
+   CircleChart,
+   CircleMusic,
+   CardText,
+   MusicNote,
+   Category,
+   StarOutline,
+   MV,
+} from '~/assets';
 
 const Sidebar = () => {
    const [isMark, setIsMark] = useState(false);
@@ -52,16 +64,16 @@ const Sidebar = () => {
          </div>
 
          <Navbar>
-            <NavItem to={path.myMusic} icon={<BsMusicNoteList size={18} />}>
+            <NavItem to={path.myMusic} icon={<MusicBox />}>
                Cá Nhân
             </NavItem>
-            <NavItem to={path.home} icon={<IoDiscOutline size={18} />}>
+            <NavItem to={path.home} icon={<Circle />}>
                Khám Phá
             </NavItem>
-            <NavItem to={path.zingChart} icon={<VscPieChart size={18} />}>
+            <NavItem to={path.zingChart} icon={<CircleChart />}>
                #zingchart
             </NavItem>
-            <NavItem icon={<IoRadioOutline size={18} />}>
+            <NavItem icon={<CircleMusic />}>
                Radio
                <img
                   className="inline-block ml-2 w-fit"
@@ -69,7 +81,7 @@ const Sidebar = () => {
                   alt="live-tag"
                />
             </NavItem>
-            <NavItem icon={<IoNewspaperOutline size={18} />}>Theo Dõi</NavItem>
+            <NavItem icon={<CardText />}>Theo Dõi</NavItem>
          </Navbar>
 
          <Line className="w-[80%] mx-auto my-0" />
@@ -80,22 +92,16 @@ const Sidebar = () => {
                viewClass={`mb-[0!important] mt-[10px] ${isMark ? 'mark' : ''}`}
             >
                <Navbar className="pt-[5px] mb-0">
-                  <NavItem
-                     to={path.newMusic}
-                     icon={<BsMusicNoteBeamed size={18} />}
-                  >
+                  <NavItem to={path.newMusic} icon={<MusicNote />}>
                      Nhạc Mới
                   </NavItem>
-                  <NavItem
-                     to={path.category}
-                     icon={<BiCategoryAlt size={18} />}
-                  >
+                  <NavItem to={path.category} icon={<Category />}>
                      Thể Loại
                   </NavItem>
-                  <NavItem to={path.top100} icon={<HiOutlineStar size={18} />}>
+                  <NavItem to={path.top100} icon={<StarOutline />}>
                      Top 100
                   </NavItem>
-                  <NavItem to={path.mv} icon={<BsTabletLandscape size={18} />}>
+                  <NavItem to={path.mv} icon={<MV />}>
                      MV
                   </NavItem>
                </Navbar>

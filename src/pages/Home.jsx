@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchHome, clearHomeData } from '~/redux/slices/appSlice';
+import { appSelector } from '~/redux/selector';
+
 import {
    Gallery,
    NewRelease,
-   PlaylistSection,
+   CarouselSection,
    Loading,
    WeekChartSection,
    ZingChartSection,
    Partner,
 } from '~/components';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchHome, clearHomeData } from '~/redux/slices/appSlice';
-import { appSelector } from '~/redux/selector';
 
 const Home = () => {
    const { home: homeData, loading, error } = useSelector(appSelector);
@@ -37,7 +37,7 @@ const Home = () => {
                return <Gallery galleryData={sectionData.items} key={index} />;
             } else if (sectionData.sectionType === 'playlist') {
                return (
-                  <PlaylistSection
+                  <CarouselSection
                      title={sectionData.title}
                      link={sectionData.link}
                      playlistData={sectionData.items}

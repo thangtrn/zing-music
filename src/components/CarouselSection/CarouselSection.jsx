@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BsChevronRight } from '~/ultis/icons';
 import { Card } from './Card';
 
-const PlaylistSection = ({ title, link, playlistData = [] }) => {
+const CarouselSection = ({ title, link, playlistData = [] }) => {
    return (
       <div className="w-full mt-12">
          <h3 className="mb-5 flex justify-between items-center text-xl font-bold capitalize text-primary leading-[30px]">
@@ -28,4 +28,4 @@ const PlaylistSection = ({ title, link, playlistData = [] }) => {
    );
 };
 
-export default PlaylistSection;
+export default CarouselSection;

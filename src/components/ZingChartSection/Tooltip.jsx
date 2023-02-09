@@ -6,7 +6,7 @@ const Tooltip = ({ tooltipData }) => {
 
    return (
       <div
-         className="absolute select-none w-[180px] h-[50px]"
+         className="absolute select-none w-[180px] h-[50px] pointer-events-none"
          style={{
             top,
             left,

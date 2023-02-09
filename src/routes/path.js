@@ -1,6 +1,7 @@
 const path = {
    home: '/',
    album: '/album/:slug/:id',
+   playlist: '/playlist/:slug/:id',
    myMusic: '/mymusic',
    zingChart: '/zing-chart',
    radio: '/radio',
