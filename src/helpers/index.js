@@ -1,3 +1,4 @@
-export { default as formatFollowers } from './formatFollowers';
+export { default as formatNumber } from './formatNumber';
 export { default as convertListArtists } from './convertListArtists';
 export { default as timeSince } from './timeSince';
+export { default as timestampToDate } from './timestampToDate';

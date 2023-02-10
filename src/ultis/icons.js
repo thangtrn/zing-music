@@ -88,6 +88,9 @@ import {
 
 import { RxDotsHorizontal } from 'react-icons/rx';
 
+import { ImPlay3 } from 'react-icons/im';
+import { FaPlay } from 'react-icons/fa';
+
 export {
    IoShieldCheckmarkOutline,
    FiFileText,
@@ -154,4 +157,6 @@ export {
    TbMicrophone2,
    MdOutlineQueueMusic,
    BsTextareaResize,
+   ImPlay3,
+   FaPlay,
 };

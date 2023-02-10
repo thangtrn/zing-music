@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
-import CardImage from './CardImage';
-import { playBtn } from '~/assets/images';
-import { ButtonTippy } from '~/components/Commonts';
+import { ButtonTippy, Image } from '~/components/Commonts';
 
 import {
    // AiFillHeart,
@@ -25,27 +23,22 @@ const Card = ({ cardData }) => {
             to={formatLink(link)}
             className="block rounded overflow-hidden cursor-pointer"
          >
-            <CardImage src={thumbnailM}>
-               <ButtonTippy
-                  className="hover:bg-tooltip"
-                  tippyContent="Thêm vào thư viện"
-               >
-                  <AiOutlineHeart size={20} />
-               </ButtonTippy>
-               <ButtonTippy
-                  className="hover:brightness-90 border border-[white]"
-                  size="45px"
-               >
-                  <img
-                     src={playBtn}
-                     alt="play-btn"
-                     className="w-full h-full object-cover"
-                  />
-               </ButtonTippy>
-               <ButtonTippy className="hover:bg-tooltip" tippyContent="Khác">
-                  <BiDotsHorizontalRounded size={20} />
-               </ButtonTippy>
-            </CardImage>
+            <Image
+               src={thumbnailM}
+               IconLeft={
+                  <ButtonTippy
+                     className="hover:bg-tooltip"
+                     tippyContent="Thêm vào thư viện"
+                  >
+                     <AiOutlineHeart size={20} />
+                  </ButtonTippy>
+               }
+               IconRight={
+                  <ButtonTippy className="hover:bg-tooltip" tippyContent="Khác">
+                     <BiDotsHorizontalRounded size={20} />
+                  </ButtonTippy>
+               }
+            />
          </Link>
          <div className="mt-3 text-sm">
             <h4 className="text-truncate-1 leading-[1.36] text-primary font-bold mb-1 hover:text-hover">
@@ -65,4 +58,4 @@ const Card = ({ cardData }) => {
    );
 };
 
-export default Card;
+export default memo(Card);

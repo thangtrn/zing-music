@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonTippy, Media } from '~/components/Commonts';
-import { formatFollowers, convertListArtists } from '~/helpers';
+import { formatNumber, convertListArtists } from '~/helpers';
 import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 const SuggestArtist = memo(({ data }) => {
@@ -19,7 +19,7 @@ const SuggestArtist = memo(({ data }) => {
             <Media.Content className="flex-1">
                <Media.Title className="leading-normal">{name}</Media.Title>
                <Media.SubTitle className="leading-normal">
-                  Nghệ sĩ • {formatFollowers(followers)} quan tâm
+                  Nghệ sĩ • {formatNumber(followers)} quan tâm
                </Media.SubTitle>
             </Media.Content>
          </Media>

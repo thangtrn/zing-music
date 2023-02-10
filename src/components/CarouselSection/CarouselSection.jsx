@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import Card from './Card';
 import { BsChevronRight } from '~/ultis/icons';
-import { Card } from './Card';
 
 const CarouselSection = ({ title, link, playlistData = [] }) => {
    return (

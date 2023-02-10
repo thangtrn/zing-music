@@ -1,4 +1,4 @@
-export default function formatFollowers(labelValue) {
+export default function formatNumber(labelValue) {
    // Nine Zeroes for Billions
    return Math.abs(Number(labelValue)) >= 1.0e9
       ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(1) + 'B'

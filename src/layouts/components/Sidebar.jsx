@@ -11,19 +11,7 @@ import {
    Line,
    CustomScrollBar,
 } from '~/components';
-import {
-   BsMusicNoteList,
-   IoDiscOutline,
-   VscPieChart,
-   IoRadioOutline,
-   IoNewspaperOutline,
-   BsMusicNoteBeamed,
-   BiCategoryAlt,
-   HiOutlineStar,
-   BsTabletLandscape,
-   HiOutlinePencil,
-   AiOutlinePlus,
-} from '~/ultis';
+import { HiOutlinePencil, AiOutlinePlus } from '~/ultis';
 
 import {
    liveTag,

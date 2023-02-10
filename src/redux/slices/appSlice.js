@@ -4,7 +4,7 @@ import zingApis from '~/axios/zingApis';
 
 const initialState = {
    loading: false,
-   error: '',
+   error: false,
    home: [],
    album: {},
 };
@@ -26,24 +26,24 @@ const appSlice = createSlice({
             isAnyOf(fetchHome.pending, fetchAlbum.pending),
             (state) => {
                state.loading = true;
-               state.error = '';
+               state.error = false;
             },
          )
          .addMatcher(
             isAnyOf(fetchHome.rejected, fetchAlbum.rejected),
             (state) => {
                state.loading = false;
-               state.error = 'error';
+               state.error = true;
             },
          )
          .addMatcher(isAnyOf(fetchHome.fulfilled), (state, action) => {
             state.loading = false;
-            state.error = '';
+            state.error = false;
             state.home = action.payload?.items || [];
          })
          .addMatcher(isAnyOf(fetchAlbum.fulfilled), (state, action) => {
             state.loading = false;
-            state.error = '';
+            state.error = false;
             state.album = action.payload || {};
          });
    },
@@ -61,9 +61,16 @@ export const fetchAlbum = createAsyncThunk(
    'app/fetchAlbumData',
    async (payload) => {
       const res = await zingApis.getAlbum(payload);
-      console.log(res.data);
 
-      return res.data;
+      // chỉnh sửa kích thước ảnh
+      const prevData = res.data;
+
+      const newData = {
+         ...prevData,
+         thumbnailM: prevData.thumbnailM.replace('w320', 'w600'),
+      };
+
+      return newData;
    },
 );
 
