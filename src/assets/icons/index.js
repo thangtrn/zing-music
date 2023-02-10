@@ -156,13 +156,7 @@ export const ThemeIcon = ({ size = 16 }) => {
 };
 
 export const MusicBox = ({ size = 20, ...props }) => (
-   <svg
-      width={size}
-      height={size}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={size} height={size} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -172,13 +166,7 @@ export const MusicBox = ({ size = 20, ...props }) => (
 );
 
 export const Circle = ({ size = 20, ...props }) => (
-   <svg
-      width={size}
-      height={size}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={size} height={size} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -188,13 +176,7 @@ export const Circle = ({ size = 20, ...props }) => (
 );
 
 export const CircleChart = ({ size = 20, ...props }) => (
-   <svg
-      width={size}
-      height={size}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={size} height={size} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -204,13 +186,7 @@ export const CircleChart = ({ size = 20, ...props }) => (
 );
 
 export const CircleMusic = ({ size = 20, ...props }) => (
-   <svg
-      width={size}
-      height={size}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={size} height={size} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -220,13 +196,7 @@ export const CircleMusic = ({ size = 20, ...props }) => (
 );
 
 export const CardText = ({ size = 20, ...props }) => (
-   <svg
-      width={size}
-      height={size}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={size} height={size} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -236,13 +206,7 @@ export const CardText = ({ size = 20, ...props }) => (
 );
 
 export const MusicNote = ({ size = 20, ...props }) => (
-   <svg
-      width={size}
-      height={size}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={size} height={size} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -252,7 +216,7 @@ export const MusicNote = ({ size = 20, ...props }) => (
 );
 
 export const Category = ({ size = 20, ...props }) => (
-   <svg width={size} height={size} fill="none" className="mar-r-10" {...props}>
+   <svg width={size} height={size} fill="none" {...props}>
       <rect
          x={2.5}
          y={2.5}
@@ -287,7 +251,7 @@ export const Category = ({ size = 20, ...props }) => (
 );
 
 export const StarOutline = ({ size = 20, ...props }) => (
-   <svg width={size} height={size} fill="none" className="mar-r-10" {...props}>
+   <svg width={size} height={size} fill="none" {...props}>
       <path
          clipRule="evenodd"
          d="m10 14.167-4.151 2.182a.417.417 0 0 1-.605-.44l.793-4.621L2.68 8.014a.417.417 0 0 1 .231-.71l4.64-.675 2.076-4.205a.417.417 0 0 1 .748 0l2.075 4.205 4.64.674c.343.05.48.47.232.711l-3.358 3.274.792 4.622c.059.34-.298.6-.604.439L10 14.167Z"
@@ -298,13 +262,7 @@ export const StarOutline = ({ size = 20, ...props }) => (
 );
 
 export const MV = ({ size = 20, ...props }) => (
-   <svg
-      width={20}
-      height={20}
-      fill="currentColor"
-      className="mar-r-10"
-      {...props}
-   >
+   <svg width={20} height={20} fill="currentColor" {...props}>
       <path
          fillRule="evenodd"
          clipRule="evenodd"

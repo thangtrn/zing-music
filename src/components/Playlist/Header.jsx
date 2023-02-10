@@ -1,42 +1,33 @@
 import React, { memo } from 'react';
 
-import { useSelector } from 'react-redux';
-import { appSelector } from '~/redux/selector';
-
 import { ButtonTippy, Image } from '~/components/Commonts';
 
 import { formatNumber, timestampToDate } from '~/helpers';
 import { AiOutlineHeart, BiDotsHorizontalRounded, IoPlay } from '~/ultis/icons';
+import Text from './Text';
 
-const Header = () => {
-   const { album: albumData } = useSelector(appSelector);
-
+const Header = ({ data }) => {
    return (
-      <div className="h-full">
-         <div className="w-[300px] sticky top-[110px]">
-            <Image
-               className="rounded-lg image-shadow"
-               src={albumData.thumbnailM}
-            />
+      <div className="h-full sticky top-[110px]">
+         <div className="w-[300px] pb-[30px]">
+            <Image className="rounded-lg image-shadow" src={data.thumbnailM} />
 
             <div className="w-full mt-3 flex flex-col justify-center">
                <div className="text-center">
                   <h3 className="block text-xl font-bold leading-[1.5] break-words">
-                     {albumData.title}
+                     {data.title}
                   </h3>
-                  <SubTitle>
-                     Cập nhật: {timestampToDate(albumData.contentLastUpdate)}
-                  </SubTitle>
-                  <SubTitle>{albumData.artistsNames}</SubTitle>
-                  <SubTitle>
-                     {formatNumber(albumData.like)} người yêu thích
-                  </SubTitle>
-                  <SubTitle className="lg:hidden text-[14px] mt-4 mb-[10px]">
+                  <Text>
+                     Cập nhật: {timestampToDate(data.contentLastUpdate)}
+                  </Text>
+                  <Text>{data.artistsNames}</Text>
+                  <Text>{formatNumber(data.like)} người yêu thích</Text>
+                  <Text className="lg:hidden text-[14px] mt-4 mb-[10px]">
                      Lời tựa:{' '}
                      <span className="text-primary">
-                        {albumData.sortDescription}
+                        {data.sortDescription}
                      </span>
-                  </SubTitle>
+                  </Text>
                </div>
             </div>
 
@@ -64,14 +55,6 @@ const Header = () => {
                </div>
             </div>
          </div>
-      </div>
-   );
-};
-
-const SubTitle = ({ children, className = '' }) => {
-   return (
-      <div className={`text-secondary text-xs leading-[1.75] ${className}`}>
-         {children}
       </div>
    );
 };

@@ -3,6 +3,15 @@ module.exports = {
    content: ['./src/**/*.{js,jsx,ts,tsx}'],
    theme: {
       extend: {
+         fontSize: {
+            xs: '12px',
+            sm: '14px',
+            base: '16px',
+            lg: '18px',
+            xl: '20px',
+            '2xl': '24px',
+            '3xl': '30px',
+         },
          maxHeight: {
             search: 'calc(100vh - 180px)',
          },
@@ -50,6 +59,8 @@ module.exports = {
          borderColor: {
             primary: 'var(--line)',
             'purple-primary': 'var(--purple-primary)',
+            secondary: 'var(--border-secondary)',
+            checkbox: 'var(--border-checkbox)',
          },
          height: {
             header: 'var(--header-height)',
@@ -64,9 +75,11 @@ module.exports = {
          },
          padding: {
             section: '0 var(--section-padding)',
+            10: '10px',
          },
          margin: {
             section: 'var(--header-height)',
+            10: '10px',
          },
          boxShadow: {
             suggest: '0 4px 6px 0 rgb(32 33 36 / 28%)',

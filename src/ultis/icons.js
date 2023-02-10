@@ -78,12 +78,14 @@ import { VscPieChart } from 'react-icons/vsc';
 import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
 
 import { TbRepeat, TbMicrophone2 } from 'react-icons/tb';
+import { SlMusicToneAlt } from 'react-icons/sl';
 
 import {
    HiOutlineStar,
    HiOutlinePencil,
    HiOutlineDotsHorizontal,
    HiDotsHorizontal,
+   HiSortDescending,
 } from 'react-icons/hi';
 
 import { RxDotsHorizontal } from 'react-icons/rx';
@@ -159,4 +161,6 @@ export {
    BsTextareaResize,
    ImPlay3,
    FaPlay,
+   HiSortDescending,
+   SlMusicToneAlt,
 };
