@@ -18,10 +18,10 @@ const MediaItem = ({ mediaData }) => {
    } = mediaData;
 
    return (
-      <Media className={streamingStatus === 2 && 'opacity-50'}>
+      <Media>
          <Media.Left className="flex-1">
             <Media.Image src={thumbnailM} />
-            <Media.Card>
+            <Media.Card className={streamingStatus === 2 && 'opacity-50'}>
                <Media.Title
                   className={`leading-[1.3] ${
                      streamingStatus === 2 && 'flex items-center'
