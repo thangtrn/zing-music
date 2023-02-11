@@ -13,6 +13,9 @@ const zingServices = {
    getAlbum: (encodeId) => {
       return axiosClient.get(`/playlist/${encodeId}`);
    },
+   getSuggestAlbum: (encodeId) => {
+      return axiosClient.get(`/suggest-playlist/${encodeId}`);
+   },
 };
 
 export default zingServices;

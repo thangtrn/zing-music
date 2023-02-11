@@ -26,7 +26,10 @@ Media.Image = ({ src, size = '60px' }) => {
             />
             <div className="hidden group-hover/media:flex items-center absolute inset-0 bg-dark-50 z-10">
                <div className="w-full h-full flex justify-evenly items-center">
-                  <button className="w-[26px] h-[26px] f-center rounded-full hover:brightness-90">
+                  <button
+                     className="w-[26px] h-[26px] f-center rounded-full hover:brightness-90"
+                     type="button"
+                  >
                      <BsFillPlayFill size={26} />
                   </button>
                </div>

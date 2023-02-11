@@ -2,11 +2,16 @@ import { createSlice, createAsyncThunk, isAnyOf } from '@reduxjs/toolkit';
 
 import zingApis from '~/axios/zingApis';
 
+const album = {
+   playlist: {},
+   suggest: [],
+};
+
 const initialState = {
    loading: false,
    error: false,
    home: [],
-   album: {},
+   album: album,
 };
 
 const appSlice = createSlice({
@@ -17,7 +22,7 @@ const appSlice = createSlice({
          state.home = [];
       },
       clearAlbumData: (state) => {
-         state.album = {};
+         state.album = album;
       },
    },
    extraReducers: (builder) => {
@@ -44,7 +49,8 @@ const appSlice = createSlice({
          .addMatcher(isAnyOf(fetchAlbum.fulfilled), (state, action) => {
             state.loading = false;
             state.error = false;
-            state.album = action.payload || {};
+            state.album.playlist = action.payload.playlist || {};
+            state.album.suggest = action.payload.suggest || [];
          });
    },
 });
@@ -60,19 +66,23 @@ export const fetchHome = createAsyncThunk('app/fetchHomeData', async () => {
 export const fetchAlbum = createAsyncThunk(
    'app/fetchAlbumData',
    async (payload) => {
-      const res = await zingApis.getAlbum(payload);
+      const res1 = await zingApis.getAlbum(payload);
 
-      // chỉnh sửa kích thước ảnh
-      const prevData = res.data;
+      const res2 = await zingApis.getSuggestAlbum(payload);
 
-      const newData = {
-         ...prevData,
-         thumbnailM: prevData.thumbnailM.replace('w320', 'w600'),
+      return {
+         playlist: resizeImage(res1.data),
+         suggest: res2.data,
       };
-
-      return newData;
    },
 );
+
+const resizeImage = (data, prevSize = 'w320', replaceSize = 'w600') => {
+   return {
+      ...data,
+      thumbnailM: data.thumbnailM.replace(prevSize, replaceSize),
+   };
+};
 
 export const { clearHomeData, clearAlbumData } = appSlice.actions;
 

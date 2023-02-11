@@ -21,6 +21,19 @@ const NewRelease = ({ title, link, releaseData }) => {
       <div className="w-full mt-12">
          <h3 className="mb-5 flex justify-between items-center text-xl font-bold capitalize text-primary leading-[30px]">
             {title}
+         </h3>
+         <div className="mb-4 flex justify-between">
+            <div>
+               {tags.map((tag) => (
+                  <Button
+                     key={tag.tagId}
+                     active={tag.tagId === tagActive}
+                     onClick={() => setTagActive(tag.tagId)}
+                  >
+                     {tag.tagName}
+                  </Button>
+               ))}
+            </div>
             {link && (
                <Link
                   to={link} // format link
@@ -29,17 +42,6 @@ const NewRelease = ({ title, link, releaseData }) => {
                   Tất cả <BsChevronRight size={18} className="ml-1" />
                </Link>
             )}
-         </h3>
-         <div className="mb-4">
-            {tags.map((tag) => (
-               <Button
-                  key={tag.tagId}
-                  active={tag.tagId === tagActive}
-                  onClick={() => setTagActive(tag.tagId)}
-               >
-                  {tag.tagName}
-               </Button>
-            ))}
          </div>
          <div className="-mx-[14px] flex">
             <Column>

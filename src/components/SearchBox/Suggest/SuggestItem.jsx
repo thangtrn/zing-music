@@ -28,9 +28,14 @@ const SuggestArtist = memo(({ data }) => {
 });
 
 const SuggestPlaylist = memo(({ data }) => {
-   const { id, thumb, title, artists } = data;
+   const { link, thumb, title, artists } = data;
+
+   const formatLink = (str) => {
+      return str.replace('https://zingmp3.vn', '').replace('.html', '');
+   };
+
    return (
-      <Link to={`/playlist/${id}`}>
+      <Link to={formatLink(link)}>
          <Media className="py-2">
             <Media.Left>
                <Media.OnlyImage size="52px" src={thumb} />
@@ -63,7 +68,8 @@ const SuggestPlaylist = memo(({ data }) => {
 });
 
 const SuggestSong = memo(({ data }) => {
-   const { thumb, title, artists } = data;
+   const { id, thumb, title, artists } = data;
+
    return (
       <Media className="py-2" onClick={(e) => e.stopPropagation()}>
          <Media.Left>

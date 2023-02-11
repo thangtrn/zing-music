@@ -13,5 +13,5 @@ export default function durationTime(seconds) {
 export function durationLongTime(seconds) {
    var hours = Math.floor(seconds / 3600);
    var minutes = Math.floor((seconds % 3600) / 60);
-   return `${hours} giờ ${minutes} phút`;
+   return `${hours > 0 ? hours + ' giờ ' : ''}${minutes} phút`;
 }
