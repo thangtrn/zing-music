@@ -45,3 +45,5 @@
 ### [GET] /api/recommend-keyword
 
 ### [GET] /suggestion-keyword?keyword={son tung}
+
+### [GET] http://api.mp3.zing.vn/api/streaming/audio/:song/320

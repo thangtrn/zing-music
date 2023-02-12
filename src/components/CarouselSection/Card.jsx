@@ -1,5 +1,9 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
+
+import { fetchPlaylist } from '~/redux/slices/musicSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Link, useNavigate } from 'react-router-dom';
 import { ButtonTippy, Image } from '~/components/Commonts';
 
 import {
@@ -9,12 +13,20 @@ import {
 } from '~/ultis/icons';
 
 const Card = ({ cardData }) => {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+
    const { encodeId, link, thumbnailM, title, sortDescription, artistsNames } =
       cardData;
 
    // /album/Nhung-Bai-Hat-Hay-Nhat-Cua-Myra-Tran-Myra-Tran/6B7OEOW7.html
    const formatLink = (str) => {
       return str.split('.html')[0];
+   };
+
+   const handleClick = () => {
+      dispatch(fetchPlaylist(encodeId));
+      navigate(formatLink(link));
    };
 
    return (
@@ -25,6 +37,7 @@ const Card = ({ cardData }) => {
          >
             <Image
                src={thumbnailM}
+               onClick={handleClick}
                IconLeft={
                   <ButtonTippy
                      className="hover:bg-tooltip"

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
 import { CustomScrollBar } from '~/components';
-import { Header, Sidebar, PlayerMusic } from '~/layouts/components';
+import {
+   Header,
+   Sidebar,
+   PlayerControls,
+   PlayerQueue,
+} from '~/layouts/components';
 
 const DefaultLayout = ({ children }) => {
    const [isShowBg, setIsShowBg] = useState(false);
@@ -17,15 +22,18 @@ const DefaultLayout = ({ children }) => {
    return (
       <div className="flex h-screen w-full relative text-primary bg-primary bg-[length:1920px_auto] bg-no-repeat background-transition">
          <Header showBg={isShowBg} />
+
          <Sidebar />
+
          <div className="w-main h-main">
             <CustomScrollBar onScroll={handleScroll} viewClass="p-section">
                {children}
             </CustomScrollBar>
          </div>
-         <div className="fixed inset-x-0 bottom-0">
-            <PlayerMusic />
-         </div>
+
+         <PlayerQueue />
+
+         <PlayerControls />
       </div>
    );
 };

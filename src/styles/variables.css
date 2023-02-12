@@ -12,6 +12,7 @@
    --text-secondary: #ffffff80;
    --text-search: #eee;
    --text-placeholder: #dadada;
+   --text-navigation: #dadada;
    --text-hover: #fe63da;
 
    --bg-primary: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-background/zma.svg');
@@ -20,7 +21,8 @@
    --bg-layout: #37075d;
    --bg-sidebar: #ffffff0d;
    --bg-loading: #ffffff1a;
-   --bg-player: #111f3b;
+   --bg-player-controls: #111f3b;
+   --bg-player-queue: #5d218c;
    --bg-player-img: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-player/zma.png');
    --bg-tooltip: #ffffff4d;
 
@@ -34,6 +36,8 @@
    --purple-primary: #ed2b91;
 
    --line: #ffffff1a;
+
+   --tag-active: var(--bg-tooltip);
 
    --header-shadow: #0000001a;
 

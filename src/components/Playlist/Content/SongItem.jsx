@@ -41,7 +41,9 @@ const SongItem = ({ mediaData }) => {
 
                <Media.Card className={streamingStatus === 2 && 'opacity-50'}>
                   <Media.Title className="leading-normal flex items-center">
-                     <span className="leading-[1.3]">{title}</span>
+                     <span className="leading-[1.3] text-truncate-1">
+                        {title}
+                     </span>
 
                      {streamingStatus === 2 && (
                         <span className="ml-2">

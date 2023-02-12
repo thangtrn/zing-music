@@ -92,6 +92,7 @@ import { RxDotsHorizontal } from 'react-icons/rx';
 
 import { ImPlay3 } from 'react-icons/im';
 import { FaPlay } from 'react-icons/fa';
+import { TfiAlarmClock } from 'react-icons/tfi';
 
 export {
    IoShieldCheckmarkOutline,
@@ -163,4 +164,5 @@ export {
    FaPlay,
    HiSortDescending,
    SlMusicToneAlt,
+   TfiAlarmClock,
 };

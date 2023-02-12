@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { musicSelector } from '~/redux/selector';
+import { setShowPlaylist } from '~/redux/slices/musicSlice';
+
+import ProgressBar from './ProgressBar';
 import { ButtonTippy } from '~/components/Commonts';
+
 import {
    BsTabletLandscape,
    TbMicrophone2,
@@ -7,10 +14,17 @@ import {
    BsMusicNoteList,
    BsTextareaResize,
 } from '~/ultis/icons';
-import ProgressBar from './ProgressBar';
 
 const Action = () => {
+   const { showPlaylist } = useSelector(musicSelector);
+   const dispatch = useDispatch();
+
    const [volume, setVolume] = useState([50]);
+
+   const handleToggleQueue = () => {
+      dispatch(setShowPlaylist());
+   };
+
    return (
       <div className="flex items-center justify-end w-[30%]">
          <ButtonTippy
@@ -54,9 +68,14 @@ const Action = () => {
          </div>
 
          <ButtonTippy
+            onClick={handleToggleQueue}
             width="28px"
             height="30px"
-            className="bg-[#ffffff1a] rounded-[4px] hover:bg-[#ffffff33]"
+            className={`rounded-[4px] ${
+               showPlaylist === true
+                  ? 'bg-purple-primary hover:brightness-90'
+                  : 'bg-[#ffffff1a] hover:bg-[#ffffff33]'
+            }`}
             tippyContent="Danh sách bài hát"
          >
             <BsMusicNoteList size={16} />

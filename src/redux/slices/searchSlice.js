@@ -67,4 +67,4 @@ export const fetchRecommendKeywords = createAsyncThunk(
    },
 );
 
-export default searchSlice;
+export default searchSlice.reducer;

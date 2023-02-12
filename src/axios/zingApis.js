@@ -10,11 +10,14 @@ const zingServices = {
    getHome: () => {
       return axiosClient.get('/home');
    },
-   getAlbum: (encodeId) => {
+   getPlaylist: (encodeId) => {
       return axiosClient.get(`/playlist/${encodeId}`);
    },
-   getSuggestAlbum: (encodeId) => {
+   getSuggestPlaylist: (encodeId) => {
       return axiosClient.get(`/suggest-playlist/${encodeId}`);
+   },
+   getSong: (encodeId) => {
+      return axiosClient.get(`/song/${encodeId}`);
    },
 };
 

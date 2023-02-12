@@ -66,9 +66,9 @@ export const fetchHome = createAsyncThunk('app/fetchHomeData', async () => {
 export const fetchAlbum = createAsyncThunk(
    'app/fetchAlbumData',
    async (payload) => {
-      const res1 = await zingApis.getAlbum(payload);
+      const res1 = await zingApis.getPlaylist(payload);
 
-      const res2 = await zingApis.getSuggestAlbum(payload);
+      const res2 = await zingApis.getSuggestPlaylist(payload);
 
       return {
          playlist: resizeImage(res1.data),
@@ -86,4 +86,4 @@ const resizeImage = (data, prevSize = 'w320', replaceSize = 'w600') => {
 
 export const { clearHomeData, clearAlbumData } = appSlice.actions;
 
-export default appSlice;
+export default appSlice.reducer;
