@@ -13,6 +13,7 @@ import {
    BsTabletLandscape,
    BsTelephone,
    BsTextareaResize,
+   BsDownload,
 } from 'react-icons/bs';
 
 import {
@@ -30,6 +31,7 @@ import {
    IoPlaySharp,
    IoRepeat,
    IoVolumeMediumOutline,
+   IoAddCircleOutline,
 } from 'react-icons/io5';
 
 import { IoIosHeartEmpty, IoIosPlay, IoIosPause } from 'react-icons/io';
@@ -78,7 +80,7 @@ import { VscPieChart } from 'react-icons/vsc';
 import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
 
 import { TbRepeat, TbMicrophone2 } from 'react-icons/tb';
-import { SlMusicToneAlt } from 'react-icons/sl';
+import { SlMusicToneAlt, SlTrash } from 'react-icons/sl';
 
 import {
    HiOutlineStar,
@@ -165,4 +167,7 @@ export {
    HiSortDescending,
    SlMusicToneAlt,
    TfiAlarmClock,
+   SlTrash,
+   BsDownload,
+   IoAddCircleOutline,
 };

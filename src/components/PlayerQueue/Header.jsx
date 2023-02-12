@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { TfiAlarmClock, RxDotsHorizontal } from '~/ultis/icons';
 import { ButtonTippy } from '~/components/Commonts';
+import { Menu, MenuItem, TippyDropdown } from '~/components/Menu';
+
+import {
+   TfiAlarmClock,
+   RxDotsHorizontal,
+   SlTrash,
+   BsDownload,
+   IoAddCircleOutline,
+   BsChevronRight,
+} from '~/ultis/icons';
 
 const Button = ({ children, active = false, ...props }) => {
    return (
@@ -33,13 +42,54 @@ const Header = () => {
             >
                <TfiAlarmClock size={16} />
             </ButtonTippy>
-            <ButtonTippy
-               tippyContent="Khác"
-               size="32px"
-               className="bg-alpha ml-2 my-[5px] hover:brightness-90"
+
+            <TippyDropdown
+               render={(attrs) => (
+                  <Menu {...attrs}>
+                     <MenuItem
+                        iconLeft={
+                           <span className="mr-[5px]">
+                              <SlTrash size={16} />
+                           </span>
+                        }
+                        className="py-[10px!important] px-[15px!important] text-sm leading-normal text-[#dadada]"
+                     >
+                        Xoá danh sách bài hát
+                     </MenuItem>
+                     <MenuItem
+                        iconLeft={
+                           <span className="mr-[5px]">
+                              <BsDownload size={16} />
+                           </span>
+                        }
+                        className="py-[10px!important] px-[15px!important] text-sm leading-normal text-[#dadada]"
+                     >
+                        Tải danh sách phát
+                     </MenuItem>
+                     <MenuItem
+                        iconLeft={
+                           <span className="mr-[5px]">
+                              <IoAddCircleOutline size={16} />
+                           </span>
+                        }
+                        iconRight={<BsChevronRight size={16} />}
+                        className="py-[10px!important] px-[15px!important] text-sm leading-normal text-[#dadada]"
+                     >
+                        Tải danh sách phát
+                     </MenuItem>
+                  </Menu>
+               )}
             >
-               <RxDotsHorizontal size={18} />
-            </ButtonTippy>
+               <span>
+                  <ButtonTippy
+                     tippyContent="Khác"
+                     size="32px"
+                     className="bg-alpha ml-2 my-[5px] hover:brightness-90"
+                  >
+                     <RxDotsHorizontal size={18} />
+                  </ButtonTippy>
+               </span>
+            </TippyDropdown>
          </div>
       </div>
    );

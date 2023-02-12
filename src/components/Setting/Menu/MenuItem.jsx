@@ -11,9 +11,9 @@ const Icon = ({ children, className = '', ...props }) => {
 const MenuItem = ({ iconLeft = null, iconRight = null, children }) => {
    return (
       <li>
-         <div className="w-full flex items-center py-[10px] pl-[17px] pr-[20px] transition-all duration-200 ease-[ease] hover:bg-alpha hover:text-hover">
+         <div className="w-full flex items-center py-[12px] pl-[17px] pr-[20px] transition-all duration-200 ease-[ease] hover:bg-alpha hover:text-hover">
             <Icon>{iconLeft}</Icon>
-            <div className="w-full flex justify-between items-center">
+            <div className="w-full flex justify-between items-center leading-normal">
                {children}
                {iconRight && (
                   <Icon className="relative -right-[15px]">{iconRight}</Icon>

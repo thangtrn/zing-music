@@ -5,6 +5,7 @@ const initialState = {
    loading: false,
    showPlaylist: false,
    isPlaying: false,
+   currentIndex: 0,
    playlistSongs: [],
 };
 

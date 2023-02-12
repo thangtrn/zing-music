@@ -68,12 +68,12 @@ const Setting = () => {
          >
             {isOpenSetting && (
                <Menu>
-                  <MenuItem iconLeft={<BiBlock size={20} />}>
+                  <MenuItem iconLeft={<BiBlock size={18} />}>
                      Danh sách chặn
                   </MenuItem>
 
                   <MenuItem
-                     iconLeft={<MdOutlineHighQuality size={20} />}
+                     iconLeft={<MdOutlineHighQuality size={18} />}
                      iconRight={<BsChevronRight size={18} />}
                   >
                      Chất lượng nhạc
@@ -110,7 +110,7 @@ const Setting = () => {
                   </MenuItem>
                   <MenuItem iconLeft={<FiUpload size={18} />}>Tải lên</MenuItem>
                   <Line />
-                  <MenuItem iconLeft={<FiLogOut size={20} />}>
+                  <MenuItem iconLeft={<FiLogOut size={18} />}>
                      Đăng xuất
                   </MenuItem>
                </Menu>
