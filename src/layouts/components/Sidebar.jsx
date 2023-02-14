@@ -31,7 +31,7 @@ import {
    MV,
 } from '~/assets';
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarHeight }) => {
    const [isMark, setIsMark] = useState(false);
 
    const handleScrollMark = (e) => {
@@ -44,7 +44,7 @@ const Sidebar = () => {
    };
 
    return (
-      <div className="w-sidebar h-sidebar bg-sidebar flex flex-col">
+      <div className={`${sidebarHeight} w-sidebar bg-sidebar flex flex-col`}>
          <div className="w-full h-header flex items-center pr-[25px] pl-[28px]">
             <Link to="/" tabIndex={-1} className="inline-block leading-[0]">
                <div className="inline-block w-[120px] h-10 bg-logo bg-center bg-no-repeat leading-[0] bg-full hover:brightness-90"></div>

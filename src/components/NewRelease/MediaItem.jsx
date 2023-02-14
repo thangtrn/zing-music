@@ -7,20 +7,14 @@ import { vipLabel } from '~/assets/images';
 // streamingStatus = 1 = Free
 // streamingStatus = 2 = Vip
 
-const MediaItem = ({ mediaData }) => {
-   const {
-      encodeId,
-      title,
-      artistsNames,
-      thumbnailM,
-      releaseDate,
-      streamingStatus,
-   } = mediaData;
+const MediaItem = ({ mediaData, onClick = () => {} }) => {
+   const { title, artistsNames, thumbnailM, releaseDate, streamingStatus } =
+      mediaData;
 
    return (
       <Media>
          <Media.Left className="flex-1">
-            <Media.Image src={thumbnailM} />
+            <Media.Image src={thumbnailM} onClick={onClick} />
             <Media.Card className={streamingStatus === 2 && 'opacity-50'}>
                <Media.Title
                   className={`leading-[1.3] ${

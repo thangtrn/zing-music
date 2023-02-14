@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import { useSelector } from 'react-redux';
+import { musicSelector } from '~/redux/selector';
+
 import { CustomScrollBar } from '~/components';
 import {
    Header,
@@ -9,6 +12,10 @@ import {
 } from '~/layouts/components';
 
 const DefaultLayout = ({ children }) => {
+   const { playlistSongs } = useSelector(musicSelector);
+
+   const isEmptyPlaylist = playlistSongs.length <= 0;
+
    const [isShowBg, setIsShowBg] = useState(false);
 
    const handleScroll = (e) => {
@@ -23,17 +30,20 @@ const DefaultLayout = ({ children }) => {
       <div className="flex h-screen w-full relative text-primary bg-primary bg-[length:1920px_auto] bg-no-repeat background-transition">
          <Header showBg={isShowBg} />
 
-         <Sidebar />
+         <Sidebar sidebarHeight={!isEmptyPlaylist ? 'h-sidebar' : ''} />
 
-         <div className="w-main h-main">
+         <div className={`w-main ${!isEmptyPlaylist ? 'h-main' : 'h-full'}`}>
             <CustomScrollBar onScroll={handleScroll} viewClass="p-section">
                {children}
             </CustomScrollBar>
          </div>
 
-         <PlayerQueue />
-
-         <PlayerControls />
+         {!isEmptyPlaylist && (
+            <>
+               <PlayerQueue />
+               <PlayerControls />
+            </>
+         )}
       </div>
    );
 };

@@ -16,6 +16,16 @@ const musicSlice = createSlice({
       setShowPlaylist: (state) => {
          state.showPlaylist = !state.showPlaylist;
       },
+      setPlaylistSongs: (state, action) => {
+         state.currentIndex =
+            action.payload.playlist.findIndex(
+               (item) => item.encodeId === action.payload.encodeId,
+            ) || 0;
+         state.playlistSongs =
+            action.payload.playlist.filter(
+               (item) => item.streamingStatus === 1,
+            ) || [];
+      },
    },
    extraReducers: (builder) => {
       builder
@@ -43,6 +53,6 @@ export const fetchPlaylist = createAsyncThunk(
    },
 );
 
-export const { setShowPlaylist } = musicSlice.actions;
+export const { setShowPlaylist, setPlaylistSongs } = musicSlice.actions;
 
 export default musicSlice.reducer;

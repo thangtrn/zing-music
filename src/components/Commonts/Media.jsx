@@ -12,18 +12,21 @@ const Media = ({ children, className = '', ...props }) => {
    );
 };
 
-Media.Image = ({ src, size = '60px' }) => {
+Media.Image = ({ src, size = '60px', onClick = () => {} }) => {
    return (
       <div
+         onClick={onClick}
          style={{ width: size, height: size }}
-         className="rounded overflow-hidden mr-[10px] flex-shrink-0"
+         className="rounded overflow-hidden mr-[10px] flex-shrink-0 cursor-pointer"
       >
-         <div className="w-full h-0 pb-[100%] bg-loading overflow-hidden relative">
-            <img
-               className="w-full h-full absolute inset-0 object-cover"
-               src={src}
-               alt="thumb"
-            />
+         <div className="w-full h-0 pb-[100%] bg-loading overflow-hidden relative cursor-pointer">
+            {src && (
+               <img
+                  className="w-full h-full absolute inset-0 object-cover"
+                  src={src}
+                  alt="thumb"
+               />
+            )}
             <div className="hidden group-hover/media:flex items-center absolute inset-0 bg-dark-50 z-10">
                <div className="w-full h-full flex justify-evenly items-center">
                   <button
@@ -46,11 +49,13 @@ Media.OnlyImage = ({ src, size = '60px', className = '' }) => {
          className={`rounded overflow-hidden mr-[10px] flex-shrink-0 flex-grow-0 ${className}`}
       >
          <div className="relative w-full h-0 pb-[100%] bg-loading">
-            <img
-               className="w-full h-full object-cover absolute inset-0"
-               src={src}
-               alt="media"
-            />
+            {src && (
+               <img
+                  className="w-full h-full object-cover absolute inset-0"
+                  src={src}
+                  alt="media"
+               />
+            )}
          </div>
       </div>
    );
