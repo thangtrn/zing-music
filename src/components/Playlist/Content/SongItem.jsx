@@ -1,25 +1,68 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { musicSelector } from '~/redux/selector';
+
+import { durationTime } from '~/helpers';
 import { vipLabel } from '~/assets';
 import { ButtonTippy, Media } from '~/components/Commonts';
-import { durationTime } from '~/helpers';
 import {
    AiOutlineHeart,
    RxDotsHorizontal,
    SlMusicToneAlt,
    TbMicrophone2,
 } from '~/ultis/icons';
+import {
+   fetchPlaylistAndPlayWithId,
+   setPlay,
+   setPlaySongWithId,
+} from '~/redux/slices/musicSlice';
+import { useParams } from 'react-router-dom';
 
 const SongItem = ({ mediaData }) => {
+   const { currentSong, loading, isPlaying, playlistId } =
+      useSelector(musicSelector);
+   const dispatch = useDispatch();
+   const params = useParams();
+
    const {
       encodeId,
       title,
-      artistsNames,
-      thumbnailM,
-      streamingStatus,
-      duration,
       album,
+      duration,
+      thumbnailM,
+      artistsNames,
+      streamingStatus,
    } = mediaData;
+
+   const isPlayingSong = useMemo(() => {
+      return isPlaying && !loading && currentSong?.encodeId === encodeId;
+   }, [currentSong?.encodeId, encodeId, isPlaying, loading]);
+
+   const handleTogglePlaySong = useCallback(
+      (songId) => {
+         if (loading || streamingStatus === 2) return;
+         if (params?.id === playlistId) {
+            if (currentSong?.encodeId === songId) {
+               dispatch(setPlay());
+            } else {
+               dispatch(setPlaySongWithId(songId));
+            }
+         } else {
+            dispatch(
+               fetchPlaylistAndPlayWithId({ songId, playlistId: params?.id }),
+            );
+         }
+      },
+      [
+         currentSong?.encodeId,
+         dispatch,
+         loading,
+         params?.id,
+         playlistId,
+         streamingStatus,
+      ],
+   );
 
    return (
       <div className="w-full border-b border-b-secondary relative group/media">
@@ -31,13 +74,20 @@ const SongItem = ({ mediaData }) => {
                />
             </label>
          </div>
-         <Media>
+         <Media className={currentSong?.encodeId === encodeId && 'bg-alpha'}>
             <Media.Left className="w-1/2 mr-10">
                <span className="group-hover/media:invisible w-[14px] f-center mr-10 text-secondary">
                   <SlMusicToneAlt size={13} />
                </span>
 
-               <Media.Image size="40px" src={thumbnailM} />
+               <Media.Image
+                  active={currentSong?.encodeId === encodeId}
+                  isPlaying={isPlayingSong}
+                  loading={loading}
+                  size="40px"
+                  src={thumbnailM}
+                  onClick={() => handleTogglePlaySong(encodeId)}
+               />
 
                <Media.Card className={streamingStatus === 2 && 'opacity-50'}>
                   <Media.Title className="leading-normal flex items-center">

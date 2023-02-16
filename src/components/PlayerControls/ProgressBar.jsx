@@ -1,7 +1,7 @@
 import React from 'react';
 import { Range } from 'react-range';
 
-const ProgressBar = ({ value, onChange, onFinalChange }) => {
+const ProgressBar = ({ value = [0], onChange, onFinalChange }) => {
    return (
       <div className="w-full h-[15px] flex items-center group">
          <Range
@@ -11,6 +11,7 @@ const ProgressBar = ({ value, onChange, onFinalChange }) => {
             values={value}
             onChange={(values) => onChange(values)}
             // onFinalChange={(values) => onFinalChange(values)}
+            onFinalChange={onFinalChange}
             renderTrack={({ props, children }) => (
                <div
                   {...props}

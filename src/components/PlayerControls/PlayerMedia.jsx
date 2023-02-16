@@ -7,21 +7,18 @@ import { ButtonTippy, Media } from '~/components/Commonts';
 import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 const PlayerMedia = () => {
-   const { currentIndex, playlistSongs } = useSelector(musicSelector);
+   const { currentSong } = useSelector(musicSelector);
 
    return (
       <Media className="hover:bg-transparent w-[30%] p-0">
          <Media.Left>
-            <Media.OnlyImage
-               size="64px"
-               src={playlistSongs[currentIndex].thumbnailM}
-            />
+            <Media.OnlyImage size="64px" src={currentSong?.thumbnailM} />
             <Media.Content className="justify-center">
                <Media.Title className="pr-[10px] leading-[1.36] capitalize">
-                  {playlistSongs[currentIndex].title}
+                  {currentSong?.title}
                </Media.Title>
                <Media.SubTitle className="mt-[1px] leading-normal">
-                  {playlistSongs[currentIndex].artistsNames}
+                  {currentSong?.artistsNames}
                </Media.SubTitle>
             </Media.Content>
          </Media.Left>

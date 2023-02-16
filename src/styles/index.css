@@ -241,3 +241,39 @@
    transition: all 0.5s linear;
 }
 /* ----- Player queue animation end ---- */
+
+.thumb-rotate-on {
+   animation: Rotate 10s linear infinite;
+   border-radius: 100%;
+   transition: all 0.5s linear;
+}
+
+.thumb-rotate-off {
+   border-radius: 8px;
+   animation: none;
+   transform: rotate(0);
+   transition: all 0.5s linear;
+}
+
+.trans-rotate {
+   -webkit-transition: all 0.5s, border-radius 0.5s;
+   transition: all 0.5s, border-radius 0.5s;
+}
+
+@keyframes Rotate {
+   0% {
+      transform: rotate(0);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+@keyframes RotateOff {
+   0% {
+      transform: rotate(-360deg);
+   }
+   100% {
+      transform: rotate(0);
+   }
+}

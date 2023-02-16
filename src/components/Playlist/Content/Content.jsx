@@ -10,7 +10,7 @@ const Content = ({ data }) => {
             Lời tựa <span className="text-primary">{data.sortDescription}</span>
          </Text>
 
-         <SongList songsData={data?.song?.items} />
+         <SongList songsData={data?.song?.items} playlistId={data?.encodeId} />
 
          <Text className="leading-[1.5!important]">
             <span className="mr-2">{data?.song?.total} bài hát</span>•

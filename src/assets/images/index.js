@@ -8,3 +8,4 @@ export { default as mySong } from './my-song.svg';
 export { default as playBtn } from './play-btn.svg';
 export { default as bgChart } from './bg-chart.jpg';
 export { default as vipLabel } from './vip-label.svg';
+export { default as gifPlaying } from './icon-playing.gif';

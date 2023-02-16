@@ -1,8 +1,5 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-import { setPlaylistSongs } from '~/redux/slices/musicSlice';
 
 import MediaItem from './MediaItem';
 import { BsChevronRight } from '~/ultis/icons';
@@ -17,23 +14,8 @@ const TAGS = [
 // streamingStatus = 2 = Vip
 
 const NewRelease = ({ title, link, releaseData }) => {
-   const dispatch = useDispatch();
-
    const [tags] = useState(TAGS);
    const [tagActive, setTagActive] = useState('all');
-
-   const handlePlaySong = useCallback(
-      (encodeId) => {
-         console.log(encodeId);
-         dispatch(
-            setPlaylistSongs({
-               encodeId,
-               playlist: releaseData[tagActive],
-            }),
-         );
-      },
-      [dispatch, releaseData, tagActive],
-   );
 
    return (
       <div className="w-full mt-12">
@@ -67,10 +49,7 @@ const NewRelease = ({ title, link, releaseData }) => {
                   <MediaItem
                      key={item.encodeId}
                      mediaData={item}
-                     onClick={() =>
-                        item.streamingStatus === 1 &&
-                        handlePlaySong(item.encodeId)
-                     }
+                     releaseData={releaseData[tagActive]}
                   />
                ))}
             </Column>
@@ -79,10 +58,7 @@ const NewRelease = ({ title, link, releaseData }) => {
                   <MediaItem
                      key={item.encodeId}
                      mediaData={item}
-                     onClick={() =>
-                        item.streamingStatus === 1 &&
-                        handlePlaySong(item.encodeId)
-                     }
+                     releaseData={releaseData[tagActive]}
                   />
                ))}
             </Column>
@@ -91,10 +67,7 @@ const NewRelease = ({ title, link, releaseData }) => {
                   <MediaItem
                      key={item.encodeId}
                      mediaData={item}
-                     onClick={() =>
-                        item.streamingStatus === 1 &&
-                        handlePlaySong(item.encodeId)
-                     }
+                     releaseData={releaseData[tagActive]}
                   />
                ))}
             </Column>

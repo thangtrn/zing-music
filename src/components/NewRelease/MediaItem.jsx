@@ -1,20 +1,59 @@
-import React, { memo } from 'react';
-import { RxDotsHorizontal } from '~/ultis/icons';
-import { ButtonTippy, Media } from '~/components/Commonts';
+import React, { memo, useCallback, useMemo } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { musicSelector } from '~/redux/selector';
+import { setPlay, setPlaylistSongs } from '~/redux/slices/musicSlice';
+
 import { timeSince } from '~/helpers';
+import { ButtonTippy, Media } from '~/components/Commonts';
+import { RxDotsHorizontal } from '~/ultis/icons';
 import { vipLabel } from '~/assets/images';
 
 // streamingStatus = 1 = Free
 // streamingStatus = 2 = Vip
 
-const MediaItem = ({ mediaData, onClick = () => {} }) => {
-   const { title, artistsNames, thumbnailM, releaseDate, streamingStatus } =
-      mediaData;
+const MediaItem = ({ mediaData, releaseData }) => {
+   const { currentSong, loading, isPlaying } = useSelector(musicSelector);
+   const dispatch = useDispatch();
+
+   const {
+      encodeId,
+      title,
+      artistsNames,
+      thumbnailM,
+      releaseDate,
+      streamingStatus,
+   } = mediaData;
+
+   const isPlayingSong = useMemo(() => {
+      return isPlaying && !loading && currentSong?.encodeId === encodeId;
+   }, [currentSong?.encodeId, encodeId, isPlaying, loading]);
+
+   const handleTogglePlaySong = useCallback(
+      (encodeId) => {
+         if (loading || streamingStatus === 2) return;
+         if (currentSong?.encodeId === encodeId) dispatch(setPlay());
+         else
+            dispatch(
+               setPlaylistSongs({
+                  encodeId,
+                  playlist: releaseData,
+               }),
+            );
+      },
+      [currentSong?.encodeId, dispatch, loading, releaseData, streamingStatus],
+   );
 
    return (
-      <Media>
+      <Media className={currentSong?.encodeId === encodeId && 'bg-alpha'}>
          <Media.Left className="flex-1">
-            <Media.Image src={thumbnailM} onClick={onClick} />
+            <Media.Image
+               active={currentSong?.encodeId === encodeId}
+               isPlaying={isPlayingSong}
+               loading={loading}
+               src={thumbnailM}
+               onClick={() => handleTogglePlaySong(encodeId)}
+            />
             <Media.Card className={streamingStatus === 2 && 'opacity-50'}>
                <Media.Title
                   className={`leading-[1.3] ${

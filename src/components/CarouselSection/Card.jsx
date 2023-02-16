@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 
 import { fetchPlaylist } from '~/redux/slices/musicSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { musicSelector } from '~/redux/selector';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { ButtonTippy, Image } from '~/components/Commonts';
@@ -14,12 +15,13 @@ import {
 
 const Card = ({ cardData }) => {
    const navigate = useNavigate();
+   const { playlistId } = useSelector(musicSelector);
    const dispatch = useDispatch();
 
    const { encodeId, link, thumbnailM, title, sortDescription, artistsNames } =
       cardData;
 
-   // /album/Nhung-Bai-Hat-Hay-Nhat-Cua-Myra-Tran-Myra-Tran/6B7OEOW7.html
+   // /[album/Nhung-Bai-Hat-Hay-Nhat-Cua-Myra-Tran-Myra-Tran/6B7OEOW7, .html]
    const formatLink = (str) => {
       return str.split('.html')[0];
    };
@@ -38,6 +40,7 @@ const Card = ({ cardData }) => {
             <Image
                src={thumbnailM}
                onClick={handleClick}
+               isPlaying={encodeId === playlistId}
                IconLeft={
                   <ButtonTippy
                      className="hover:bg-tooltip"

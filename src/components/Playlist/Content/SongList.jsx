@@ -21,7 +21,7 @@ const SongList = ({ songsData = [] }) => {
 
          {/* List */}
          <div>
-            {songsData.map((item, index) => (
+            {songsData.map((item) => (
                <SongItem mediaData={item} key={item.encodeId} />
             ))}
          </div>

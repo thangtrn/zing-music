@@ -1,0 +1,59 @@
+import React, { useEffect, useRef } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { audioSelector, musicSelector } from '~/redux/selector';
+import { setLoading, nextSong, setPlay } from '~/redux/slices/musicSlice';
+import {
+   setDuration,
+   setCurrentTime,
+   resetAudio,
+} from '~/redux/slices/audioSlice';
+
+const Audio = () => {
+   const audioRef = useRef(null);
+   const { isPlaying, currentSong } = useSelector(musicSelector);
+   const { isSeek } = useSelector(audioSelector);
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      if (!audioRef || !audioRef.current) return;
+      isPlaying ? audioRef.current.play() : audioRef.current.pause();
+   }, [isPlaying, currentSong.encodeId]);
+
+   const handleLoadStart = () => {
+      dispatch(resetAudio());
+      dispatch(setLoading(true));
+   };
+
+   const handleLoadedMetadata = (e) => {
+      dispatch(setLoading(false));
+      dispatch(setDuration(e.target.duration));
+   };
+
+   const handleEnded = () => {
+      dispatch(nextSong());
+   };
+
+   const handleTimeUpdate = (e) => {
+      if (isSeek) return;
+      dispatch(setCurrentTime(e.target.currentTime));
+   };
+
+   return (
+      <div className="hidden">
+         {currentSong && (
+            <audio
+               id="audioPlayer"
+               ref={audioRef}
+               onTimeUpdate={handleTimeUpdate}
+               onLoadStart={handleLoadStart}
+               onLoadedMetadata={handleLoadedMetadata}
+               onEnded={handleEnded}
+               src={`http://api.mp3.zing.vn/api/streaming/audio/${currentSong.encodeId}/320`}
+            ></audio>
+         )}
+      </div>
+   );
+};
+
+export default Audio;

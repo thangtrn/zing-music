@@ -1,15 +1,24 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
-import { fetchPlaylist } from '~/redux/slices/musicSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPlaylist, setPlay } from '~/redux/slices/musicSlice';
+import { musicSelector } from '~/redux/selector';
+
 import { ButtonTippy, Image } from '~/components/Commonts';
-
 import { formatNumber, timestampToDate } from '~/helpers';
-import { AiOutlineHeart, BiDotsHorizontalRounded, IoPlay } from '~/ultis/icons';
+import {
+   AiOutlineHeart,
+   BiDotsHorizontalRounded,
+   IoPlay,
+   IoIosPause,
+} from '~/ultis/icons';
 import Text from './Text';
 
 const Header = ({ data }) => {
+   const params = useParams();
    const dispatch = useDispatch();
+   const { loading, isPlaying, playlistId } = useSelector(musicSelector);
 
    const {
       encodeId,
@@ -21,16 +30,37 @@ const Header = ({ data }) => {
       contentLastUpdate,
    } = data;
 
-   const handleClick = () => {
-      dispatch(fetchPlaylist(encodeId));
-   };
+   const handleClick = useCallback(() => {
+      if (loading) return;
+      if (params.id === playlistId) dispatch(setPlay());
+      else dispatch(fetchPlaylist(encodeId));
+   }, [dispatch, encodeId, loading, params.id, playlistId]);
+
+   const isPlayingSong = useMemo(() => {
+      return playlistId === encodeId && isPlaying && !loading;
+   }, [encodeId, isPlaying, loading, playlistId]);
+
+   const classPlayingSong = useMemo(() => {
+      if (isPlayingSong) {
+         return 'rounded-full';
+      }
+      return 'rounded-lg';
+   }, [isPlayingSong]);
+
+   // console.log({
+   //    isPlaying: isPlayingSong,
+   //    class: classPlayingSong,
+   // });
 
    return (
       <div className="h-full sticky top-[110px]">
          <div className="w-[300px] pb-[30px]">
             <Image
+               isPlaying={isPlayingSong}
+               // neu dang load thi ko cho bam
+               isRotate
                onClick={handleClick}
-               className="rounded-lg shadow-image"
+               className={`${classPlayingSong} trans-rotate shadow-image`}
                src={thumbnailM}
             />
 
@@ -50,9 +80,28 @@ const Header = ({ data }) => {
             </div>
 
             <div className="mt-4 mx-auto w-fit">
-               <button className="f-center uppercase text-primary text-[14px] font-normal leading-normal py-[8.5px] px-[23.5px] mr-[10px] mb-4 rounded-full bg-purple-primary border border-purple-primary hover:brightness-90">
-                  <IoPlay size={18} />
-                  <span className="ml-[4px]">Phát ngẫu nhiên</span>
+               <button
+                  // neu dang load thi ko cho bam
+                  onClick={handleClick}
+                  className="f-center uppercase text-primary text-[14px] font-normal leading-normal py-[8.5px] px-[23.5px] mr-[10px] mb-4 rounded-full bg-purple-primary border border-purple-primary hover:brightness-90"
+               >
+                  {playlistId !== encodeId ? (
+                     <>
+                        <IoPlay size={18} />
+                        <span className="ml-[4px]">Phát ngẫu nhiên</span>
+                     </>
+                  ) : (
+                     <>
+                        {isPlaying ? (
+                           <IoIosPause size={18} />
+                        ) : (
+                           <IoPlay size={18} />
+                        )}
+                        <span className="ml-[4px]">
+                           {isPlaying ? 'Tạm dừng' : 'Tiếp tục phát'}
+                        </span>
+                     </>
+                  )}
                </button>
 
                <div className="f-center">

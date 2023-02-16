@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+import { clearPlaylistSongs } from '~/redux/slices/musicSlice';
+import { resetAudio } from '~/redux/slices/audioSlice';
+
 import { ButtonTippy } from '~/components/Commonts';
 import { Menu, MenuItem, TippyDropdown } from '~/components/Menu';
 
@@ -28,6 +32,12 @@ const Button = ({ children, active = false, ...props }) => {
 };
 
 const Header = () => {
+   const dispatch = useDispatch();
+
+   const handleClearPlaylistSong = () => {
+      dispatch(resetAudio());
+      dispatch(clearPlaylistSongs());
+   };
    return (
       <div className="flex items-center justify-between py-[14px] px-2">
          <div className="flex flex-1 p-[3px] bg-alpha rounded-full">
@@ -47,6 +57,7 @@ const Header = () => {
                render={(attrs) => (
                   <Menu {...attrs}>
                      <MenuItem
+                        onClick={handleClearPlaylistSong}
                         iconLeft={
                            <span className="mr-[5px]">
                               <SlTrash size={16} />

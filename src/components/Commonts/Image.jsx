@@ -1,27 +1,41 @@
 import React, { memo } from 'react';
 
 import { ButtonTippy } from '~/components/Commonts';
-import { playBtn } from '~/assets/images';
+import { gifPlaying, playBtn } from '~/assets/images';
 
 const Image = ({
    src,
    className = '',
+   isPlaying = false,
+   isRotate = false,
    onClick = () => {},
    IconLeft = null,
    IconRight = null,
 }) => {
    return (
       <div
-         className={`w-full h-0 pb-[100%] bg-loading overflow-hidden group/image relative rounded ${className}`}
+         className={`w-full h-0 pb-[100%] overflow-hidden group/image relative rounded ${className}`}
       >
-         {src && (
-            <img
-               className="w-full absolute inset-0 object-cover group-hover/image:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
-               src={src}
-               alt="thumb"
-            />
-         )}
-         <div className="group-hover/image:flex hidden items-center absolute inset-0 bg-dark-50 z-10">
+         <div
+            className={`absolute inset-0 bg-loading trans-rotate ${
+               isPlaying && isRotate ? 'thumb-rotate-on' : 'thumb-rotate-off'
+            }`}
+         >
+            {src && (
+               <img
+                  className="w-full h-full object-cover group-hover/image:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
+                  src={src}
+                  alt="thumb"
+               />
+            )}
+         </div>
+         <div
+            className={`${
+               isPlaying
+                  ? `flex ${isRotate ? '' : 'bg-dark-50'}`
+                  : 'group-hover/image:flex hidden bg-dark-50'
+            } items-center absolute inset-0 z-10`}
+         >
             <div
                className="w-full h-[50px] flex justify-evenly items-center"
                onClick={(e) => e.preventDefault()}
@@ -32,11 +46,19 @@ const Image = ({
                   size="45px"
                   onClick={onClick}
                >
-                  <img
-                     src={playBtn}
-                     alt="play-btn"
-                     className="w-full h-full object-cover"
-                  />
+                  {isPlaying ? (
+                     <img
+                        src={gifPlaying}
+                        alt="play-btn"
+                        className="w-2/5 h-2/5 object-cover"
+                     />
+                  ) : (
+                     <img
+                        src={playBtn}
+                        alt="play-btn"
+                        className="w-full h-full object-cover"
+                     />
+                  )}
                </ButtonTippy>
                {IconRight}
             </div>

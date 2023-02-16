@@ -9,6 +9,7 @@ import {
    Sidebar,
    PlayerControls,
    PlayerQueue,
+   Audio,
 } from '~/layouts/components';
 
 const DefaultLayout = ({ children }) => {
@@ -42,6 +43,7 @@ const DefaultLayout = ({ children }) => {
             <>
                <PlayerQueue />
                <PlayerControls />
+               <Audio />
             </>
          )}
       </div>
