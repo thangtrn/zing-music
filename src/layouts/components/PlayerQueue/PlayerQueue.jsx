@@ -1,4 +1,5 @@
 import React from 'react';
+import './playerQueue.css';
 import { CSSTransition } from 'react-transition-group';
 
 import { useSelector } from 'react-redux';

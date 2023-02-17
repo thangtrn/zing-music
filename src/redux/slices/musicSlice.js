@@ -11,6 +11,10 @@ const initialState = {
    currentSong: null,
    playlistId: '',
    playlistSongs: [],
+   playlistInfo: {
+      title: '',
+      link: '',
+   },
 };
 
 const musicSlice = createSlice({
@@ -78,6 +82,8 @@ const musicSlice = createSlice({
             action.payload.playlist.filter(
                (item) => item.streamingStatus === 1,
             ) || [];
+
+         state.playlistInfo = initialState.playlistInfo;
       },
       clearPlaylistSongs: (state) => {
          return {
@@ -110,6 +116,10 @@ const musicSlice = createSlice({
             ) || [];
 
          state.currentSong = state.playlistSongs[state.currentIndex];
+         state.playlistInfo = {
+            title: action.payload.title,
+            link: action.payload.link.split('.')[0],
+         };
       });
       builder.addMatcher(
          isAnyOf(fetchPlaylistAndPlayWithId.fulfilled),
@@ -129,6 +139,11 @@ const musicSlice = createSlice({
                ) || 0;
 
             state.currentSong = state.playlistSongs[state.currentIndex];
+
+            state.playlistInfo = {
+               title: action.payload.data.title,
+               link: action.payload.data.link.split('.')[0],
+            };
          },
       );
    },

@@ -40,10 +40,6 @@ const Controls = () => {
       dispatch(setPlay());
    };
 
-   if (loading) {
-      console.log('Percent: ' + secondToPercent());
-   }
-
    const handleNextSong = () => {
       dispatch(nextSong());
    };
@@ -69,66 +65,74 @@ const Controls = () => {
    return (
       <div className="flex-grow max-w-[40vw]">
          <div className="f-center">
-            <ButtonTippy
-               size={32}
-               className="mx-[7px] hover:bg-[#ffffff1a]"
-               tippyContent="Bật phát ngẫu nhiên"
+            <div
+               className="f-center w-fit"
+               onClick={(e) => e.stopPropagation()}
             >
-               <IoShuffleOutline size={20} />
-            </ButtonTippy>
-
-            <ButtonTippy
-               onClick={handlePrevSong}
-               size={32}
-               className="mx-[7px] hover:bg-[#ffffff1a]"
-            >
-               <RiSkipBackFill size={22} />
-            </ButtonTippy>
-
-            {loading ? (
-               <ButtonTippy size={50} className="mx-[7px] group">
-                  <div className="w-9 h-9 f-center border-[1.2px] border-[white] rounded-full group-hover:text-hover">
-                     <Loading />
-                  </div>
-               </ButtonTippy>
-            ) : (
                <ButtonTippy
-                  size={50}
-                  className="mx-[7px] group"
-                  onClick={handleTogglePlay}
+                  size={32}
+                  className="mx-[7px] hover:bg-[#ffffff1a]"
+                  tippyContent="Bật phát ngẫu nhiên"
                >
-                  <div className="w-9 h-9 f-center border-[1.2px] border-[white] rounded-full group-hover:border-purple-primary group-hover:text-hover">
-                     {isPlaying ? (
-                        <MdOutlinePause size={22} />
-                     ) : (
-                        <RiPlayMiniFill
-                           size={24}
-                           className="translate-x-[1px]"
-                        />
-                     )}
-                  </div>
+                  <IoShuffleOutline size={20} />
                </ButtonTippy>
-            )}
 
-            <ButtonTippy
-               onClick={handleNextSong}
-               size={32}
-               className="mx-[7px] hover:bg-[#ffffff1a]"
-            >
-               <RiSkipForwardFill size={22} />
-            </ButtonTippy>
+               <ButtonTippy
+                  onClick={handlePrevSong}
+                  size={32}
+                  className="mx-[7px] hover:bg-[#ffffff1a]"
+               >
+                  <RiSkipBackFill size={22} />
+               </ButtonTippy>
 
-            <ButtonTippy
-               size={32}
-               className="mx-[7px] hover:bg-[#ffffff1a]"
-               tippyContent="Bật phát lại tất cả"
-            >
-               <TbRepeat size={20} />
-            </ButtonTippy>
+               {loading ? (
+                  <ButtonTippy size={50} className="mx-[7px] group">
+                     <div className="w-9 h-9 f-center border-[1.2px] border-[white] rounded-full group-hover:text-hover">
+                        <Loading />
+                     </div>
+                  </ButtonTippy>
+               ) : (
+                  <ButtonTippy
+                     size={50}
+                     className="mx-[7px] group"
+                     onClick={handleTogglePlay}
+                  >
+                     <div className="w-9 h-9 f-center border-[1.2px] border-[white] rounded-full group-hover:border-purple-primary group-hover:text-hover">
+                        {isPlaying ? (
+                           <MdOutlinePause size={22} />
+                        ) : (
+                           <RiPlayMiniFill
+                              size={24}
+                              className="translate-x-[1px]"
+                           />
+                        )}
+                     </div>
+                  </ButtonTippy>
+               )}
+
+               <ButtonTippy
+                  onClick={handleNextSong}
+                  size={32}
+                  className="mx-[7px] hover:bg-[#ffffff1a]"
+               >
+                  <RiSkipForwardFill size={22} />
+               </ButtonTippy>
+
+               <ButtonTippy
+                  size={32}
+                  className="mx-[7px] hover:bg-[#ffffff1a]"
+                  tippyContent="Bật phát lại tất cả"
+               >
+                  <TbRepeat size={20} />
+               </ButtonTippy>
+            </div>
          </div>
 
          {/* progress bar */}
-         <div className="flex items-center mb-[5px] select-none">
+         <div
+            className="flex items-center mb-[5px] select-none"
+            onClick={(e) => e.stopPropagation()}
+         >
             <span className="min-w-[45px] text-[12px] text-primary font-medium mr-[10px] opacity-50 text-right">
                {durationTime(currentTime)}
             </span>

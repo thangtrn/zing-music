@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,37 +30,23 @@ const Header = ({ data }) => {
       contentLastUpdate,
    } = data;
 
-   const handleClick = useCallback(() => {
+   const isPlayingSong = !loading && isPlaying && playlistId === encodeId;
+
+   const handleClick = () => {
+      // neu dang load thi ko cho bam
       if (loading) return;
       if (params.id === playlistId) dispatch(setPlay());
       else dispatch(fetchPlaylist(encodeId));
-   }, [dispatch, encodeId, loading, params.id, playlistId]);
-
-   const isPlayingSong = useMemo(() => {
-      return playlistId === encodeId && isPlaying && !loading;
-   }, [encodeId, isPlaying, loading, playlistId]);
-
-   const classPlayingSong = useMemo(() => {
-      if (isPlayingSong) {
-         return 'rounded-full';
-      }
-      return 'rounded-lg';
-   }, [isPlayingSong]);
-
-   // console.log({
-   //    isPlaying: isPlayingSong,
-   //    class: classPlayingSong,
-   // });
+   };
 
    return (
-      <div className="h-full sticky top-[110px]">
-         <div className="w-[300px] pb-[30px]">
+      <div className="h-full w-full max-w-[300px] sticky top-[110px]">
+         <div className="w-full pb-[30px]">
             <Image
                isPlaying={isPlayingSong}
-               // neu dang load thi ko cho bam
                isRotate
                onClick={handleClick}
-               className={`${classPlayingSong} trans-rotate shadow-image`}
+               className="shadow-image"
                src={thumbnailM}
             />
 

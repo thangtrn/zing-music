@@ -1,0 +1,19 @@
+/* ----- Player queue animation ---- */
+.player-queue-animation-enter {
+   transform: translateX(100%);
+}
+/* This is where we can add the transition*/
+.player-queue-animation-enter-active {
+   transform: translateX(0%);
+   transition: all 0.5s linear;
+}
+/* This fires as soon as the this.state.showList is false */
+.player-queue-animation-exit {
+   transform: translateX(0%);
+}
+/* fires as element leaves the DOM*/
+.player-queue-animation-exit-active {
+   transform: translateX(100%);
+   transition: all 0.5s linear;
+}
+/* ----- Player queue animation end ---- */

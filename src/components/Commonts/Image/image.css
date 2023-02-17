@@ -1,0 +1,53 @@
+.image-wrapper {
+   border-radius: 8px;
+   overflow: hidden;
+   transition: border-radius 0.5s ease;
+}
+
+.image-wrapper-enter {
+   border-radius: 8px;
+}
+.image-wrapper-enter-active {
+   border-radius: 50%;
+}
+
+.image-wrapper-enter-done {
+   border-radius: 50%;
+}
+.image-wrapper-enter-done .image-spin {
+   animation: spin 10s linear infinite;
+}
+
+.image-wrapper-exit {
+   border-radius: 50%;
+}
+.image-wrapper-exit .image-spin {
+   animation: spin-off 0.5s ease;
+}
+
+.image-wrapper-exit-active {
+   border-radius: 50%;
+}
+
+.image-wrapper-exit-done {
+   border-radius: 8px;
+   transition: border-radius 0.3s ease;
+}
+
+@keyframes spin {
+   0% {
+      transform: rotate(0);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+@keyframes spin-off {
+   0% {
+      transform: rotate(540deg);
+   }
+   100% {
+      transform: rotate(0);
+   }
+}

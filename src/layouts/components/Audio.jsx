@@ -21,13 +21,13 @@ const Audio = () => {
    }, [isPlaying, currentSong.encodeId]);
 
    const handleLoadStart = () => {
-      dispatch(resetAudio());
       dispatch(setLoading(true));
+      dispatch(resetAudio());
    };
 
    const handleLoadedMetadata = (e) => {
-      dispatch(setLoading(false));
       dispatch(setDuration(e.target.duration));
+      dispatch(setLoading(false));
    };
 
    const handleEnded = () => {

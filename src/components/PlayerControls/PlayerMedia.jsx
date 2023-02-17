@@ -22,7 +22,8 @@ const PlayerMedia = () => {
                </Media.SubTitle>
             </Media.Content>
          </Media.Left>
-         <Media.Right hover={false}>
+
+         <Media.Right hover={false} onClick={(e) => e.stopPropagation()}>
             <ButtonTippy
                tippyContent="Khác"
                size="32px"

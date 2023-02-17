@@ -50,7 +50,6 @@ const SearchBox = () => {
 
       const fetchSearchAll = async () => {
          try {
-            // setLoading(true);
             dispatch(fetchSearchSuggest(debounceValue));
          } catch (error) {
             console.log(error.msg);

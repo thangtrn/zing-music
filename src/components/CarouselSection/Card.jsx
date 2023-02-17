@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { fetchPlaylist } from '~/redux/slices/musicSlice';
+import { fetchPlaylist, setPlay } from '~/redux/slices/musicSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { musicSelector } from '~/redux/selector';
 
@@ -15,7 +15,7 @@ import {
 
 const Card = ({ cardData }) => {
    const navigate = useNavigate();
-   const { playlistId } = useSelector(musicSelector);
+   const { playlistId, isPlaying } = useSelector(musicSelector);
    const dispatch = useDispatch();
 
    const { encodeId, link, thumbnailM, title, sortDescription, artistsNames } =
@@ -27,8 +27,13 @@ const Card = ({ cardData }) => {
    };
 
    const handleClick = () => {
-      dispatch(fetchPlaylist(encodeId));
-      navigate(formatLink(link));
+      if (playlistId === encodeId) {
+         dispatch(setPlay());
+         return;
+      } else {
+         dispatch(fetchPlaylist(encodeId));
+         navigate(formatLink(link));
+      }
    };
 
    return (
@@ -40,7 +45,7 @@ const Card = ({ cardData }) => {
             <Image
                src={thumbnailM}
                onClick={handleClick}
-               isPlaying={encodeId === playlistId}
+               isPlaying={encodeId === playlistId && isPlaying}
                IconLeft={
                   <ButtonTippy
                      className="hover:bg-tooltip"
