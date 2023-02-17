@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { gifPlaying } from '~/assets';
 import { BsFillPlayFill } from '~/ultis/icons';
 import { Loading } from '~/assets';
+import { LazyImage } from './Image';
 
 const Media = memo(({ children, className = '', ...props }) => {
    return (
@@ -30,13 +31,11 @@ Media.Image = memo(
             className="rounded overflow-hidden mr-[10px] flex-shrink-0 cursor-pointer"
          >
             <div className="w-full h-0 pb-[100%] bg-loading overflow-hidden relative cursor-pointer">
-               {src && (
-                  <img
-                     className="w-full h-full absolute inset-0 object-cover"
-                     src={src}
-                     alt="thumb"
-                  />
-               )}
+               <LazyImage
+                  className="w-full h-full absolute inset-0 object-cover"
+                  src={src}
+                  alt="media"
+               />
                <div
                   className={`${
                      active ? 'flex' : 'hidden group-hover/media:flex'
@@ -81,13 +80,11 @@ Media.OnlyImage = memo(({ src, size = '60px', className = '' }) => {
          className={`rounded overflow-hidden mr-[10px] flex-shrink-0 flex-grow-0 ${className}`}
       >
          <div className="relative w-full h-0 pb-[100%] bg-loading">
-            {src && (
-               <img
-                  className="w-full h-full object-cover absolute inset-0"
-                  src={src}
-                  alt="media"
-               />
-            )}
+            <LazyImage
+               className="w-full h-full object-cover absolute inset-0"
+               src={src}
+               alt="media"
+            />
          </div>
       </div>
    );

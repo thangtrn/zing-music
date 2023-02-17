@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import './image.css';
 
-import { ButtonTippy } from '~/components/Commonts';
+import { ButtonTippy, LazyImage } from '~/components/Commonts';
 import { gifPlaying, playBtn } from '~/assets/images';
 import { CSSTransition } from 'react-transition-group';
 
@@ -37,13 +37,11 @@ const Image = ({
                   isRotate && 'image-spin'
                }`}
             >
-               {src && (
-                  <img
-                     className="w-full h-full object-cover group-hover/image:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
-                     src={src}
-                     alt="thumb"
-                  />
-               )}
+               <LazyImage
+                  className="w-full h-full object-cover group-hover/image:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
+                  src={src}
+                  alt="thumb"
+               />
             </div>
             <div
                className={`${

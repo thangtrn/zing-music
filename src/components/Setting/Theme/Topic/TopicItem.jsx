@@ -1,4 +1,5 @@
 import React from 'react';
+import { LazyImage } from '~/components/Commonts';
 
 import { FiCheck } from '~/ultis/icons';
 
@@ -19,15 +20,17 @@ const TopicItem = ({ title, src, active = false }) => {
       <div className="w-1/6 mb-[20px]">
          <div className="px-[7px]">
             <div
-               className={`group relative rounded-[5px] overflow-hidden cursor-pointer border border-solid ${
+               className={`h-0 pb-[66.67%] group relative rounded-[5px] overflow-hidden cursor-pointer border border-solid ${
                   active ? 'border-purple-primary' : 'border-transparent'
                }`}
             >
-               <img
-                  src={src}
-                  alt={title}
-                  className="group-hover:scale-[1.1] block w-full h-full object-cover transition-all ease-linear duration-300"
-               />
+               <div className="absolute inset-0 bg-loading">
+                  <LazyImage
+                     className="w-full h-full object-cover group-hover:scale-110 transition-all ease-[ease] duration-700 overflow-hidden"
+                     src={src}
+                     alt="thumb"
+                  />
+               </div>
                {active && (
                   <div className="absolute bottom-[10px] right-[10px] w-5 h-5 f-center bg-purple-primary rounded-[50px]">
                      <FiCheck size={12} />

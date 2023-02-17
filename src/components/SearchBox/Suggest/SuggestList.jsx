@@ -23,11 +23,11 @@ const SuggestList = ({ onClose }) => {
                   Đề xuất cho bạn
                </div>
                <div onClick={() => onClose((prev) => !prev)}>
-                  {recommendKeywords.map(({ keyword, link }, idx) => (
+                  {recommendKeywords.map(({ keyword }, idx) => (
                      <SuggestKeyword
                         key={idx}
                         text={keyword}
-                        link={link}
+                        link={keyword}
                         icon={<IoTrendingUpSharp size={16} />}
                      />
                   ))}
