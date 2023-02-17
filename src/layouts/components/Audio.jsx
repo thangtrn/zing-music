@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { audioSelector, musicSelector } from '~/redux/selector';
-import { setLoading, nextSong, setPlay } from '~/redux/slices/musicSlice';
+import { setLoading, nextSong } from '~/redux/slices/musicSlice';
+
 import {
    setDuration,
    setCurrentTime,
@@ -12,13 +13,18 @@ import {
 const Audio = () => {
    const audioRef = useRef(null);
    const { isPlaying, currentSong } = useSelector(musicSelector);
-   const { isSeek } = useSelector(audioSelector);
+   const { isSeek, volume } = useSelector(audioSelector);
    const dispatch = useDispatch();
 
    useEffect(() => {
       if (!audioRef || !audioRef.current) return;
       isPlaying ? audioRef.current.play() : audioRef.current.pause();
    }, [isPlaying, currentSong.encodeId]);
+
+   useEffect(() => {
+      if (!audioRef || !audioRef.current) return;
+      audioRef.current.volume = volume / 100;
+   }, [volume]);
 
    const handleLoadStart = () => {
       dispatch(setLoading(true));
@@ -56,4 +62,4 @@ const Audio = () => {
    );
 };
 
-export default Audio;
+export default memo(Audio);

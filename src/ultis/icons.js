@@ -14,6 +14,7 @@ import {
    BsTelephone,
    BsTextareaResize,
    BsDownload,
+   BsVolumeMute,
 } from 'react-icons/bs';
 
 import {
@@ -170,4 +171,5 @@ export {
    SlTrash,
    BsDownload,
    IoAddCircleOutline,
+   BsVolumeMute,
 };

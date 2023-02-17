@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { musicSelector } from '~/redux/selector';
+import { audioSelector, musicSelector } from '~/redux/selector';
 import { setShowPlaylist } from '~/redux/slices/musicSlice';
+import { setVolume, toggleVolume } from '~/redux/slices/audioSlice';
 
 import ProgressBar from './ProgressBar';
 import { ButtonTippy } from '~/components/Commonts';
@@ -13,16 +14,26 @@ import {
    IoVolumeMediumOutline,
    BsMusicNoteList,
    BsTextareaResize,
+   BsVolumeMute,
 } from '~/ultis/icons';
 
 const Action = () => {
    const { showPlaylist } = useSelector(musicSelector);
+   const { volume } = useSelector(audioSelector);
    const dispatch = useDispatch();
-
-   const [volume, setVolume] = useState([50]);
 
    const handleToggleQueue = () => {
       dispatch(setShowPlaylist());
+   };
+
+   const handleChangeVolume = (values) => {
+      const volumeValue = Math.floor(values[0]);
+
+      dispatch(setVolume(volumeValue));
+   };
+
+   const handleToggleVolume = () => {
+      dispatch(toggleVolume());
    };
 
    return (
@@ -56,14 +67,19 @@ const Action = () => {
             </ButtonTippy>
 
             <div className="flex items-center group">
-               <ButtonTippy size={32} className="mx-[2px] hover:bg-[#ffffff1a]">
-                  <IoVolumeMediumOutline size={20} />
+               <ButtonTippy
+                  onClick={handleToggleVolume}
+                  size={32}
+                  className="mx-[2px] hover:bg-[#ffffff1a]"
+               >
+                  {volume === 0 ? (
+                     <BsVolumeMute size={20} />
+                  ) : (
+                     <IoVolumeMediumOutline size={20} />
+                  )}
                </ButtonTippy>
                <div className="w-[70px]">
-                  <ProgressBar
-                     value={volume}
-                     onChange={(values) => setVolume(values)}
-                  />
+                  <ProgressBar value={[volume]} onChange={handleChangeVolume} />
                </div>
             </div>
 

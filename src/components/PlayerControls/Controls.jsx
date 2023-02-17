@@ -56,7 +56,6 @@ const Controls = () => {
 
    const handleProgressFinalChange = (values) => {
       dispatch(setSeek(false));
-      console.log('finalValue: ' + values);
       if (audioRef || audioRef.current) {
          audioRef.current.currentTime = (values[0] * duration) / 100;
       }
