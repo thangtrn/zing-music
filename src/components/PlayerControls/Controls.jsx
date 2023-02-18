@@ -28,12 +28,12 @@ const Controls = () => {
       audioRef.current = document.getElementById('audioPlayer');
    }, []);
 
-   const secondToPercent = () => {
-      return [(currentTime / duration) * 100 || 0];
-   };
+   let secondToPercent = Number.isNaN((currentTime / duration) * 100)
+      ? 0
+      : (currentTime / duration) * 100;
 
-   const percentToSecond = (values) => {
-      return (values[0] * duration) / 100;
+   let percentToSecond = (values) => {
+      return Math.floor((values * duration) / 100);
    };
 
    const handleTogglePlay = () => {
@@ -57,7 +57,7 @@ const Controls = () => {
    const handleProgressFinalChange = (values) => {
       dispatch(setSeek(false));
       if (audioRef || audioRef.current) {
-         audioRef.current.currentTime = (values[0] * duration) / 100;
+         audioRef.current.currentTime = Math.floor((values * duration) / 100);
       }
    };
 
@@ -137,7 +137,7 @@ const Controls = () => {
             </span>
 
             <ProgressBar
-               value={secondToPercent()}
+               value={secondToPercent}
                onChange={handleProgressChange}
                onFinalChange={handleProgressFinalChange}
             />

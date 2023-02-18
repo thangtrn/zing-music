@@ -1,23 +1,28 @@
 import React from 'react';
 import { Range } from 'react-range';
 
-const ProgressBar = ({ value = [0], onChange, onFinalChange }) => {
+const ProgressBar = ({
+   value = 0,
+   onChange = () => {},
+   onFinalChange = () => {},
+}) => {
+   const fixedValue = value.toFixed(1);
+
    return (
       <div className="w-full h-[15px] flex items-center group">
          <Range
             step={0.1}
             min={0}
             max={100}
-            values={value}
-            onChange={(values) => onChange(values)}
-            // onFinalChange={(values) => onFinalChange(values)}
-            onFinalChange={onFinalChange}
+            values={[fixedValue]}
+            onChange={(values) => onChange(values[0])}
+            onFinalChange={(values) => onFinalChange(values[0])}
             renderTrack={({ props, children }) => (
                <div
                   {...props}
                   style={{
                      ...props.style,
-                     backgroundImage: `linear-gradient(to right, var(--bg-progressbar-active) 0%, var(--bg-progressbar-active) ${value}%, var(--bg-progressbar-player) ${value}%, var(--bg-progressbar-player) 100%)`,
+                     backgroundImage: `linear-gradient(to right, var(--bg-progressbar-active) 0%, var(--bg-progressbar-active) ${fixedValue}%, var(--bg-progressbar-player) ${fixedValue}%, var(--bg-progressbar-player) 100%)`,
                   }}
                   className="w-full h-[3px] rounded group-hover:h-[5px]"
                >
