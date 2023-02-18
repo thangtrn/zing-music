@@ -14,23 +14,16 @@ const Image = ({
    IconLeft = null,
    IconRight = null,
 }) => {
-   let Comp = React.Fragment;
-   let cssProps = {};
-   if (isRotate) {
-      Comp = CSSTransition;
-      cssProps = {
-         in: isPlaying,
-         timeout: 1000,
-         classNames: 'image-wrapper',
-      };
-   }
-
    return (
-      <Comp {...cssProps}>
+      <CSSTransition
+         in={isPlaying && isRotate}
+         classNames="image-wrapper"
+         timeout={1000}
+      >
          <div
             className={`w-full h-0 pb-[100%] overflow-hidden group/image relative ${
                isRotate ? 'image-wrapper' : 'rounded'
-            } ${className}`}
+            } ${isRotate && isPlaying && 'active'} ${className}`}
          >
             <div
                className={`absolute inset-0 bg-loading ${
@@ -78,7 +71,7 @@ const Image = ({
                </div>
             </div>
          </div>
-      </Comp>
+      </CSSTransition>
    );
 };
 

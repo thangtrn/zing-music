@@ -4,6 +4,14 @@
    transition: border-radius 0.5s ease;
 }
 
+.active {
+   border-radius: 50%;
+   overflow: hidden;
+}
+.active .image-spin {
+   animation: spin 10s linear infinite;
+}
+
 .image-wrapper-enter {
    border-radius: 8px;
 }

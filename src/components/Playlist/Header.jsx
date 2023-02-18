@@ -30,7 +30,7 @@ const Header = ({ data }) => {
       contentLastUpdate,
    } = data;
 
-   const isPlayingSong = !loading && isPlaying && playlistId === encodeId;
+   const isPlayingSong = !loading && isPlaying && playlistId === params.id;
 
    const handleClick = () => {
       // neu dang load thi ko cho bam
