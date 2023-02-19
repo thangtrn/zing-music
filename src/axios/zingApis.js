@@ -1,6 +1,6 @@
 import axiosClient from './axiosClient';
 
-const zingServices = {
+const zingApis = {
    searchSuggest: (query) => {
       return axiosClient.get(`/suggestion-keyword?keyword=${query}`);
    },
@@ -16,9 +16,12 @@ const zingServices = {
    getSuggestPlaylist: (encodeId) => {
       return axiosClient.get(`/suggest-playlist/${encodeId}`);
    },
-   getSong: (encodeId) => {
-      return axiosClient.get(`/song/${encodeId}`);
+   getSong: (id) => {
+      return axiosClient.get(`/song/${id}`);
+   },
+   getSongInfo: (id) => {
+      return axiosClient.get(`/song-info/${id}`);
    },
 };
 
-export default zingServices;
+export default zingApis;

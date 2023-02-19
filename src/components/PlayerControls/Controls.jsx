@@ -2,10 +2,20 @@ import React, { memo, useEffect, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { audioSelector, musicSelector } from '~/redux/selector';
-import { setPlay, nextSong, prevSong } from '~/redux/slices/musicSlice';
+import { setCurrentTime, setSeek } from '~/redux/slices/audioSlice';
+import {
+   setPlay,
+   nextSong,
+   prevSong,
+   setLoop,
+   setShuffle,
+} from '~/redux/slices/musicSlice';
 
 import { ButtonTippy } from '~/components/Commonts';
 import ProgressBar from './ProgressBar';
+
+import { Loading } from '~/assets';
+import { durationTime } from '~/helpers';
 import {
    IoShuffleOutline,
    RiPlayMiniFill,
@@ -14,16 +24,14 @@ import {
    TbRepeat,
    MdOutlinePause,
 } from '~/ultis/icons';
-import { Loading } from '~/assets';
-import { durationTime } from '~/helpers';
-import { setCurrentTime, setSeek } from '~/redux/slices/audioSlice';
 
 const Controls = () => {
    const { currentTime, duration } = useSelector(audioSelector);
-   const { isPlaying, loading } = useSelector(musicSelector);
+   const { loading, isPlaying, isLoop, isShuffle } = useSelector(musicSelector);
    const dispatch = useDispatch();
    const audioRef = useRef(null);
 
+   //#region Main
    useEffect(() => {
       audioRef.current = document.getElementById('audioPlayer');
    }, []);
@@ -34,6 +42,14 @@ const Controls = () => {
 
    let percentToSecond = (values) => {
       return Math.floor((values * duration) / 100);
+   };
+
+   const handleToggleLoop = () => {
+      dispatch(setLoop());
+   };
+
+   const handleToggleShuffle = () => {
+      dispatch(setShuffle());
    };
 
    const handleTogglePlay = () => {
@@ -60,6 +76,7 @@ const Controls = () => {
          audioRef.current.currentTime = Math.floor((values * duration) / 100);
       }
    };
+   //#endregion
 
    return (
       <div className="flex-grow max-w-[40vw]">
@@ -70,7 +87,10 @@ const Controls = () => {
             >
                <ButtonTippy
                   size={32}
-                  className="mx-[7px] hover:bg-[#ffffff1a]"
+                  onClick={handleToggleShuffle}
+                  className={`mx-[7px] hover:bg-[#ffffff1a] ${
+                     isShuffle && 'text-purple-primary'
+                  }`}
                   tippyContent="Bật phát ngẫu nhiên"
                >
                   <IoShuffleOutline size={20} />
@@ -119,7 +139,10 @@ const Controls = () => {
 
                <ButtonTippy
                   size={32}
-                  className="mx-[7px] hover:bg-[#ffffff1a]"
+                  onClick={handleToggleLoop}
+                  className={`mx-[7px] hover:bg-[#ffffff1a] ${
+                     isLoop && 'text-purple-primary'
+                  }`}
                   tippyContent="Bật phát lại tất cả"
                >
                   <TbRepeat size={20} />

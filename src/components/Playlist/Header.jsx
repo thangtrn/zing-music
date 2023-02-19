@@ -74,7 +74,7 @@ const Header = ({ data }) => {
                   {playlistId !== encodeId ? (
                      <>
                         <IoPlay size={18} />
-                        <span className="ml-[4px]">Phát ngẫu nhiên</span>
+                        <span className="ml-[4px]">Phát tất cả</span>
                      </>
                   ) : (
                      <>

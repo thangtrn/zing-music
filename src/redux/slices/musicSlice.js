@@ -22,20 +22,28 @@ const musicSlice = createSlice({
    initialState,
    reducers: {
       nextSong: (state) => {
+         if (state.playlistSongs.length === 0) {
+            return;
+         }
          if (state.playlistSongs.length - 1 === state.currentIndex) {
             state.currentIndex = 0;
          } else {
             state.currentIndex += 1;
          }
+         state.isPlaying = true;
 
          state.currentSong = state.playlistSongs[state.currentIndex] || null;
       },
       prevSong: (state) => {
+         if (state.playlistSongs.length === 0) {
+            return;
+         }
          if (state.currentIndex === 0) {
             state.currentIndex = state.playlistSongs.length - 1;
          } else {
             state.currentIndex -= 1;
          }
+         state.isPlaying = true;
 
          state.currentSong = state.playlistSongs[state.currentIndex] || null;
       },
@@ -43,10 +51,28 @@ const musicSlice = createSlice({
          state.loading = action.payload;
       },
       setPlay: (state, action) => {
+         if (state.playlistSongs.length === 0) {
+            state.isPlaying = false;
+            return;
+         }
          if (action.payload) {
             state.isPlaying = action.payload;
          } else {
             state.isPlaying = !state.isPlaying;
+         }
+      },
+      setLoop: (state, action) => {
+         if (action.payload) {
+            state.isLoop = action.payload;
+         } else {
+            state.isLoop = !state.isLoop;
+         }
+      },
+      setShuffle: (state, action) => {
+         if (action.payload) {
+            state.isShuffle = action.payload;
+         } else {
+            state.isShuffle = !state.isShuffle;
          }
       },
       setShowPlaylist: (state) => {
@@ -92,22 +118,32 @@ const musicSlice = createSlice({
       },
    },
    extraReducers: (builder) => {
+      //#region reducers peding and rejected
       builder.addMatcher(
-         isAnyOf(fetchPlaylist.pending, fetchPlaylistAndPlayWithId.pending),
+         isAnyOf(
+            fetchPlaylist.pending,
+            fetchPlaylistAndPlayWithId.pending,
+            fetchSong.pending,
+         ),
          (state) => {
             state.loading = true;
          },
       );
       builder.addMatcher(
-         isAnyOf(fetchPlaylist.rejected, fetchPlaylistAndPlayWithId.rejected),
+         isAnyOf(
+            fetchPlaylist.rejected,
+            fetchPlaylistAndPlayWithId.rejected,
+            fetchSong.rejected,
+         ),
          (state) => {
             state.loading = false;
             state.isPlaying = false;
          },
       );
+      //#endregion
+
       builder.addMatcher(isAnyOf(fetchPlaylist.fulfilled), (state, action) => {
          state.loading = false;
-         state.isPlaying = true;
          state.currentIndex = 0;
          state.playlistId = action.payload.encodeId;
          state.playlistSongs =
@@ -120,6 +156,14 @@ const musicSlice = createSlice({
             title: action.payload.title,
             link: action.payload.link.split('.')[0],
          };
+
+         if (state.playlistSongs.length !== 0) {
+            console.log('length', state.playlistSongs.length);
+            state.isPlaying = true;
+         } else {
+            console.log('length', state.playlistSongs.length);
+            state.isPlaying = false;
+         }
       });
       builder.addMatcher(
          isAnyOf(fetchPlaylistAndPlayWithId.fulfilled),
@@ -146,6 +190,15 @@ const musicSlice = createSlice({
             };
          },
       );
+      builder.addMatcher(isAnyOf(fetchSong.fulfilled), (state, action) => {
+         if (!action.payload) {
+            return;
+         }
+         state.playlistId = action.payload.encodeId;
+         state.playlistSongs = [action.payload];
+         state.currentSong = action.payload;
+         state.isPlaying = true;
+      });
    },
 });
 
@@ -167,8 +220,27 @@ export const fetchPlaylistAndPlayWithId = createAsyncThunk(
    },
 );
 
+export const fetchSong = createAsyncThunk(
+   'music/fetchSong',
+   async ({ songId, navigate = () => {} }, thunkApi) => {
+      console.log('thunkApi: ', thunkApi);
+      const res = await zingApis.getSongInfo(songId);
+      console.log('fetch song: ', res.data);
+      if (res.data?.album?.link) {
+         console.log(res.data.album);
+         thunkApi.dispatch(fetchPlaylist(res.data.album.encodeId));
+         navigate(res.data.album.link.replace('.html', ''));
+         // return;
+      } else {
+         return res.data;
+      }
+   },
+);
+
 export const {
    setPlay,
+   setLoop,
+   setShuffle,
    nextSong,
    prevSong,
    setLoading,

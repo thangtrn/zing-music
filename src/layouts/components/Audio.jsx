@@ -2,7 +2,7 @@ import React, { memo, useEffect, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { audioSelector, musicSelector } from '~/redux/selector';
-import { setLoading, nextSong } from '~/redux/slices/musicSlice';
+import { setLoading, nextSong, setPlay } from '~/redux/slices/musicSlice';
 
 import {
    setDuration,
@@ -12,19 +12,29 @@ import {
 
 const Audio = () => {
    const audioRef = useRef(null);
-   const { isPlaying, currentSong } = useSelector(musicSelector);
-   const { isSeek, volume } = useSelector(audioSelector);
-   const dispatch = useDispatch();
 
+   const dispatch = useDispatch();
+   const { isSeek, volume } = useSelector(audioSelector);
+   const { isPlaying, currentSong, playlistSongs, isLoop } =
+      useSelector(musicSelector);
+
+   //#region Main
+   // for play binding
    useEffect(() => {
       if (!audioRef || !audioRef.current) return;
       isPlaying ? audioRef.current.play() : audioRef.current.pause();
    }, [isPlaying, currentSong.encodeId]);
 
+   // for volume binding
    useEffect(() => {
       if (!audioRef || !audioRef.current) return;
       audioRef.current.volume = volume / 100;
    }, [volume]);
+
+   // for loop binding
+   useEffect(() => {
+      audioRef.current.loop = isLoop;
+   }, [isLoop]);
 
    const handleLoadStart = () => {
       dispatch(setLoading(true));
@@ -37,13 +47,23 @@ const Audio = () => {
    };
 
    const handleEnded = () => {
-      dispatch(nextSong());
+      if (isLoop) return;
+
+      // replay song when playlist only 1 song
+      if (playlistSongs.length <= 1) {
+         // audioRef.current.currentTime = 0;
+         // audioRef.current.play();
+         dispatch(setPlay(false));
+      } else {
+         dispatch(nextSong());
+      }
    };
 
    const handleTimeUpdate = (e) => {
       if (isSeek) return;
       dispatch(setCurrentTime(Math.floor(e.target.currentTime)));
    };
+   //#endregion
 
    return (
       <div className="hidden">

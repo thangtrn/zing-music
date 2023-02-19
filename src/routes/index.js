@@ -1,8 +1,8 @@
-import { Home, ZingChart, MyMusic, Album } from '~/pages';
-import { Navigate } from 'react-router-dom';
+import { Home, ZingChart, MyMusic, Album, Music } from '~/pages';
+// import { Navigate } from 'react-router-dom';
 import path from './path';
 
-const { home, myMusic, zingChart, album, playlist } = path;
+const { home, myMusic, zingChart, album, playlist, music } = path;
 
 const routes = [
    {
@@ -24,6 +24,10 @@ const routes = [
    {
       path: myMusic,
       element: <MyMusic />,
+   },
+   {
+      path: music,
+      element: <Music />,
    },
    // {
    //    path: '*',
