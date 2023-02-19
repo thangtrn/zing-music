@@ -37,6 +37,7 @@ const MediaItem = ({ mediaData, releaseData }) => {
             dispatch(
                setPlaylistSongs({
                   encodeId,
+                  title: 'Mới phát hành',
                   playlist: releaseData,
                }),
             );

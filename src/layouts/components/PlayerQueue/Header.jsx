@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux';
 import { clearPlaylistSongs } from '~/redux/slices/musicSlice';
 import { resetAudio } from '~/redux/slices/audioSlice';
 
-import { ButtonTippy } from '~/components/Commonts';
-import { Menu, MenuItem, TippyDropdown } from '~/components/Menu';
+import { ButtonTippy, Menu, MenuItem, TippyDropdown } from '~/components';
 
 import {
    TfiAlarmClock,

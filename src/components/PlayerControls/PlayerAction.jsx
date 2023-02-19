@@ -27,7 +27,7 @@ const Action = () => {
    };
 
    const handleChangeVolume = (values) => {
-      const volumeValue = values;
+      const volumeValue = Math.floor(values);
       dispatch(setVolume(volumeValue));
    };
 
@@ -78,7 +78,11 @@ const Action = () => {
                   )}
                </ButtonTippy>
                <div className="w-[70px]">
-                  <ProgressBar value={volume} onChange={handleChangeVolume} />
+                  <ProgressBar
+                     step={0.01}
+                     value={volume}
+                     onChange={handleChangeVolume}
+                  />
                </div>
             </div>
 

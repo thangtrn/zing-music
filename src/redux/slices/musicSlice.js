@@ -79,7 +79,6 @@ const musicSlice = createSlice({
          state.showPlaylist = !state.showPlaylist;
       },
       setPlaySongWithId: (state, action) => {
-         state.isPlaying = true;
          state.currentIndex =
             state.playlistSongs.findIndex(
                (item) => item.encodeId === action.payload,
@@ -89,10 +88,16 @@ const musicSlice = createSlice({
             state.playlistSongs.filter(
                (item) => item.encodeId === action.payload,
             )[0] || null;
+         state.isPlaying = true;
       },
       setPlaylistSongs: (state, action) => {
          state.isPlaying = true;
          state.playlistId = '';
+
+         state.playlistInfo = {
+            title: action.payload.title,
+            link: '',
+         };
 
          state.currentIndex =
             action.payload.playlist.findIndex(
@@ -108,8 +113,6 @@ const musicSlice = createSlice({
             action.payload.playlist.filter(
                (item) => item.streamingStatus === 1,
             ) || [];
-
-         state.playlistInfo = initialState.playlistInfo;
       },
       clearPlaylistSongs: (state) => {
          return {
@@ -157,6 +160,8 @@ const musicSlice = createSlice({
             link: action.payload.link.split('.')[0],
          };
 
+         console.log('playlist: ', state.playlistSongs);
+
          if (state.playlistSongs.length !== 0) {
             state.isPlaying = true;
          } else {
@@ -185,8 +190,14 @@ const musicSlice = createSlice({
 
             state.playlistInfo = {
                title: action.payload.data.title,
-               link: action.payload.data.link.split('.')[0],
+               link: action.payload.data.link.replace('.html', ''),
             };
+            if (state.playlistSongs.length !== 0) {
+               state.isPlaying = true;
+            } else {
+               console.log('length', state.playlistSongs.length);
+               state.isPlaying = false;
+            }
          },
       );
       builder.addMatcher(isAnyOf(fetchSong.fulfilled), (state, action) => {

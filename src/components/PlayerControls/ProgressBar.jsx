@@ -3,15 +3,17 @@ import { Range } from 'react-range';
 
 const ProgressBar = ({
    value = 0,
+   step = 0.001,
+   fixed = 3,
    onChange = () => {},
    onFinalChange = () => {},
 }) => {
-   const fixedValue = value.toFixed(6);
+   const fixedValue = value.toFixed(fixed);
 
    return (
       <div className="w-full h-[15px] flex items-center group">
          <Range
-            step={0.000001}
+            step={step}
             min={0}
             max={100}
             values={[fixedValue]}

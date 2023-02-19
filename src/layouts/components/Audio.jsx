@@ -61,7 +61,7 @@ const Audio = () => {
 
    const handleTimeUpdate = (e) => {
       if (isSeek) return;
-      dispatch(setCurrentTime(e.target.currentTime));
+      dispatch(setCurrentTime(e.target.currentTime.toFixed(3)));
    };
    //#endregion
 

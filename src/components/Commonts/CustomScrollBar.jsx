@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
-const CustomScrollBar = ({ onScroll, viewClass = '', children }) => {
+const CustomScrollBar = ({ onScroll = () => {}, viewClass = '', children }) => {
    return (
       <Scrollbars
          onScroll={onScroll}
