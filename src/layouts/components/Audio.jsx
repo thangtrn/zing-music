@@ -42,7 +42,7 @@ const Audio = () => {
    };
 
    const handleLoadedMetadata = (e) => {
-      dispatch(setDuration(Math.floor(e.target.duration)));
+      dispatch(setDuration(e.target.duration));
       dispatch(setLoading(false));
    };
 
@@ -61,7 +61,7 @@ const Audio = () => {
 
    const handleTimeUpdate = (e) => {
       if (isSeek) return;
-      dispatch(setCurrentTime(Math.floor(e.target.currentTime)));
+      dispatch(setCurrentTime(e.target.currentTime));
    };
    //#endregion
 

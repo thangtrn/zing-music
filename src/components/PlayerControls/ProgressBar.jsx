@@ -6,12 +6,12 @@ const ProgressBar = ({
    onChange = () => {},
    onFinalChange = () => {},
 }) => {
-   const fixedValue = value.toFixed(1);
+   const fixedValue = value.toFixed(6);
 
    return (
       <div className="w-full h-[15px] flex items-center group">
          <Range
-            step={0.1}
+            step={0.000001}
             min={0}
             max={100}
             values={[fixedValue]}

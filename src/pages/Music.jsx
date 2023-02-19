@@ -13,7 +13,6 @@ const Music = () => {
       const fetchSongInfo = async () => {
          try {
             const res = await zingApis.getSongInfo(params.id);
-            console.log(res.data);
             const link = res.data?.album?.link.split('.html')[0];
             console.log(link);
             if (!link) {

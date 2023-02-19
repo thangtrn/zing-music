@@ -158,7 +158,6 @@ const musicSlice = createSlice({
          };
 
          if (state.playlistSongs.length !== 0) {
-            console.log('length', state.playlistSongs.length);
             state.isPlaying = true;
          } else {
             console.log('length', state.playlistSongs.length);
@@ -214,7 +213,6 @@ export const fetchPlaylist = createAsyncThunk(
 export const fetchPlaylistAndPlayWithId = createAsyncThunk(
    'music/fetchPlaylistAndPlayWithId',
    async ({ songId, playlistId }) => {
-      // console.log('songId:' + songId);
       const res = await zingApis.getPlaylist(playlistId);
       return { data: res.data, songId: songId };
    },
@@ -223,12 +221,10 @@ export const fetchPlaylistAndPlayWithId = createAsyncThunk(
 export const fetchSong = createAsyncThunk(
    'music/fetchSong',
    async ({ songId, navigate = () => {} }, thunkApi) => {
-      console.log('thunkApi: ', thunkApi);
       const res = await zingApis.getSongInfo(songId);
-      console.log('fetch song: ', res.data);
       if (res.data?.album?.link) {
-         console.log(res.data.album);
-         thunkApi.dispatch(fetchPlaylist(res.data.album.encodeId));
+         let playlistId = res.data.album.encodeId;
+         thunkApi.dispatch(fetchPlaylistAndPlayWithId({ songId, playlistId }));
          navigate(res.data.album.link.replace('.html', ''));
          // return;
       } else {

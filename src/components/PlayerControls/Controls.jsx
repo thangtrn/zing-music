@@ -41,7 +41,7 @@ const Controls = () => {
       : (currentTime / duration) * 100;
 
    let percentToSecond = (values) => {
-      return Math.floor((values * duration) / 100);
+      return (values * duration) / 100;
    };
 
    const handleToggleLoop = () => {
@@ -73,7 +73,7 @@ const Controls = () => {
    const handleProgressFinalChange = (values) => {
       dispatch(setSeek(false));
       if (audioRef || audioRef.current) {
-         audioRef.current.currentTime = Math.floor((values * duration) / 100);
+         audioRef.current.currentTime = (values * duration) / 100;
       }
    };
    //#endregion
