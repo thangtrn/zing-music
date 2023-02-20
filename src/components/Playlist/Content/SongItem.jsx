@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { musicSelector } from '~/redux/selector';
@@ -24,6 +24,7 @@ const SongItem = ({ mediaData }) => {
       useSelector(musicSelector);
    const dispatch = useDispatch();
    const params = useParams();
+   const songRef = useRef(null);
 
    const {
       encodeId,
@@ -64,8 +65,20 @@ const SongItem = ({ mediaData }) => {
       ],
    );
 
+   useEffect(() => {
+      if (currentSong.encodeId === encodeId) {
+         songRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+         });
+      }
+   }, [currentSong.encodeId, encodeId]);
+
    return (
-      <div className="w-full border-b border-b-secondary relative group/media">
+      <div
+         ref={songRef}
+         className="w-full border-b border-b-secondary relative group/media"
+      >
          <div className="absolute w-[34px] top-1/2 -translate-y-1/2 hidden group-hover/media:block">
             <label className="f-center h-[34px] leading-[1.25] cursor-pointer">
                <input

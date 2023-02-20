@@ -10,5 +10,6 @@ export * from './Partner';
 export * from './Playlist';
 export * from './PlayerControls';
 export * from './Menu';
+export * from './PlayerQueue';
 
 export { default as WeekChartSection } from './WeekChartSection';
