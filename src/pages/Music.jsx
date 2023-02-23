@@ -14,7 +14,7 @@ const Music = () => {
          try {
             const res = await zingApis.getSongInfo(params.id);
             const link = res.data?.album?.link.split('.html')[0];
-            console.log(link);
+            // console.log(link);
             if (!link) {
                return navigate('/', { replace: true });
             }

@@ -109,15 +109,14 @@ const musicSlice = createSlice({
             link: '',
          };
 
-         state.currentIndex =
-            action.payload.playlist.findIndex(
-               (item) => item.encodeId === action.payload.encodeId,
-            ) || 0;
-
          state.playlistSongs =
             action.payload.playlist.filter(
                (item) => item.streamingStatus === 1,
             ) || [];
+         state.currentIndex =
+            state.playlistSongs.findIndex(
+               (item) => item.encodeId === action.payload.encodeId,
+            ) || 0;
 
          shuffleLogic(state);
       },
