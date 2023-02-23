@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
 
 import { useSelector } from 'react-redux';
-import { musicSelector } from '~/redux/selector';
+import { currentSongSelector } from '~/redux/selector';
 
 import { ButtonTippy, Media } from '~/components/Commonts';
 import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 const PlayerMedia = () => {
-   const { currentSong } = useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
 
    return (
       <Media className="hover:bg-transparent w-[30%] p-0">
@@ -25,7 +25,7 @@ const PlayerMedia = () => {
 
          <Media.Right hover={false} onClick={(e) => e.stopPropagation()}>
             <ButtonTippy
-               tippyContent="Khác"
+               tippyContent="Thêm vào thư viện"
                size="32px"
                className="hover:bg-[#ffffff1a] mx-[2px]"
             >

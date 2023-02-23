@@ -2,13 +2,14 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ButtonTippy, Media } from '~/components';
-import { musicSelector } from '~/redux/selector';
+import { musicSelector, currentSongSelector } from '~/redux/selector';
 import { setPlay, setPlaySongWithId } from '~/redux/slices/musicSlice';
 import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 const SongItem = ({ mediaData, className = '' }) => {
    const dispatch = useDispatch();
-   const { loading, isPlaying, currentSong } = useSelector(musicSelector);
+   const { loading, isPlaying, isShuffle } = useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
    const { encodeId, title, artistsNames, thumbnailM } = mediaData;
    const songItem = useRef(null);
 
@@ -29,13 +30,13 @@ const SongItem = ({ mediaData, className = '' }) => {
    );
 
    useEffect(() => {
-      if (currentSong.encodeId === encodeId) {
+      if (currentSong?.encodeId === encodeId) {
          songItem.current.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
          });
       }
-   }, [currentSong.encodeId, encodeId]);
+   }, [currentSong?.encodeId, encodeId, isShuffle]);
 
    return (
       <>
@@ -68,7 +69,7 @@ const SongItem = ({ mediaData, className = '' }) => {
                </Media.Left>
                <Media.Right>
                   <ButtonTippy
-                     tippyContent="Khác"
+                     tippyContent="Thêm vào thư viện"
                      size="26px"
                      className="hover:bg-[#ffffff1a] mx-[4px]"
                   >

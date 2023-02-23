@@ -1,7 +1,11 @@
 import React, { memo, useEffect, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { audioSelector, musicSelector } from '~/redux/selector';
+import {
+   audioSelector,
+   musicSelector,
+   currentSongSelector,
+} from '~/redux/selector';
 import { setLoading, nextSong, setPlay } from '~/redux/slices/musicSlice';
 
 import {
@@ -15,15 +19,14 @@ const Audio = () => {
 
    const dispatch = useDispatch();
    const { isSeek, volume } = useSelector(audioSelector);
-   const { isPlaying, currentSong, playlistSongs, isLoop } =
-      useSelector(musicSelector);
-
+   const { isPlaying, playlistSongs, isLoop } = useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
    //#region Main
    // for play binding
    useEffect(() => {
       if (!audioRef || !audioRef.current) return;
       isPlaying ? audioRef.current.play() : audioRef.current.pause();
-   }, [isPlaying, currentSong.encodeId]);
+   }, [isPlaying, currentSong?.encodeId]);
 
    // for volume binding
    useEffect(() => {

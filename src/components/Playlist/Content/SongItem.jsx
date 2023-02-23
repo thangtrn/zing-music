@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { musicSelector } from '~/redux/selector';
+import { musicSelector, currentSongSelector } from '~/redux/selector';
 
 import { durationTime } from '~/helpers';
 import { vipLabel } from '~/assets';
@@ -20,8 +20,8 @@ import {
 import { useParams } from 'react-router-dom';
 
 const SongItem = ({ mediaData }) => {
-   const { currentSong, loading, isPlaying, playlistId } =
-      useSelector(musicSelector);
+   const { loading, isPlaying, playlistId } = useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
    const dispatch = useDispatch();
    const params = useParams();
    const songRef = useRef(null);
@@ -66,13 +66,13 @@ const SongItem = ({ mediaData }) => {
    );
 
    useEffect(() => {
-      if (currentSong.encodeId === encodeId) {
+      if (currentSong?.encodeId === encodeId) {
          songRef.current.scrollIntoView({
             behavior: 'smooth',
             block: 'center',
          });
       }
-   }, [currentSong.encodeId, encodeId]);
+   }, [currentSong?.encodeId, encodeId]);
 
    return (
       <div

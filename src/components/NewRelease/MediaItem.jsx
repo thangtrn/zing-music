@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useMemo } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { musicSelector } from '~/redux/selector';
+import { musicSelector, currentSongSelector } from '~/redux/selector';
 import { setPlay, setPlaylistSongs } from '~/redux/slices/musicSlice';
 
 import { timeSince } from '~/helpers';
@@ -13,7 +13,8 @@ import { vipLabel } from '~/assets/images';
 // streamingStatus = 2 = Vip
 
 const MediaItem = ({ mediaData, releaseData }) => {
-   const { currentSong, loading, isPlaying } = useSelector(musicSelector);
+   const { loading, isPlaying } = useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
    const dispatch = useDispatch();
 
    const {

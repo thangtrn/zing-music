@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, isAnyOf } from '@reduxjs/toolkit';
 import zingApis from '~/axios/zingApis';
+import { shuffleArray } from '~/helpers';
 
 const initialState = {
    loading: false,
@@ -8,9 +9,9 @@ const initialState = {
    isLoop: false,
    isShuffle: false,
    currentIndex: 0,
-   currentSong: null,
    playlistId: '',
    playlistSongs: [],
+   playlistSongsBefore: [],
    playlistInfo: {
       title: '',
       link: '',
@@ -31,8 +32,6 @@ const musicSlice = createSlice({
             state.currentIndex += 1;
          }
          state.isPlaying = true;
-
-         state.currentSong = state.playlistSongs[state.currentIndex] || null;
       },
       prevSong: (state) => {
          if (state.playlistSongs.length === 0) {
@@ -44,8 +43,6 @@ const musicSlice = createSlice({
             state.currentIndex -= 1;
          }
          state.isPlaying = true;
-
-         state.currentSong = state.playlistSongs[state.currentIndex] || null;
       },
       setLoading: (state, action) => {
          state.loading = action.payload;
@@ -74,6 +71,23 @@ const musicSlice = createSlice({
          } else {
             state.isShuffle = !state.isShuffle;
          }
+         if (state.isShuffle) {
+            state.playlistSongsBefore = state.playlistSongs;
+            state.playlistSongs = shuffleArray(
+               state.playlistSongs,
+               state.playlistSongs[state.currentIndex].encodeId,
+            );
+            state.currentIndex = 0;
+         } else {
+            state.currentIndex = state.playlistSongsBefore.findIndex(
+               (item) =>
+                  item?.encodeId ===
+                  state.playlistSongs[state.currentIndex].encodeId,
+            );
+            let tmp = state.playlistSongs;
+            state.playlistSongs = state.playlistSongsBefore;
+            state.playlistSongsBefore = tmp;
+         }
       },
       setShowPlaylist: (state) => {
          state.showPlaylist = !state.showPlaylist;
@@ -84,10 +98,6 @@ const musicSlice = createSlice({
                (item) => item.encodeId === action.payload,
             ) || 0;
 
-         state.currentSong =
-            state.playlistSongs.filter(
-               (item) => item.encodeId === action.payload,
-            )[0] || null;
          state.isPlaying = true;
       },
       setPlaylistSongs: (state, action) => {
@@ -104,15 +114,12 @@ const musicSlice = createSlice({
                (item) => item.encodeId === action.payload.encodeId,
             ) || 0;
 
-         state.currentSong =
-            action.payload.playlist.filter(
-               (item) => item.encodeId === action.payload.encodeId,
-            )[0] || null;
-
          state.playlistSongs =
             action.payload.playlist.filter(
                (item) => item.streamingStatus === 1,
             ) || [];
+
+         shuffleLogic(state);
       },
       clearPlaylistSongs: (state) => {
          return {
@@ -154,13 +161,10 @@ const musicSlice = createSlice({
                (item) => item.streamingStatus === 1,
             ) || [];
 
-         state.currentSong = state.playlistSongs[state.currentIndex];
          state.playlistInfo = {
             title: action.payload.title,
             link: action.payload.link.split('.')[0],
          };
-
-         console.log('playlist: ', state.playlistSongs);
 
          if (state.playlistSongs.length !== 0) {
             state.isPlaying = true;
@@ -168,6 +172,7 @@ const musicSlice = createSlice({
             console.log('length', state.playlistSongs.length);
             state.isPlaying = false;
          }
+         shuffleLogic(state);
       });
       builder.addMatcher(
          isAnyOf(fetchPlaylistAndPlayWithId.fulfilled),
@@ -186,8 +191,6 @@ const musicSlice = createSlice({
                   (item) => item.encodeId === action.payload.songId,
                ) || 0;
 
-            state.currentSong = state.playlistSongs[state.currentIndex];
-
             state.playlistInfo = {
                title: action.payload.data.title,
                link: action.payload.data.link.replace('.html', ''),
@@ -198,6 +201,20 @@ const musicSlice = createSlice({
                console.log('length', state.playlistSongs.length);
                state.isPlaying = false;
             }
+
+            if (state.isShuffle) {
+               state.playlistSongsBefore = state.playlistSongs;
+               state.playlistSongs = shuffleArray(
+                  state.playlistSongs,
+                  state.playlistSongs[state.currentIndex].encodeId,
+               );
+               state.currentIndex = 0;
+            } else {
+               state.playlistSongsBefore = shuffleArray(
+                  state.playlistSongs,
+                  state.playlistSongs[state.currentIndex].encodeId,
+               );
+            }
          },
       );
       builder.addMatcher(isAnyOf(fetchSong.fulfilled), (state, action) => {
@@ -206,11 +223,28 @@ const musicSlice = createSlice({
          }
          state.playlistId = action.payload.encodeId;
          state.playlistSongs = [action.payload];
-         state.currentSong = action.payload;
+         state.currentIndex = 0;
          state.isPlaying = true;
       });
    },
 });
+
+const shuffleLogic = (state) => {
+   // shuffle logic
+   if (state.isShuffle) {
+      state.playlistSongsBefore = state.playlistSongs;
+      state.playlistSongs = shuffleArray(
+         state.playlistSongs,
+         state.playlistSongs[state.currentIndex].encodeId,
+      );
+      state.currentIndex = 0;
+   } else {
+      state.playlistSongsBefore = shuffleArray(
+         state.playlistSongs,
+         state.playlistSongs[state.currentIndex].encodeId,
+      );
+   }
+};
 
 export const fetchPlaylist = createAsyncThunk(
    'music/fetchPlaylist',

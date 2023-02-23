@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { musicSelector } from '~/redux/selector';
+import { musicSelector, currentSongSelector } from '~/redux/selector';
 import { AiOutlineHeart, RxDotsHorizontal } from '~/ultis/icons';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { fetchSong, setPlay } from '~/redux/slices/musicSlice';
 const SuggestArtist = memo(({ data }) => {
    const { avatar, name, aliasName, followers } = data;
    return (
-      <Link to={`/nghe-si/${aliasName}`}>
+      <Link to="/">
          <Media className="py-2">
             <Media.Left>
                <Media.OnlyImage
@@ -72,7 +72,8 @@ const SuggestPlaylist = memo(({ data }) => {
 });
 
 const SuggestSong = memo(({ data }) => {
-   const { currentSong, loading, isPlaying } = useSelector(musicSelector);
+   const { loading, isPlaying } = useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
    const { id, thumb, title, artists, link } = data;
    const dispatch = useDispatch();
    const navigate = useNavigate();

@@ -2,11 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CustomScrollBar } from '~/components/Commonts';
-import { musicSelector } from '~/redux/selector';
+import { musicSelector, currentSongSelector } from '~/redux/selector';
 import SongItem from './SongItem';
 const PlaylistSongs = () => {
-   const { playlistSongs, playlistInfo, currentSong, currentIndex } =
+   const { playlistSongs, playlistInfo, currentIndex } =
       useSelector(musicSelector);
+   const currentSong = useSelector(currentSongSelector);
 
    return (
       <div className="flex-1">
@@ -24,7 +25,7 @@ const PlaylistSongs = () => {
 
                      {index < playlistSongs.length - 1 &&
                         playlistInfo?.title &&
-                        currentSong.encodeId === item.encodeId && (
+                        currentSong?.encodeId === item.encodeId && (
                            <div className="px-2 pt-[15px] pb-[5px] text-primary text-sm">
                               <h3 className="font-bold">Tiếp theo</h3>
                               <h3 className="flex text-[#feffff99] font-normal">
