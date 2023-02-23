@@ -32,7 +32,7 @@ const SongItem = ({ mediaData, className = '' }) => {
       if (currentSong.encodeId === encodeId) {
          songItem.current.scrollIntoView({
             behavior: 'smooth',
-            block: 'nearest',
+            block: 'start',
          });
       }
    }, [currentSong.encodeId, encodeId]);

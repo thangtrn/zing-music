@@ -25,12 +25,12 @@ const PlaylistSongs = () => {
                      {index < playlistSongs.length - 1 &&
                         playlistInfo?.title &&
                         currentSong.encodeId === item.encodeId && (
-                           <div class="px-2 pt-[15px] pb-[5px] text-primary text-sm">
-                              <h3 class="font-bold">Tiếp theo</h3>
-                              <h3 class="flex text-[#feffff99] font-normal">
+                           <div className="px-2 pt-[15px] pb-[5px] text-primary text-sm">
+                              <h3 className="font-bold">Tiếp theo</h3>
+                              <h3 className="flex text-[#feffff99] font-normal">
                                  <span>Từ playlist</span>
                                  <Link
-                                    class="block flex-1 ml-[5px] text-truncate-1 font-medium text-hover"
+                                    className="text-truncate-1 flex-1 ml-[5px] font-medium text-hover"
                                     to={playlistInfo.link}
                                  >
                                     {playlistInfo.title}
