@@ -19,7 +19,7 @@ const CarouselSection = ({ title, link, playlistData = [] }) => {
             )}
          </h3>
          <div>
-            <div className="flex -mx-[14px] overflow-hidden flex-nowrap">
+            <div className="flex table:-mx-[14px] -mx-[6px] laptop:overflow-hidden overflow-x-scroll card-scroll flex-nowrap">
                {playlistData.slice(0, 5).map((item) => (
                   <Card cardData={item} key={item.encodeId} />
                ))}

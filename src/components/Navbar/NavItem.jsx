@@ -28,17 +28,19 @@ const NavItem = ({ icon, children, to }) => {
          <Comp
             {...props}
             tabIndex={-1}
-            className={`w-full flex items-center relative py-[8px] px-[25px] text-[13px] font-bold leading-[1.5] border-l-[3px] border-solid border-transparent cursor-pointer ${
+            className={`w-full flex items-center relative py-[15px] desktop:py-[8px] px-[25px] text-[13px] font-bold leading-[1.5] desktop:border-l-[3px] border-solid border-transparent cursor-pointer ${
                pathname === to
                   ? 'border-l-purple-primary text-primary bg-alpha'
                   : ''
             }`}
          >
             <Icon>{icon}</Icon>
-            <span className="flex items-center leading-normal">{children}</span>
+            <span className="hidden desktop:flex items-center leading-normal">
+               {children}
+            </span>
             <Icon
                className={`${
-                  pathname === to ? 'hidden' : 'group-hover:flex'
+                  pathname === to ? 'hidden' : 'desktop:group-hover:flex'
                } hidden absolute m-0 top-1/2 right-[17px] -translate-y-1/2`}
             >
                <IoPlayCircleOutline size={24} />
@@ -61,11 +63,13 @@ const NavItemV2 = ({ icon, children, to }) => {
          <Comp
             {...props}
             tabIndex={-1}
-            className="w-full flex items-center relative py-[8px] px-[25px] text-[13px] font-normal leading-[1.5] border-l-[3px] border-solid border-transparent cursor-pointer group-hover:text-primary"
+            className="w-full flex items-center relative py-[8px] px-[25px] text-[13px] font-normal leading-[1.5] desktop:border-l-[3px] border-solid border-transparent cursor-pointer group-hover:text-primary"
          >
             <Icon>{icon}</Icon>
-            <span className="flex items-center leading-normal">{children}</span>
-            <Icon className="group-hover:flex hidden absolute m-0 top-1/2 right-[17px] -translate-y-1/2">
+            <span className="hidden desktop:flex items-center leading-normal">
+               {children}
+            </span>
+            <Icon className="desktop:group-hover:flex hidden absolute m-0 top-1/2 right-[17px] -translate-y-1/2">
                <IoPlayCircleOutline size={24} />
             </Icon>
          </Comp>

@@ -33,8 +33,15 @@ const DefaultLayout = ({ children }) => {
 
          <Sidebar sidebarHeight={!isEmptyPlaylist ? 'h-sidebar' : ''} />
 
-         <div className={`w-main ${!isEmptyPlaylist ? 'h-main' : 'h-full'}`}>
-            <CustomScrollBar onScroll={handleScroll} viewClass="p-section">
+         <div
+            className={`desktop:w-main desktop:ml-0 w-main-small ml-[70px] ${
+               !isEmptyPlaylist ? 'h-main' : 'h-full'
+            }`}
+         >
+            <CustomScrollBar
+               onScroll={handleScroll}
+               viewClass="laptop:p-section tablet:px-[29px] px-[5px]"
+            >
                {children}
             </CustomScrollBar>
          </div>

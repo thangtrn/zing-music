@@ -9,7 +9,7 @@ const GalleryItem = ({ className = '', src, setHeight }) => {
 
    return (
       <div
-         className={`${className} absolute top-0 w-[33.33%] py-0 px-[15px] select-none gallery-transition z-0 opacity-0`}
+         className={`${className} absolute top-0 laptop:w-[33.33%] sm:w-1/2 w-full py-0 laptop:px-[15px] px-3 select-none gallery-transition z-0 opacity-0`}
       >
          <div className="w-full h-0 pb-[56.25%] relative bg-loading rounded-lg overflow-hidden">
             {src && (

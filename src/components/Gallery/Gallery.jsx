@@ -18,12 +18,12 @@ const Button = ({ children, className = '', ...props }) => {
 const Gallery = ({ galleryData = [] }) => {
    const [height, setHeight] = useState(0);
    const [clss, setClss] = useState([
-      'gallery-selected translate-x-0 opacity-100 z-1',
-      'translate-x-full opacity-100 z-1',
+      'gallery-selected laptop:translate-x-0 sm:translate-x-1/2 translate-x-0 opacity-100 z-1',
+      'translate-x-full laptop:opacity-100 opacity-0 z-1',
       'translate-x-[20%]',
       '',
       '-translate-x-[20%]',
-      '-translate-x-full opacity-100 z-1',
+      'laptop:-translate-x-full -translate-x-1/2 sm:opacity-100 opacity-0 z-1',
    ]);
 
    const sort = useCallback(

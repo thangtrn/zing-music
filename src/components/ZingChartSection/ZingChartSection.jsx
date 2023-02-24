@@ -9,7 +9,7 @@ import LineChart from './LineChart';
 const ZingChartSection = ({ zingChartData }) => {
    const { chart, items } = zingChartData;
    return (
-      <div className="mt-12 relative p-5">
+      <div className="mt-12 relative tablet:p-5 p-2">
          <img
             src={bgChart}
             className="w-full h-full rounded-lg object-cover object-right-top absolute inset-0"
@@ -28,8 +28,8 @@ const ZingChartSection = ({ zingChartData }) => {
             </button>
          </div>
 
-         <div className="relative flex -mx-[14px]">
-            <div className="basis-5/12 px-[14px]">
+         <div className="relative flex xl:flex-row flex-col-reverse -mx-[14px]">
+            <div className="xl:w-5/12 w-full px-[14px]">
                {items.slice(0, 3).map((item, index) => (
                   <div className="mb-[10px]" key={item.encodeId}>
                      <ZingMedia
@@ -51,7 +51,7 @@ const ZingChartSection = ({ zingChartData }) => {
                </div>
             </div>
 
-            <div className="basis-7/12 px-[14px] mb-5">
+            <div className="xl:w-7/12 w-full h-[200px] tablet:h-auto px-[14px] mb-5">
                <LineChart chartData={chart} rankItems={items} />
             </div>
          </div>

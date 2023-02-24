@@ -17,7 +17,7 @@ const Button = ({ primary = false, children }) => {
 
 const TopicItem = ({ title, src, active = false }) => {
    return (
-      <div className="w-1/6 mb-[20px]">
+      <div className="w-1/6 min-w-[120px] mb-[20px]">
          <div className="px-[7px]">
             <div
                className={`h-0 pb-[66.67%] group relative rounded-[5px] overflow-hidden cursor-pointer border border-solid ${

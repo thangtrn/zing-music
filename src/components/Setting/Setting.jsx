@@ -46,6 +46,7 @@ const Setting = () => {
    return (
       <div className="flex items-center ml-[10px] text-placeholder">
          <SettingItem
+            className="sm:block hidden"
             tippyContent="Chủ đề"
             onClick={() => setIsOpenTheme(!isOpenTheme)}
             icon={<ThemeIcon size={20} />}
@@ -56,11 +57,13 @@ const Setting = () => {
          </SettingItem>
 
          <SettingItem
+            className="sm:block hidden"
             tippyContent="Nâng cấp VIP"
             icon={<RiVipCrown2Line size={20} />}
          />
 
          <SettingItem
+            className="sm:block hidden"
             ref={settingRef}
             tippyContent="Cài đặt"
             onClick={() => setIsOpenSetting(!isOpenSetting)}

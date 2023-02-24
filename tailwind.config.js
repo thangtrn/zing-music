@@ -3,6 +3,11 @@ module.exports = {
    content: ['./src/**/*.{js,jsx,ts,tsx}'],
    theme: {
       extend: {
+         screens: {
+            tablet: '768px',
+            laptop: '1024px',
+            desktop: '1134px',
+         },
          fontSize: {
             xs: '12px',
             sm: '14px',
@@ -38,6 +43,7 @@ module.exports = {
             controls: 'var(--bg-controls)',
             player: 'var(--bg-player-controls)',
             queue: 'var(--bg-player-queue)',
+            'sidebar-popup': 'var(--bg-sidebar-popup)',
             'tag-active': 'var(--tag-active)',
             'progressbar-active': 'var(--bg-progressbar-active)',
             'progressbar-player': 'var(--bg-progressbar-player)',
@@ -50,6 +56,7 @@ module.exports = {
          backgroundImage: {
             primary: 'var(--bg-primary)',
             logo: 'var(--logo)',
+            'logo-small': 'var(--logo-small)',
             linear: 'var(--linear-gradient)',
             'player-img': 'var(--bg-player-img)',
          },
@@ -73,8 +80,11 @@ module.exports = {
          },
          width: {
             sidebar: 'var(--sidebar-width)',
+            'sidebar-small': 'var(--sidebar-width-small)',
             header: 'calc(100% - var(--sidebar-width))',
+            'header-small': 'calc(100% - var(--sidebar-width-small))',
             main: 'calc(100% - var(--sidebar-width))',
+            'main-small': 'calc(100% - var(--sidebar-width-small))',
          },
          padding: {
             section: '0 var(--section-padding)',

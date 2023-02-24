@@ -7,14 +7,14 @@ const SongList = ({ songsData = [] }) => {
       <div className="mb-10">
          {/* header */}
          <div className="h-[46px] p-10 flex items-center text-xs text-secondary uppercase font-medium border-b border-b-secondary">
-            <div className="w-1/2 flex items-center mr-10">
+            <div className="sm:w-1/2 flex items-center mr-10">
                <HiSortDescending size={16} />
                <span className="ml-10">Bài hát</span>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 sm:block hidden">
                <span>Album</span>
             </div>
-            <div className="ml-10">
+            <div className="sm:ml-10 ml-auto">
                <span className="text-right">Thời gian</span>
             </div>
          </div>

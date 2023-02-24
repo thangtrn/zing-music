@@ -10,21 +10,25 @@ const Partner = () => {
 
    return (
       <div className="mt-12">
-         <h3 className="block text-center mb-6 uppercase text-xs font-bold text-secondary hover:text-hover tracking-[1.71px] leading-[18px]">
+         <h3 className="sm:block hidden text-center mb-6 uppercase text-xs font-bold text-secondary hover:text-hover tracking-[1.71px] leading-[18px]">
             <span onClick={() => setOpen(true)} className="cursor-pointer">
                Đối tác âm nhạc
             </span>
          </h3>
-         <div className="flex flex-wrap -mx-[10px]">
+         <div className="sm:flex hidden flex-wrap -mx-[10px]">
             {PARTNER_DATA.map((item, index) => (
-               <PartnerImage src={item} key={index} className="w-[12.5%]" />
+               <PartnerImage
+                  src={item}
+                  key={index}
+                  className="w-[12.5%] min-w-[100px]"
+               />
             ))}
          </div>
 
          <Modal isOpen={open} close={() => setOpen(false)}>
             <div
                onClick={(e) => e.stopPropagation()}
-               className="w-[740px] max-w-[calc(90vw)] flex flex-col pb-5"
+               className="w-[740px] max-w-[calc(90vw)] sm:flex hidden flex-col pb-5"
             >
                <div className="px-[30px] pt-5 relative text-primary leading-[1.5]">
                   <h3 className="block text-center mb-6 uppercase text-base font-bold text-secondary hover:text-hover tracking-[3.03px] leading-[1.5]">
@@ -41,7 +45,11 @@ const Partner = () => {
                </div>
                <div className="flex flex-wrap -mb-[10px] px-5">
                   {PARTNER_DATA.map((item, index) => (
-                     <PartnerImage src={item} key={index} className="w-[20%]" />
+                     <PartnerImage
+                        src={item}
+                        key={index}
+                        className="w-[20%] min-w-[100px]"
+                     />
                   ))}
                </div>
             </div>

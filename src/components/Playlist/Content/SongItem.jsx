@@ -88,7 +88,7 @@ const SongItem = ({ mediaData }) => {
             </label>
          </div>
          <Media className={currentSong?.encodeId === encodeId && 'bg-alpha'}>
-            <Media.Left className="w-1/2 mr-10">
+            <Media.Left className="sm:w-1/2 w-full mr-10">
                <span className="group-hover/media:invisible w-[14px] f-center mr-10 text-secondary">
                   <SlMusicToneAlt size={13} />
                </span>
@@ -125,7 +125,9 @@ const SongItem = ({ mediaData }) => {
             </Media.Left>
 
             <Media.Content
-               className={`${streamingStatus === 2 && 'opacity-50'} flex-1`}
+               className={`${
+                  streamingStatus === 2 && 'opacity-50'
+               } flex-1 sm:flex hidden`}
             >
                <Media.SubTitle className="mt-0">{album?.title}</Media.SubTitle>
             </Media.Content>

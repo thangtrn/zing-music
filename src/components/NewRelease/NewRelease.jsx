@@ -23,7 +23,7 @@ const NewRelease = ({ title, link, releaseData }) => {
             {title}
          </h3>
          <div className="mb-4 flex justify-between">
-            <div>
+            <div className="tablet:block flex flex-col gap-2">
                {tags.map((tag) => (
                   <Button
                      key={tag.tagId}
@@ -43,7 +43,7 @@ const NewRelease = ({ title, link, releaseData }) => {
                </Link>
             )}
          </div>
-         <div className="-mx-[14px] flex">
+         <div className="-mx-[14px] tablet:flex block">
             <Column>
                {releaseData[tagActive].slice(0, 4).map((item) => (
                   <MediaItem
@@ -62,7 +62,7 @@ const NewRelease = ({ title, link, releaseData }) => {
                   />
                ))}
             </Column>
-            <Column>
+            <Column className="desktop:block hidden">
                {releaseData[tagActive].slice(8, 12).map((item) => (
                   <MediaItem
                      key={item.encodeId}
@@ -76,8 +76,14 @@ const NewRelease = ({ title, link, releaseData }) => {
    );
 };
 
-const Column = ({ children }) => {
-   return <div className="px-[14px] w-1/3">{children}</div>;
+const Column = ({ children, className = '' }) => {
+   return (
+      <div
+         className={`px-[14px] desktop:w-1/3 tablet:w-1/2 w-full ${className}`}
+      >
+         {children}
+      </div>
+   );
 };
 
 const Button = ({ children, active = false, ...props }) => {

@@ -1,6 +1,8 @@
 :root {
    --logo: url('/src/assets/images/logo-dark.svg');
+   --logo-small: url('/src/assets/images/icon_zing_mp3_small.svg');
    --sidebar-width: 240px;
+   --sidebar-width-small: 70px;
    --header-height: 70px;
    --player-height: 90px;
    --section-padding: 59px;
@@ -25,6 +27,7 @@
    --bg-player-queue: #5d218c;
    --bg-player-img: url('https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/theme-player/zma.png');
    --bg-tooltip: #ffffff4d;
+   --bg-sidebar-popup: #572f90;
 
    --bg-progressbar-active: #fff;
    --bg-progressbar-player: var(--bg-tooltip);

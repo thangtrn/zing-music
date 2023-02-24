@@ -36,6 +36,9 @@
       box-shadow: inset #fff;
       border-radius: 4px;
    }
+   .card-scroll::-webkit-scrollbar {
+      display: none;
+   }
    button,
    a {
       outline: none;
@@ -53,6 +56,19 @@
    /* ----- Header ---- */
    .btn-navigate {
       @apply flex items-center justify-center bg-transparent outline-none border-none font-normal py-[1px] pr-[22px] cursor-pointer;
+   }
+
+   .volume {
+      @apply w-[150px] h-[28px] flex items-center px-3 bg-[#353535] absolute -top-10 rounded left-0 -translate-x-1/2;
+   }
+   .volume::before {
+      content: '';
+      width: 100%;
+      height: 16px;
+      background: transparent;
+      position: absolute;
+      top: 100%;
+      left: 0;
    }
 
    .spin {

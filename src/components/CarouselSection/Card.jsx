@@ -37,7 +37,7 @@ const Card = ({ cardData }) => {
    };
 
    return (
-      <div className="px-[14px] w-1/5 flex-shrink-0">
+      <div className="tablet:px-[14px] px-[6px] w-1/5 flex-shrink-0 min-w-[160px]">
          <Link
             to={formatLink(link)}
             className="block rounded overflow-hidden cursor-pointer"

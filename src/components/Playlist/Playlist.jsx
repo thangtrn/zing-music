@@ -10,7 +10,7 @@ const Playlist = () => {
    const { playlist } = useSelector(albumSelector);
 
    return (
-      <div className="w-full pt-5 mb-[30px] flex">
+      <div className="w-full pt-5 mb-[30px] flex xl:flex-row flex-col">
          <Header data={playlist} />
          <Content data={playlist} />
       </div>

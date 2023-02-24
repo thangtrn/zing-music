@@ -9,3 +9,4 @@ export { default as playBtn } from './play-btn.svg';
 export { default as bgChart } from './bg-chart.jpg';
 export { default as vipLabel } from './vip-label.svg';
 export { default as gifPlaying } from './icon-playing.gif';
+export { default as logoSmall } from './icon_zing_mp3_small.svg';

@@ -44,10 +44,12 @@ const Sidebar = ({ sidebarHeight }) => {
    };
 
    return (
-      <div className={`${sidebarHeight} w-sidebar bg-sidebar flex flex-col`}>
-         <div className="w-full h-header flex items-center pr-[25px] pl-[28px]">
+      <div
+         className={`${sidebarHeight} desktop:w-sidebar w-sidebar-small bg-sidebar-popup desktop:bg-sidebar flex flex-col desktop:static fixed left-0-0 inset-y-0 z-40`}
+      >
+         <div className="w-full h-header flex items-center justify-center desktop:justify-start desktop:pr-[25px] desktop:pl-[28px]">
             <Link to="/" tabIndex={-1} className="inline-block leading-[0]">
-               <div className="inline-block w-[120px] h-10 bg-logo bg-center bg-no-repeat leading-[0] bg-full hover:brightness-90"></div>
+               <div className="inline-block w-[46px] h-[46px] desktop:w-[120px] desktop:h-10 bg-logo-small desktop:bg-logo bg-center bg-no-repeat leading-[0] bg-full hover:brightness-90"></div>
             </Link>
          </div>
 
@@ -94,7 +96,7 @@ const Sidebar = ({ sidebarHeight }) => {
                   </NavItem>
                </Navbar>
 
-               <div className="my-[10px] mx-5 py-[15px] px-2 text-xs font-bold text-center text-primary bg-linear rounded-lg">
+               <div className="hidden desktop:block my-[10px] mx-5 py-[15px] px-2 text-xs font-bold text-center text-primary bg-linear rounded-lg">
                   <p className="leading-[1.67] mb-[10px]">
                      Nghe nhạc không quảng cáo cùng kho nhạc VIP
                   </p>
@@ -107,7 +109,7 @@ const Sidebar = ({ sidebarHeight }) => {
                </div>
 
                <div className="pt-[15px] group/pen">
-                  <div className="h-[26px] flex items-center justify-between mt-0 mx-7 mb-2 text-xs font-bold uppercase text-primary">
+                  <div className="h-[26px] hidden desktop:flex items-center justify-between mt-0 mx-7 mb-2 text-xs font-bold uppercase text-primary">
                      Thư viện
                      <Tippy
                         content={
@@ -172,7 +174,7 @@ const Sidebar = ({ sidebarHeight }) => {
             </CustomScrollBar>
          </div>
 
-         <div className="w-full">
+         <div className="w-full hidden desktop:block">
             <button className="w-full h-[54px] flex items-center py-0 px-7 text-sm font-bold bg-transparent text-primary hover:text-placeholder border-t border-primary">
                <span className="block w-[18px] h-[18px] mr-[10px] f-center">
                   <AiOutlinePlus size={20} />

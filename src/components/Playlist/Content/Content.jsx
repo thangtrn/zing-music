@@ -7,9 +7,9 @@ const Content = ({ data }) => {
    const { encodeId, sortDescription, song } = data;
 
    return (
-      <div className="w-full ml-[30px]">
+      <div className="w-full xl:ml-[30px]">
          {sortDescription && (
-            <Text className="text-[14px] mb-[10px] text-truncate-3 leading-[1.5!important]">
+            <Text className="xl:block hidden text-[14px] mb-[10px] text-truncate-3 leading-[1.5!important]">
                Lời tựa <span className="text-primary">{sortDescription}</span>
             </Text>
          )}

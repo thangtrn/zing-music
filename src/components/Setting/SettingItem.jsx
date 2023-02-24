@@ -5,6 +5,7 @@ import 'tippy.js/dist/tippy.css';
 
 const SettingItem = (
    {
+      className = '',
       onClick = () => {},
       to = null,
       href = null,
@@ -42,7 +43,7 @@ const SettingItem = (
 
    return (
       <div
-         className="w-10 h-10 relative rounded-full bg-alpha cursor-pointer mr-3 last:mr-0"
+         className={`w-10 h-10 relative rounded-full bg-alpha cursor-pointer mr-3 last:mr-0 ${className}`}
          ref={ref}
       >
          <TippyComp {...settings}>

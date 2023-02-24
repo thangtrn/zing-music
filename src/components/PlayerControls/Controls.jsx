@@ -79,7 +79,7 @@ const Controls = () => {
    //#endregion
 
    return (
-      <div className="flex-grow max-w-[40vw]">
+      <div className="flex-grow tablet:max-w-[40vw] w-auto max-[767px]:w-[80%]">
          <div className="f-center">
             <div
                className="f-center w-fit"

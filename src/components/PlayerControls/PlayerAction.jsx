@@ -36,14 +36,14 @@ const Action = () => {
    };
 
    return (
-      <div className="flex items-center justify-end w-[30%]">
+      <div className="sm:flex hidden items-center justify-end w-[30%] ">
          <div
             className="flex items-center justify-end w-fit"
             onClick={(e) => e.stopPropagation()}
          >
             <ButtonTippy
                size={36}
-               className="mx-[2px] hover:bg-[#ffffff1a] opacity-50 cursor-not-allowed"
+               className="mx-[2px] hover:bg-[#ffffff1a] opacity-50 cursor-not-allowed tablet:flex hidden"
                tippyContent="MV"
             >
                <BsTabletLandscape size={16} />
@@ -51,7 +51,7 @@ const Action = () => {
 
             <ButtonTippy
                size={32}
-               className="mx-[2px] hover:bg-[#ffffff1a]"
+               className="mx-[2px] hover:bg-[#ffffff1a] tablet:flex hidden"
                tippyContent="Xem lời bài hát"
             >
                <TbMicrophone2 size={14} />
@@ -59,13 +59,13 @@ const Action = () => {
 
             <ButtonTippy
                size={32}
-               className="mx-[2px] hover:bg-[#ffffff1a]"
+               className="mx-[2px] hover:bg-[#ffffff1a] tablet:flex hidden"
                tippyContent="Chế độ cửa sổ"
             >
                <BsTextareaResize size={16} />
             </ButtonTippy>
 
-            <div className="flex items-center group">
+            <div className="flex items-center group max-[1133px]:relative">
                <ButtonTippy
                   onClick={handleToggleVolume}
                   size={32}
@@ -77,7 +77,7 @@ const Action = () => {
                      <IoVolumeMediumOutline size={20} />
                   )}
                </ButtonTippy>
-               <div className="w-[70px]">
+               <div className="desktop:w-[70px] max-[1133px]:volume max-[1133px]:group-hover:flex max-[1133px]:hidden">
                   <ProgressBar
                      step={0.01}
                      value={volume}
@@ -87,7 +87,7 @@ const Action = () => {
             </div>
 
             <div className="f-center flex-grow-0 flex-shrink-0">
-               <span className="h-[33px] w-[1px] bg-line mx-[20px]" />
+               <span className="h-[33px] w-[1px] bg-line tablet:mx-[20px] mx-2" />
             </div>
 
             <ButtonTippy
